@@ -1,0 +1,206 @@
+/****************************************************************************
+** Meta object code from reading C++ file 'hp_transmissionsearch.h'
+**
+** Created by: The Qt Meta Object Compiler version 67 (Qt 5.11.3)
+**
+** WARNING! All changes made in this file will be lost!
+*****************************************************************************/
+
+#include "hp_transmissionsearch.h"
+#include <QtCore/qbytearray.h>
+#include <QtCore/qmetatype.h>
+#if !defined(Q_MOC_OUTPUT_REVISION)
+#error "The header file 'hp_transmissionsearch.h' doesn't include <QObject>."
+#elif Q_MOC_OUTPUT_REVISION != 67
+#error "This file was generated using the moc from 5.11.3. It"
+#error "cannot be used with the include files from this version of Qt."
+#error "(The moc has changed too much.)"
+#endif
+
+QT_BEGIN_MOC_NAMESPACE
+QT_WARNING_PUSH
+QT_WARNING_DISABLE_DEPRECATED
+struct qt_meta_stringdata_Hp_TransmissionSearch_t {
+    QByteArrayData data[15];
+    char stringdata0[297];
+};
+#define QT_MOC_LITERAL(idx, ofs, len) \
+    Q_STATIC_BYTE_ARRAY_DATA_HEADER_INITIALIZER_WITH_OFFSET(len, \
+    qptrdiff(offsetof(qt_meta_stringdata_Hp_TransmissionSearch_t, stringdata0) + ofs \
+        - idx * sizeof(QByteArrayData)) \
+    )
+static const qt_meta_stringdata_Hp_TransmissionSearch_t qt_meta_stringdata_Hp_TransmissionSearch = {
+    {
+QT_MOC_LITERAL(0, 0, 21), // "Hp_TransmissionSearch"
+QT_MOC_LITERAL(1, 22, 24), // "signal_link_transmission"
+QT_MOC_LITERAL(2, 47, 0), // ""
+QT_MOC_LITERAL(3, 48, 4), // "addr"
+QT_MOC_LITERAL(4, 53, 20), // "signal_start_get_xml"
+QT_MOC_LITERAL(5, 74, 18), // "signal_get_ble_msg"
+QT_MOC_LITERAL(6, 93, 26), // "slot_set_transmission_addr"
+QT_MOC_LITERAL(7, 120, 16), // "slot_get_ble_msg"
+QT_MOC_LITERAL(8, 137, 5), // "addrs"
+QT_MOC_LITERAL(9, 143, 33), // "on_listWidget_2_currentRowCha..."
+QT_MOC_LITERAL(10, 177, 10), // "currentRow"
+QT_MOC_LITERAL(11, 188, 23), // "on_pushButton_3_clicked"
+QT_MOC_LITERAL(12, 212, 26), // "on_toolButton_back_clicked"
+QT_MOC_LITERAL(13, 239, 28), // "on_pushButton_getXml_clicked"
+QT_MOC_LITERAL(14, 268, 28) // "on_pushButton_search_clicked"
+
+    },
+    "Hp_TransmissionSearch\0signal_link_transmission\0"
+    "\0addr\0signal_start_get_xml\0"
+    "signal_get_ble_msg\0slot_set_transmission_addr\0"
+    "slot_get_ble_msg\0addrs\0"
+    "on_listWidget_2_currentRowChanged\0"
+    "currentRow\0on_pushButton_3_clicked\0"
+    "on_toolButton_back_clicked\0"
+    "on_pushButton_getXml_clicked\0"
+    "on_pushButton_search_clicked"
+};
+#undef QT_MOC_LITERAL
+
+static const uint qt_meta_data_Hp_TransmissionSearch[] = {
+
+ // content:
+       7,       // revision
+       0,       // classname
+       0,    0, // classinfo
+      10,   14, // methods
+       0,    0, // properties
+       0,    0, // enums/sets
+       0,    0, // constructors
+       0,       // flags
+       3,       // signalCount
+
+ // signals: name, argc, parameters, tag, flags
+       1,    1,   64,    2, 0x06 /* Public */,
+       4,    0,   67,    2, 0x06 /* Public */,
+       5,    0,   68,    2, 0x06 /* Public */,
+
+ // slots: name, argc, parameters, tag, flags
+       6,    1,   69,    2, 0x0a /* Public */,
+       7,    1,   72,    2, 0x0a /* Public */,
+       9,    1,   75,    2, 0x08 /* Private */,
+      11,    0,   78,    2, 0x08 /* Private */,
+      12,    0,   79,    2, 0x08 /* Private */,
+      13,    0,   80,    2, 0x08 /* Private */,
+      14,    0,   81,    2, 0x08 /* Private */,
+
+ // signals: parameters
+    QMetaType::Void, QMetaType::QString,    3,
+    QMetaType::Void,
+    QMetaType::Void,
+
+ // slots: parameters
+    QMetaType::Void, QMetaType::QString,    3,
+    QMetaType::Void, QMetaType::QString,    8,
+    QMetaType::Void, QMetaType::Int,   10,
+    QMetaType::Void,
+    QMetaType::Void,
+    QMetaType::Void,
+    QMetaType::Void,
+
+       0        // eod
+};
+
+void Hp_TransmissionSearch::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, void **_a)
+{
+    if (_c == QMetaObject::InvokeMetaMethod) {
+        Hp_TransmissionSearch *_t = static_cast<Hp_TransmissionSearch *>(_o);
+        Q_UNUSED(_t)
+        switch (_id) {
+        case 0: _t->signal_link_transmission((*reinterpret_cast< QString(*)>(_a[1]))); break;
+        case 1: _t->signal_start_get_xml(); break;
+        case 2: _t->signal_get_ble_msg(); break;
+        case 3: _t->slot_set_transmission_addr((*reinterpret_cast< QString(*)>(_a[1]))); break;
+        case 4: _t->slot_get_ble_msg((*reinterpret_cast< QString(*)>(_a[1]))); break;
+        case 5: _t->on_listWidget_2_currentRowChanged((*reinterpret_cast< int(*)>(_a[1]))); break;
+        case 6: _t->on_pushButton_3_clicked(); break;
+        case 7: _t->on_toolButton_back_clicked(); break;
+        case 8: _t->on_pushButton_getXml_clicked(); break;
+        case 9: _t->on_pushButton_search_clicked(); break;
+        default: ;
+        }
+    } else if (_c == QMetaObject::IndexOfMethod) {
+        int *result = reinterpret_cast<int *>(_a[0]);
+        {
+            using _t = void (Hp_TransmissionSearch::*)(QString );
+            if (*reinterpret_cast<_t *>(_a[1]) == static_cast<_t>(&Hp_TransmissionSearch::signal_link_transmission)) {
+                *result = 0;
+                return;
+            }
+        }
+        {
+            using _t = void (Hp_TransmissionSearch::*)();
+            if (*reinterpret_cast<_t *>(_a[1]) == static_cast<_t>(&Hp_TransmissionSearch::signal_start_get_xml)) {
+                *result = 1;
+                return;
+            }
+        }
+        {
+            using _t = void (Hp_TransmissionSearch::*)();
+            if (*reinterpret_cast<_t *>(_a[1]) == static_cast<_t>(&Hp_TransmissionSearch::signal_get_ble_msg)) {
+                *result = 2;
+                return;
+            }
+        }
+    }
+}
+
+QT_INIT_METAOBJECT const QMetaObject Hp_TransmissionSearch::staticMetaObject = {
+    { &QWidget::staticMetaObject, qt_meta_stringdata_Hp_TransmissionSearch.data,
+      qt_meta_data_Hp_TransmissionSearch,  qt_static_metacall, nullptr, nullptr}
+};
+
+
+const QMetaObject *Hp_TransmissionSearch::metaObject() const
+{
+    return QObject::d_ptr->metaObject ? QObject::d_ptr->dynamicMetaObject() : &staticMetaObject;
+}
+
+void *Hp_TransmissionSearch::qt_metacast(const char *_clname)
+{
+    if (!_clname) return nullptr;
+    if (!strcmp(_clname, qt_meta_stringdata_Hp_TransmissionSearch.stringdata0))
+        return static_cast<void*>(this);
+    return QWidget::qt_metacast(_clname);
+}
+
+int Hp_TransmissionSearch::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
+{
+    _id = QWidget::qt_metacall(_c, _id, _a);
+    if (_id < 0)
+        return _id;
+    if (_c == QMetaObject::InvokeMetaMethod) {
+        if (_id < 10)
+            qt_static_metacall(this, _c, _id, _a);
+        _id -= 10;
+    } else if (_c == QMetaObject::RegisterMethodArgumentMetaType) {
+        if (_id < 10)
+            *reinterpret_cast<int*>(_a[0]) = -1;
+        _id -= 10;
+    }
+    return _id;
+}
+
+// SIGNAL 0
+void Hp_TransmissionSearch::signal_link_transmission(QString _t1)
+{
+    void *_a[] = { nullptr, const_cast<void*>(reinterpret_cast<const void*>(&_t1)) };
+    QMetaObject::activate(this, &staticMetaObject, 0, _a);
+}
+
+// SIGNAL 1
+void Hp_TransmissionSearch::signal_start_get_xml()
+{
+    QMetaObject::activate(this, &staticMetaObject, 1, nullptr);
+}
+
+// SIGNAL 2
+void Hp_TransmissionSearch::signal_get_ble_msg()
+{
+    QMetaObject::activate(this, &staticMetaObject, 2, nullptr);
+}
+QT_WARNING_POP
+QT_END_MOC_NAMESPACE

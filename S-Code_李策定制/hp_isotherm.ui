@@ -1,0 +1,455 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>hp_Isotherm</class>
+ <widget class="QWidget" name="hp_Isotherm">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>805</width>
+    <height>485</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Form</string>
+  </property>
+  <widget class="QFrame" name="frame">
+   <property name="geometry">
+    <rect>
+     <x>-3</x>
+     <y>-3</y>
+     <width>805</width>
+     <height>485</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>17</pointsize>
+    </font>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">background-image:url(:/res/res/setting_background.png);
+border:0px solid #000000;</string>
+   </property>
+   <property name="frameShape">
+    <enum>QFrame::Box</enum>
+   </property>
+   <property name="frameShadow">
+    <enum>QFrame::Plain</enum>
+   </property>
+   <widget class="QListWidget" name="listWidget_dengwense">
+    <property name="geometry">
+     <rect>
+      <x>610</x>
+      <y>130</y>
+      <width>243</width>
+      <height>40</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Sans</family>
+      <pointsize>17</pointsize>
+     </font>
+    </property>
+    <property name="focusPolicy">
+     <enum>Qt::NoFocus</enum>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">border: 1px solid #7CA6C9;
+color:#7CA6C9;</string>
+    </property>
+    <item>
+     <property name="text">
+      <string>自动</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>红色</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>橙色</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>黄色</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>绿色</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>黑色</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>灰色</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>紫色</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>蓝色</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>白色</string>
+     </property>
+    </item>
+   </widget>
+   <widget class="QFrame" name="frame_dengwense">
+    <property name="geometry">
+     <rect>
+      <x>300</x>
+      <y>100</y>
+      <width>243</width>
+      <height>44</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-image:url(:/res/res/combox_bg2.png);
+/*background:transparent;*/
+border: 0px solid #7CA6C9;
+color:#7CA6C9;</string>
+    </property>
+    <property name="frameShape">
+     <enum>QFrame::StyledPanel</enum>
+    </property>
+    <property name="frameShadow">
+     <enum>QFrame::Raised</enum>
+    </property>
+    <widget class="QLabel" name="label_dengwen">
+     <property name="geometry">
+      <rect>
+       <x>0</x>
+       <y>0</y>
+       <width>201</width>
+       <height>44</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <family>Sans</family>
+       <pointsize>17</pointsize>
+      </font>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">background:transparent;
+border: 0px solid #7CA6C9;
+color:#7CA6C9;</string>
+     </property>
+     <property name="text">
+      <string>等温颜色</string>
+     </property>
+     <property name="alignment">
+      <set>Qt::AlignCenter</set>
+     </property>
+    </widget>
+    <widget class="QLabel" name="label_dengwen_2">
+     <property name="geometry">
+      <rect>
+       <x>201</x>
+       <y>2</y>
+       <width>40</width>
+       <height>40</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">background:transparent;
+border: 0px solid #7CA6C9;
+color:#7CA6C9;
+border-image:url(:/res/res/down_arrow_n.png);</string>
+     </property>
+     <property name="text">
+      <string/>
+     </property>
+    </widget>
+   </widget>
+   <widget class="QDoubleSpinBox" name="comboBox_dengwenwendu">
+    <property name="geometry">
+     <rect>
+      <x>300</x>
+      <y>200</y>
+      <width>385</width>
+      <height>44</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Sans</family>
+      <pointsize>17</pointsize>
+     </font>
+    </property>
+    <property name="focusPolicy">
+     <enum>Qt::NoFocus</enum>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QDoubleSpinBox
+{
+background-color:transparent;
+
+background-image:url(:/res/res/spinbox_text_bg.png);
+color:#7CA6C9;
+border:0px;
+}
+QDoubleSpinBox::up-button {
+	subcontrol-origin:border;
+    subcontrol-position:right;
+    image: url(:/res/res/right_arrow_n.png);
+    width: 40;
+    height: 40;       
+}
+QDoubleSpinBox::down-button {
+subcontrol-origin:border;
+    subcontrol-position:left;
+    border-image: url(:/res/res/left_arrow_n.png);
+    width: 40;
+    height: 40;
+}
+/*按钮按下样式*/
+QDoubleSpinBox::up-button:pressed{
+	subcontrol-origin:border;
+    subcontrol-position:right;
+    image: url(:/res/res/right_arrow_s.png);
+    width: 40;
+    height: 40;       
+}
+  
+QDoubleSpinBox::down-button:pressed{
+    subcontrol-position:left;
+    image: url(:/res/res/left_arrow_s.png);
+    width: 40;
+    height: 40;
+}
+
+QDoubleSpinBox::down-arrow:disabled,QSpinBox::down-arrow:off 
+{ 
+   border-image: url(:/res/res/left_arrow_d.png);
+    width: 40;
+    height: 40;
+}
+
+QDoubleSpinBox::up-arrow:disabled,QSpinBox::up-arrow:off 
+{ 
+   border-image: url(:/res/res/right_arrow_d.png);
+    width: 40;
+    height: 40;
+}
+</string>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignCenter</set>
+    </property>
+    <property name="accelerated">
+     <bool>true</bool>
+    </property>
+    <property name="prefix">
+     <string>等温温度:</string>
+    </property>
+    <property name="decimals">
+     <number>1</number>
+    </property>
+    <property name="minimum">
+     <double>-1000.000000000000000</double>
+    </property>
+    <property name="maximum">
+     <double>10000.000000000000000</double>
+    </property>
+    <property name="singleStep">
+     <double>0.100000000000000</double>
+    </property>
+   </widget>
+   <widget class="QDoubleSpinBox" name="comboBox_dengwengaodu">
+    <property name="geometry">
+     <rect>
+      <x>300</x>
+      <y>300</y>
+      <width>385</width>
+      <height>44</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Sans</family>
+      <pointsize>17</pointsize>
+     </font>
+    </property>
+    <property name="focusPolicy">
+     <enum>Qt::NoFocus</enum>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QDoubleSpinBox
+{
+background-color:transparent;
+
+background-image:url(:/res/res/spinbox_text_bg.png);
+color:#7CA6C9;
+border:0px;
+}
+QDoubleSpinBox::up-button {
+	subcontrol-origin:border;
+    subcontrol-position:right;
+    image: url(:/res/res/right_arrow_n.png);
+    width: 40;
+    height: 40;       
+}
+QDoubleSpinBox::down-button {
+subcontrol-origin:border;
+    subcontrol-position:left;
+    border-image: url(:/res/res/left_arrow_n.png);
+    width: 40;
+    height: 40;
+}
+/*按钮按下样式*/
+QDoubleSpinBox::up-button:pressed{
+	subcontrol-origin:border;
+    subcontrol-position:right;
+    image: url(:/res/res/right_arrow_s.png);
+    width: 40;
+    height: 40;       
+}
+  
+QDoubleSpinBox::down-button:pressed{
+    subcontrol-position:left;
+    image: url(:/res/res/left_arrow_s.png);
+    width: 40;
+    height: 40;
+}
+
+QDoubleSpinBox::down-arrow:disabled,QSpinBox::down-arrow:off 
+{ 
+   border-image: url(:/res/res/left_arrow_d.png);
+    width: 40;
+    height: 40;
+}
+
+QDoubleSpinBox::up-arrow:disabled,QSpinBox::up-arrow:off 
+{ 
+   border-image: url(:/res/res/right_arrow_d.png);
+    width: 40;
+    height: 40;
+}
+</string>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignCenter</set>
+    </property>
+    <property name="accelerated">
+     <bool>true</bool>
+    </property>
+    <property name="prefix">
+     <string>等温高度 :</string>
+    </property>
+    <property name="decimals">
+     <number>1</number>
+    </property>
+    <property name="minimum">
+     <double>0.000000000000000</double>
+    </property>
+    <property name="maximum">
+     <double>10000.000000000000000</double>
+    </property>
+    <property name="singleStep">
+     <double>0.100000000000000</double>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_15">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>100</y>
+      <width>261</width>
+      <height>41</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>17</pointsize>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background:transparent;
+color:#7CA6C9;</string>
+    </property>
+    <property name="text">
+     <string>等温色</string>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_16">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>200</y>
+      <width>261</width>
+      <height>41</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>17</pointsize>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background:transparent;
+color:#7CA6C9;</string>
+    </property>
+    <property name="text">
+     <string>等温温度</string>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_17">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>300</y>
+      <width>261</width>
+      <height>41</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>17</pointsize>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background:transparent;
+color:#7CA6C9;</string>
+    </property>
+    <property name="text">
+     <string>等温高度</string>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+    </property>
+   </widget>
+   <zorder>comboBox_dengwengaodu</zorder>
+   <zorder>comboBox_dengwenwendu</zorder>
+   <zorder>frame_dengwense</zorder>
+   <zorder>listWidget_dengwense</zorder>
+   <zorder>label_15</zorder>
+   <zorder>label_16</zorder>
+   <zorder>label_17</zorder>
+  </widget>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>

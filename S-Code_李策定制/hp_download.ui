@@ -1,0 +1,415 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>hp_DownLoad</class>
+ <widget class="QWidget" name="hp_DownLoad">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>800</width>
+    <height>480</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Form</string>
+  </property>
+  <property name="styleSheet">
+   <string notr="true">background-image:url(:/res/res/setting_background.png);</string>
+  </property>
+  <widget class="QFrame" name="frame">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>800</width>
+     <height>480</height>
+    </rect>
+   </property>
+   <property name="frameShape">
+    <enum>QFrame::NoFrame</enum>
+   </property>
+   <property name="frameShadow">
+    <enum>QFrame::Raised</enum>
+   </property>
+   <widget class="QToolButton" name="toolButton_back">
+    <property name="geometry">
+     <rect>
+      <x>0</x>
+      <y>0</y>
+      <width>155</width>
+      <height>81</height>
+     </rect>
+    </property>
+    <property name="palette">
+     <palette>
+      <active>
+       <colorrole role="WindowText">
+        <brush brushstyle="SolidPattern">
+         <color alpha="255">
+          <red>124</red>
+          <green>166</green>
+          <blue>201</blue>
+         </color>
+        </brush>
+       </colorrole>
+       <colorrole role="Text">
+        <brush brushstyle="SolidPattern">
+         <color alpha="255">
+          <red>124</red>
+          <green>166</green>
+          <blue>201</blue>
+         </color>
+        </brush>
+       </colorrole>
+       <colorrole role="ButtonText">
+        <brush brushstyle="SolidPattern">
+         <color alpha="255">
+          <red>124</red>
+          <green>166</green>
+          <blue>201</blue>
+         </color>
+        </brush>
+       </colorrole>
+      </active>
+      <inactive>
+       <colorrole role="WindowText">
+        <brush brushstyle="SolidPattern">
+         <color alpha="255">
+          <red>124</red>
+          <green>166</green>
+          <blue>201</blue>
+         </color>
+        </brush>
+       </colorrole>
+       <colorrole role="Text">
+        <brush brushstyle="SolidPattern">
+         <color alpha="255">
+          <red>124</red>
+          <green>166</green>
+          <blue>201</blue>
+         </color>
+        </brush>
+       </colorrole>
+       <colorrole role="ButtonText">
+        <brush brushstyle="SolidPattern">
+         <color alpha="255">
+          <red>124</red>
+          <green>166</green>
+          <blue>201</blue>
+         </color>
+        </brush>
+       </colorrole>
+      </inactive>
+      <disabled>
+       <colorrole role="WindowText">
+        <brush brushstyle="SolidPattern">
+         <color alpha="255">
+          <red>120</red>
+          <green>120</green>
+          <blue>120</blue>
+         </color>
+        </brush>
+       </colorrole>
+       <colorrole role="Text">
+        <brush brushstyle="SolidPattern">
+         <color alpha="255">
+          <red>120</red>
+          <green>120</green>
+          <blue>120</blue>
+         </color>
+        </brush>
+       </colorrole>
+       <colorrole role="ButtonText">
+        <brush brushstyle="SolidPattern">
+         <color alpha="255">
+          <red>120</red>
+          <green>120</green>
+          <blue>120</blue>
+         </color>
+        </brush>
+       </colorrole>
+      </disabled>
+     </palette>
+    </property>
+    <property name="font">
+     <font>
+      <family>微软雅黑</family>
+      <pointsize>12</pointsize>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QToolButton {
+border-image:url(:/res/res/setting_back.png);
+}  
+</string>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label">
+    <property name="geometry">
+     <rect>
+      <x>130</x>
+      <y>20</y>
+      <width>641</width>
+      <height>41</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Arial</family>
+      <pointsize>20</pointsize>
+      <weight>50</weight>
+      <italic>false</italic>
+      <bold>false</bold>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">color:#7CA6C9;
+font: 20pt &quot;Arial&quot;;
+
+background:transparent;</string>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+   </widget>
+   <widget class="QToolButton" name="wifi_Flush">
+    <property name="geometry">
+     <rect>
+      <x>690</x>
+      <y>292</y>
+      <width>100</width>
+      <height>86</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>17</pointsize>
+     </font>
+    </property>
+    <property name="focusPolicy">
+     <enum>Qt::NoFocus</enum>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QToolButton {
+border-image:url(:/res/res/mode_button_n.png);
+color:#7CA6C9;
+}  
+
+QToolButton:pressed{
+border-image:url(:/res/res/mode_button_s.png);
+}</string>
+    </property>
+    <property name="text">
+     <string>刷新</string>
+    </property>
+    <property name="autoRaise">
+     <bool>true</bool>
+    </property>
+   </widget>
+   <widget class="QToolButton" name="get_file">
+    <property name="geometry">
+     <rect>
+      <x>690</x>
+      <y>383</y>
+      <width>100</width>
+      <height>86</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>17</pointsize>
+     </font>
+    </property>
+    <property name="focusPolicy">
+     <enum>Qt::NoFocus</enum>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QToolButton {
+border-image:url(:/res/res/mode_button_n.png);
+color:#7CA6C9;
+}  
+
+QToolButton:pressed{
+border-image:url(:/res/res/mode_button_s.png);
+}</string>
+    </property>
+    <property name="text">
+     <string>获取</string>
+    </property>
+    <property name="autoRaise">
+     <bool>true</bool>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_3">
+    <property name="geometry">
+     <rect>
+      <x>220</x>
+      <y>70</y>
+      <width>441</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>19</pointsize>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">color:#7CA6C9;</string>
+    </property>
+    <property name="text">
+     <string>子目录</string>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_2">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>70</y>
+      <width>201</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>19</pointsize>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">color:#7CA6C9;</string>
+    </property>
+    <property name="text">
+     <string>主目录</string>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+    </property>
+   </widget>
+   <widget class="QListWidget" name="listWidget_father">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>110</y>
+      <width>201</width>
+      <height>361</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>微软雅黑</family>
+      <pointsize>17</pointsize>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">border: 1px solid #7CA6C9;
+color:#7CA6C9;</string>
+    </property>
+   </widget>
+   <widget class="QListWidget" name="listWidget_child">
+    <property name="geometry">
+     <rect>
+      <x>220</x>
+      <y>110</y>
+      <width>461</width>
+      <height>361</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>微软雅黑</family>
+      <pointsize>17</pointsize>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">border: 1px solid #7CA6C9;
+color:#7CA6C9;
+</string>
+    </property>
+    <property name="sizeAdjustPolicy">
+     <enum>QAbstractScrollArea::AdjustToContents</enum>
+    </property>
+    <property name="autoScrollMargin">
+     <number>16</number>
+    </property>
+   </widget>
+   <widget class="QToolButton" name="godown">
+    <property name="geometry">
+     <rect>
+      <x>690</x>
+      <y>110</y>
+      <width>100</width>
+      <height>86</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>17</pointsize>
+     </font>
+    </property>
+    <property name="focusPolicy">
+     <enum>Qt::NoFocus</enum>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QToolButton {
+border-image:url(:/res/res/mode_button_n.png);
+color:#7CA6C9;
+}  
+
+QToolButton:pressed{
+border-image:url(:/res/res/mode_button_s.png);
+}</string>
+    </property>
+    <property name="text">
+     <string>进入
+下一级</string>
+    </property>
+    <property name="autoRaise">
+     <bool>true</bool>
+    </property>
+   </widget>
+   <widget class="QToolButton" name="goup">
+    <property name="geometry">
+     <rect>
+      <x>690</x>
+      <y>201</y>
+      <width>100</width>
+      <height>86</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>17</pointsize>
+     </font>
+    </property>
+    <property name="focusPolicy">
+     <enum>Qt::NoFocus</enum>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QToolButton {
+border-image:url(:/res/res/mode_button_n.png);
+color:#7CA6C9;
+}  
+
+QToolButton:pressed{
+border-image:url(:/res/res/mode_button_s.png);
+}</string>
+    </property>
+    <property name="text">
+     <string>返回
+上一级</string>
+    </property>
+    <property name="autoRaise">
+     <bool>true</bool>
+    </property>
+   </widget>
+  </widget>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>

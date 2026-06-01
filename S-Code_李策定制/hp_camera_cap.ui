@@ -1,0 +1,509 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>Hp_Camera_Cap</class>
+ <widget class="QWidget" name="Hp_Camera_Cap">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>640</width>
+    <height>480</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Form</string>
+  </property>
+  <property name="windowOpacity">
+   <double>1.000000000000000</double>
+  </property>
+  <property name="styleSheet">
+   <string notr="true">background-color: rgb(0, 8, 16);</string>
+  </property>
+  <widget class="QFrame" name="frame">
+   <property name="geometry">
+    <rect>
+     <x>183</x>
+     <y>206</y>
+     <width>275</width>
+     <height>201</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>15</pointsize>
+    </font>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">background-color: rgb(0, 8, 16);</string>
+   </property>
+   <property name="frameShape">
+    <enum>QFrame::NoFrame</enum>
+   </property>
+   <property name="frameShadow">
+    <enum>QFrame::Raised</enum>
+   </property>
+   <widget class="QProgressBar" name="progressBar">
+    <property name="geometry">
+     <rect>
+      <x>0</x>
+      <y>170</y>
+      <width>269</width>
+      <height>28</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>17</pointsize>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">
+
+QProgressBar {
+    border: 1px solid #2B5C83;
+}
+
+QProgressBar::chunk {
+    background-color: #7CA6C9;
+    width: 1px;
+
+}
+</string>
+    </property>
+    <property name="minimum">
+     <number>0</number>
+    </property>
+    <property name="maximum">
+     <number>59</number>
+    </property>
+    <property name="value">
+     <number>0</number>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignCenter</set>
+    </property>
+    <property name="textVisible">
+     <bool>false</bool>
+    </property>
+    <property name="format">
+     <string>%p%</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label">
+    <property name="geometry">
+     <rect>
+      <x>0</x>
+      <y>0</y>
+      <width>269</width>
+      <height>28</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>17</pointsize>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">color:#7CA6C9;</string>
+    </property>
+    <property name="text">
+     <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;br/&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignCenter</set>
+    </property>
+   </widget>
+   <widget class="QFrame" name="frame_2">
+    <property name="geometry">
+     <rect>
+      <x>0</x>
+      <y>100</y>
+      <width>271</width>
+      <height>65</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>15</pointsize>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-image:url(:/res/res/mode_bg.png);</string>
+    </property>
+    <property name="frameShape">
+     <enum>QFrame::NoFrame</enum>
+    </property>
+    <property name="frameShadow">
+     <enum>QFrame::Raised</enum>
+    </property>
+    <widget class="QToolButton" name="toolButton_text">
+     <property name="enabled">
+      <bool>true</bool>
+     </property>
+     <property name="geometry">
+      <rect>
+       <x>0</x>
+       <y>0</y>
+       <width>65</width>
+       <height>65</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <pointsize>17</pointsize>
+      </font>
+     </property>
+     <property name="focusPolicy">
+      <enum>Qt::NoFocus</enum>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">QToolButton {
+border-image:url(:/res/res/cap_text_n.png);
+color:#7CA6C9;
+}  
+
+QToolButton:pressed{
+border-image:url(:/res/res/cap_text_s.png);
+}
+QToolButton:disabled{
+border-image:url(:/res/res/cap_text_d.png);
+}</string>
+     </property>
+     <property name="text">
+      <string/>
+     </property>
+     <property name="autoRaise">
+      <bool>true</bool>
+     </property>
+    </widget>
+    <widget class="QToolButton" name="toolButton_voice">
+     <property name="enabled">
+      <bool>true</bool>
+     </property>
+     <property name="geometry">
+      <rect>
+       <x>68</x>
+       <y>0</y>
+       <width>65</width>
+       <height>65</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <pointsize>17</pointsize>
+      </font>
+     </property>
+     <property name="focusPolicy">
+      <enum>Qt::NoFocus</enum>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">QToolButton {
+border-image:url(:/res/res/cap_voice_n.png);
+color:#7CA6C9;
+}  
+
+QToolButton:checked{
+border-image:url(:/res/res/cap_voice_s.png);
+}
+QToolButton:disabled{
+border-image:url(:/res/res/cap_voice_d.png);
+}</string>
+     </property>
+     <property name="text">
+      <string/>
+     </property>
+     <property name="checkable">
+      <bool>true</bool>
+     </property>
+     <property name="autoRaise">
+      <bool>true</bool>
+     </property>
+    </widget>
+    <widget class="QToolButton" name="toolButton_save">
+     <property name="geometry">
+      <rect>
+       <x>136</x>
+       <y>0</y>
+       <width>65</width>
+       <height>65</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <pointsize>17</pointsize>
+      </font>
+     </property>
+     <property name="focusPolicy">
+      <enum>Qt::NoFocus</enum>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">QToolButton {
+border-image:url(:/res/res/cap_save_n.png);
+color:#7CA6C9;
+}  
+
+QToolButton:pressed{
+border-image:url(:/res/res/cap_save_s.png);
+}
+
+QToolButton:disabled{
+border-image:url(:/res/res/cap_save_d.png);
+}</string>
+     </property>
+     <property name="text">
+      <string/>
+     </property>
+     <property name="autoRaise">
+      <bool>true</bool>
+     </property>
+    </widget>
+    <widget class="QToolButton" name="toolButton_cancel">
+     <property name="geometry">
+      <rect>
+       <x>204</x>
+       <y>0</y>
+       <width>65</width>
+       <height>65</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <pointsize>17</pointsize>
+      </font>
+     </property>
+     <property name="focusPolicy">
+      <enum>Qt::NoFocus</enum>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">QToolButton {
+border-image:url(:/res/res/cap_cancle_n.png);
+color:#7CA6C9;
+}  
+
+QToolButton:pressed{
+border-image:url(:/res/res/cap_cancle_s.png);
+}
+
+QToolButton:disabled{
+border-image:url(:/res/res/cap_cancle_d.png);
+}</string>
+     </property>
+     <property name="text">
+      <string/>
+     </property>
+     <property name="autoRaise">
+      <bool>true</bool>
+     </property>
+    </widget>
+    <widget class="QToolButton" name="toolButton_error">
+     <property name="enabled">
+      <bool>true</bool>
+     </property>
+     <property name="geometry">
+      <rect>
+       <x>68</x>
+       <y>0</y>
+       <width>65</width>
+       <height>65</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <pointsize>17</pointsize>
+      </font>
+     </property>
+     <property name="focusPolicy">
+      <enum>Qt::NoFocus</enum>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">QToolButton {
+	border-image: url(:/res/res/twice_draw_3n.png);
+color:#7CA6C9;
+}  
+
+QToolButton:checked{
+	border-image: url(:/res/res/twice_draw_3s.png);
+}
+QToolButton:disabled{
+	border-image: url(:/res/res/twice_draw_3d.png);
+}</string>
+     </property>
+     <property name="text">
+      <string/>
+     </property>
+     <property name="checkable">
+      <bool>true</bool>
+     </property>
+     <property name="autoRaise">
+      <bool>true</bool>
+     </property>
+    </widget>
+   </widget>
+   <widget class="QLabel" name="label_jpgname_2">
+    <property name="geometry">
+     <rect>
+      <x>0</x>
+      <y>60</y>
+      <width>269</width>
+      <height>28</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>17</pointsize>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">color:#7CA6C9;</string>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_jpgname">
+    <property name="geometry">
+     <rect>
+      <x>0</x>
+      <y>30</y>
+      <width>269</width>
+      <height>28</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>17</pointsize>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">color:#7CA6C9;</string>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignCenter</set>
+    </property>
+   </widget>
+  </widget>
+  <widget class="QLabel" name="flag_warning">
+   <property name="geometry">
+    <rect>
+     <x>240</x>
+     <y>10</y>
+     <width>161</width>
+     <height>31</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>黑体</family>
+     <pointsize>16</pointsize>
+    </font>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">/*font: 16pt &quot;黑体&quot;;*/
+background-color: transparent;
+color: &quot;#ffffff&quot;;</string>
+   </property>
+   <property name="text">
+    <string>警告等级</string>
+   </property>
+   <property name="alignment">
+    <set>Qt::AlignCenter</set>
+   </property>
+   <property name="wordWrap">
+    <bool>false</bool>
+   </property>
+  </widget>
+  <widget class="QLabel" name="title_warning">
+   <property name="geometry">
+    <rect>
+     <x>10</x>
+     <y>40</y>
+     <width>621</width>
+     <height>31</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>黑体</family>
+     <pointsize>16</pointsize>
+    </font>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">/*font: 16pt &quot;黑体&quot;;*/
+background-color: transparent;
+color: &quot;#7CA6C9&quot;;</string>
+   </property>
+   <property name="text">
+    <string>警告文本</string>
+   </property>
+   <property name="alignment">
+    <set>Qt::AlignHCenter|Qt::AlignTop</set>
+   </property>
+   <property name="wordWrap">
+    <bool>true</bool>
+   </property>
+  </widget>
+  <widget class="QLabel" name="text_warning">
+   <property name="geometry">
+    <rect>
+     <x>10</x>
+     <y>70</y>
+     <width>621</width>
+     <height>81</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>黑体</family>
+     <pointsize>13</pointsize>
+    </font>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">/*font: 13pt &quot;黑体&quot;;*/
+background-color: transparent;
+color: &quot;#7CA6C9&quot;;</string>
+   </property>
+   <property name="text">
+    <string>警告文本</string>
+   </property>
+   <property name="alignment">
+    <set>Qt::AlignHCenter|Qt::AlignTop</set>
+   </property>
+   <property name="wordWrap">
+    <bool>true</bool>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label_time">
+   <property name="geometry">
+    <rect>
+     <x>120</x>
+     <y>380</y>
+     <width>61</width>
+     <height>21</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>15</pointsize>
+    </font>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">background-color: transparent;
+color: &quot;#7CA6C9&quot;;</string>
+   </property>
+   <property name="text">
+    <string>0S</string>
+   </property>
+   <property name="alignment">
+    <set>Qt::AlignCenter</set>
+   </property>
+  </widget>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>

@@ -1,0 +1,298 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>hp_mulhom_edit</class>
+ <widget class="QWidget" name="hp_mulhom_edit">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>800</width>
+    <height>480</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Form</string>
+  </property>
+  <widget class="QFrame" name="frame">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>800</width>
+     <height>480</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">background-image:url(:/res/res/setting_background.png);
+border:0px solid #000000;</string>
+   </property>
+   <property name="frameShape">
+    <enum>QFrame::StyledPanel</enum>
+   </property>
+   <property name="frameShadow">
+    <enum>QFrame::Raised</enum>
+   </property>
+   <widget class="QToolButton" name="toolButton_back">
+    <property name="geometry">
+     <rect>
+      <x>0</x>
+      <y>0</y>
+      <width>131</width>
+      <height>61</height>
+     </rect>
+    </property>
+    <property name="palette">
+     <palette>
+      <active>
+       <colorrole role="WindowText">
+        <brush brushstyle="SolidPattern">
+         <color alpha="255">
+          <red>124</red>
+          <green>166</green>
+          <blue>201</blue>
+         </color>
+        </brush>
+       </colorrole>
+       <colorrole role="Text">
+        <brush brushstyle="SolidPattern">
+         <color alpha="255">
+          <red>124</red>
+          <green>166</green>
+          <blue>201</blue>
+         </color>
+        </brush>
+       </colorrole>
+       <colorrole role="ButtonText">
+        <brush brushstyle="SolidPattern">
+         <color alpha="255">
+          <red>124</red>
+          <green>166</green>
+          <blue>201</blue>
+         </color>
+        </brush>
+       </colorrole>
+      </active>
+      <inactive>
+       <colorrole role="WindowText">
+        <brush brushstyle="SolidPattern">
+         <color alpha="255">
+          <red>124</red>
+          <green>166</green>
+          <blue>201</blue>
+         </color>
+        </brush>
+       </colorrole>
+       <colorrole role="Text">
+        <brush brushstyle="SolidPattern">
+         <color alpha="255">
+          <red>124</red>
+          <green>166</green>
+          <blue>201</blue>
+         </color>
+        </brush>
+       </colorrole>
+       <colorrole role="ButtonText">
+        <brush brushstyle="SolidPattern">
+         <color alpha="255">
+          <red>124</red>
+          <green>166</green>
+          <blue>201</blue>
+         </color>
+        </brush>
+       </colorrole>
+      </inactive>
+      <disabled>
+       <colorrole role="WindowText">
+        <brush brushstyle="SolidPattern">
+         <color alpha="255">
+          <red>120</red>
+          <green>120</green>
+          <blue>120</blue>
+         </color>
+        </brush>
+       </colorrole>
+       <colorrole role="Text">
+        <brush brushstyle="SolidPattern">
+         <color alpha="255">
+          <red>120</red>
+          <green>120</green>
+          <blue>120</blue>
+         </color>
+        </brush>
+       </colorrole>
+       <colorrole role="ButtonText">
+        <brush brushstyle="SolidPattern">
+         <color alpha="255">
+          <red>120</red>
+          <green>120</green>
+          <blue>120</blue>
+         </color>
+        </brush>
+       </colorrole>
+      </disabled>
+     </palette>
+    </property>
+    <property name="font">
+     <font>
+      <family>微软雅黑</family>
+      <pointsize>12</pointsize>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QToolButton {
+border-image:url(:/res/res/setting_back.png);
+}  
+</string>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_16">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>210</y>
+      <width>281</width>
+      <height>41</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>17</pointsize>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background:transparent;
+color:#7CA6C9;</string>
+    </property>
+    <property name="text">
+     <string>温度上限</string>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+    </property>
+   </widget>
+   <widget class="hp_QDoubleSpinBoxSet" name="ScrollBar_mulhom">
+    <property name="geometry">
+     <rect>
+      <x>310</x>
+      <y>210</y>
+      <width>366</width>
+      <height>44</height>
+     </rect>
+    </property>
+    <property name="sizePolicy">
+     <sizepolicy hsizetype="Maximum" vsizetype="Fixed">
+      <horstretch>0</horstretch>
+      <verstretch>0</verstretch>
+     </sizepolicy>
+    </property>
+    <property name="maximumSize">
+     <size>
+      <width>16777215</width>
+      <height>16777215</height>
+     </size>
+    </property>
+    <property name="font">
+     <font>
+      <family>微软雅黑</family>
+      <pointsize>17</pointsize>
+     </font>
+    </property>
+    <property name="focusPolicy">
+     <enum>Qt::NoFocus</enum>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QDoubleSpinBox
+{
+background-color:transparent;
+
+background-image:url(:/res/res/spinbox_text_bg.png);
+color:#7CA6C9;
+border:0px;
+}
+QDoubleSpinBox::up-button {
+	subcontrol-origin:border;
+    subcontrol-position:right;
+    image: url(:/res/res/right_arrow_n.png);
+    width: 40;
+    height: 40;       
+}
+QDoubleSpinBox::down-button {
+subcontrol-origin:border;
+    subcontrol-position:left;
+    border-image: url(:/res/res/left_arrow_n.png);
+    width: 40;
+    height: 40;
+}
+/*按钮按下样式*/
+QDoubleSpinBox::up-button:pressed{
+	subcontrol-origin:border;
+    subcontrol-position:right;
+    image: url(:/res/res/right_arrow_s.png);
+    width: 40;
+    height: 40;       
+}
+  
+QDoubleSpinBox::down-button:pressed{
+    subcontrol-position:left;
+    image: url(:/res/res/left_arrow_s.png);
+    width: 40;
+    height: 40;
+}
+
+QDoubleSpinBox::down-arrow:disabled,QDoubleSpinBox::down-arrow:off 
+{ 
+   border-image: url(:/res/res/left_arrow_d.png);
+    width: 40;
+    height: 40;
+}
+
+QDoubleSpinBox::up-arrow:disabled,QDoubleSpinBox::up-arrow:off 
+{ 
+   border-image: url(:/res/res/right_arrow_d.png);
+    width: 40;
+    height: 40;
+}</string>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignCenter</set>
+    </property>
+    <property name="accelerated">
+     <bool>true</bool>
+    </property>
+    <property name="prefix">
+     <string>温度上限:</string>
+    </property>
+    <property name="suffix">
+     <string>℃</string>
+    </property>
+    <property name="decimals">
+     <number>1</number>
+    </property>
+    <property name="minimum">
+     <double>300.000000000000000</double>
+    </property>
+    <property name="maximum">
+     <double>1000.000000000000000</double>
+    </property>
+    <property name="singleStep">
+     <double>0.100000000000000</double>
+    </property>
+    <property name="value">
+     <double>600.000000000000000</double>
+    </property>
+   </widget>
+  </widget>
+ </widget>
+ <customwidgets>
+  <customwidget>
+   <class>hp_QDoubleSpinBoxSet</class>
+   <extends>QDoubleSpinBox</extends>
+   <header location="global">hp_qdoublespinboxset.h</header>
+  </customwidget>
+ </customwidgets>
+ <resources/>
+ <connections/>
+</ui>

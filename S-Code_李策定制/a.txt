@@ -1,0 +1,117 @@
+invalid initialization of reference of type 'const String& {aka const std::__cxx11::basic_string<char>&}' from expression of type 'QString'
+
+export LD_LIBRARY_PATH=/usr/local/gmp/lib:$LD_LIBRARY_PATH
+../configure --prefix=/usr/local/mpc-1.2.1 --with-gmp=/usr/local/gmp-6.2.1 --with-mpfr=/usr/local/mpfr-4.1.0
+../../../.././libsanitizer/sanitizer_common/sanitizer_linux.cpp: In function ‘__sanitizer::uptr __sanitizer::internal_open(const char*, int)’:
+../../../.././libsanitizer/sanitizer_common/sanitizer_syscall_generic.inc:19:24: error: ‘__NR_open’ was not declared in this scope
+   19 | # define SYSCALL(name) __NR_ ## name
+         |                        ^~~~~
+		 ../../../.././libsanitizer/sanitizer_common/sanitizer_linux.cpp:200:27: note: in expansion of macro ‘SYSCALL’
+		   200 |   return internal_syscall(SYSCALL(open), (uptr)filename, flags);
+		         |                           ^~~~~~~
+				 ../../../.././libsanitizer/sanitizer_common/sanitizer_linux.cpp: In function ‘__sanitizer::uptr __sanitizer::internal_open(const char*, int, __sanitizer::u32)’:
+				 ../../../.././libsanitizer/sanitizer_common/sanitizer_syscall_generic.inc:19:24: error: ‘__NR_open’ was not declared in this scope
+				    19 | # define SYSCALL(name) __NR_ ## name
+					      |                        ^~~~~
+						  ../../../.././libsanitizer/sanitizer_common/sanitizer_linux.cpp:209:27: note: in expansion of macro ‘SYSCALL’
+						    209 |   return internal_syscall(SYSCALL(open), (uptr)filename, flags, mode);
+							      |                           ^~~~~~~
+								  In file included from ../../../.././libsanitizer/sanitizer_common/sanitizer_flags.h:16,
+								                   from ../../../.././libsanitizer/sanitizer_common/sanitizer_common.h:18,
+												                    from ../../../.././libsanitizer/sanitizer_common/sanitizer_linux.cpp:19:
+																	../../../.././libsanitizer/sanitizer_common/sanitizer_linux.cpp: In function ‘__sanitizer::uptr __sanitizer::internal_ftruncate(__sanitizer::fd_t, __sanitizer::uptr)’:
+																	../../../.././libsanitizer/sanitizer_common/sanitizer_syscall_generic.inc:19:24: error: ‘__NR_ftruncate’ was not declared in this scope; did you mean ‘SYS_ftruncate’?
+																	   19 | # define SYSCALL(name) __NR_ ## name
+																	         |                        ^~~~~
+																			 ../../../.././libsanitizer/sanitizer_common/sanitizer_internal_defs.h:408:14: note: in definition of macro ‘HANDLE_EINTR’
+																			   408 |       res = (f);                                                   \
+																			         |              ^
+																					 ../../../.././libsanitizer/sanitizer_common/sanitizer_linux.cpp:229:44: note: in expansion of macro ‘SYSCALL’
+																					   229 |   HANDLE_EINTR(res, (sptr)internal_syscall(SYSCALL(ftruncate), fd,
+																					         |                                            ^~~~~~~
+																							 In file included from ../../../.././libsanitizer/sanitizer_common/sanitizer_linux.cpp:162:
+																							 ../../../.././libsanitizer/sanitizer_common/sanitizer_linux.cpp: In function ‘__sanitizer::uptr __sanitizer::internal_stat(const char*, void*)’:
+																							 ../../../.././libsanitizer/sanitizer_common/sanitizer_syscall_generic.inc:19:24: error: ‘__NR_stat64’ was not declared in this scope; did you mean ‘__lxstat64’?
+																							    19 | # define SYSCALL(name) __NR_ ## name
+																								      |                        ^~~~~
+																									  ../../../.././libsanitizer/sanitizer_common/sanitizer_linux.cpp:319:30: note: in expansion of macro ‘SYSCALL’
+																									    319 |   int res = internal_syscall(SYSCALL(stat64), path, &buf64);
+																										      |                              ^~~~~~~
+																											  ../../../.././libsanitizer/sanitizer_common/sanitizer_linux.cpp: In function ‘__sanitizer::uptr __sanitizer::internal_lstat(const char*, void*)’:
+																											  ../../../.././libsanitizer/sanitizer_common/sanitizer_syscall_generic.inc:19:24: error: ‘__NR_lstat64’ was not declared in this scope; did you mean ‘__lxstat64’?
+																											     19 | # define SYSCALL(name) __NR_ ## name
+																												       |                        ^~~~~
+																													   ../../../.././libsanitizer/sanitizer_common/sanitizer_linux.cpp:344:30: note: in expansion of macro ‘SYSCALL’
+																													     344 |   int res = internal_syscall(SYSCALL(lstat64), path, &buf64);
+																														       |                              ^~~~~~~
+																															   ../../../.././libsanitizer/sanitizer_common/sanitizer_linux.cpp: In function ‘__sanitizer::uptr __sanitizer::internal_dup2(int, int)’:
+																															   ../../../.././libsanitizer/sanitizer_common/sanitizer_syscall_generic.inc:19:24: error: ‘__NR_dup2’ was not declared in this scope
+																															      19 | # define SYSCALL(name) __NR_ ## name
+																																        |                        ^~~~~
+																																		../../../.././libsanitizer/sanitizer_common/sanitizer_linux.cpp:385:27: note: in expansion of macro ‘SYSCALL’
+																																		  385 |   return internal_syscall(SYSCALL(dup2), oldfd, newfd);
+																																		        |                           ^~~~~~~
+																																				../../../.././libsanitizer/sanitizer_common/sanitizer_linux.cpp: In function ‘__sanitizer::uptr __sanitizer::internal_readlink(const char*, char*, __sanitizer::uptr)’:
+																																				../../../.././libsanitizer/sanitizer_common/sanitizer_syscall_generic.inc:19:24: error: ‘__NR_readlink’ was not declared in this scope; did you mean ‘SYS_readlink’?
+																																				   19 | # define SYSCALL(name) __NR_ ## name
+																																				         |                        ^~~~~
+																																						 ../../../.././libsanitizer/sanitizer_common/sanitizer_linux.cpp:397:27: note: in expansion of macro ‘SYSCALL’
+																																						   397 |   return internal_syscall(SYSCALL(readlink), (uptr)path, (uptr)buf, bufsize);
+																																						         |                           ^~~~~~~
+																																								 ../../../.././libsanitizer/sanitizer_common/sanitizer_linux.cpp: In function ‘__sanitizer::uptr __sanitizer::internal_unlink(const char*)’:
+																																								 ../../../.././libsanitizer/sanitizer_common/sanitizer_syscall_generic.inc:19:24: error: ‘__NR_unlink’ was not declared in this scope
+																																								    19 | # define SYSCALL(name) __NR_ ## name
+																																									      |                        ^~~~~
+																																										  ../../../.././libsanitizer/sanitizer_common/sanitizer_linux.cpp:405:27: note: in expansion of macro ‘SYSCALL’
+																																										    405 |   return internal_syscall(SYSCALL(unlink), (uptr)path);
+																																											      |                           ^~~~~~~
+																																												  ../../../.././libsanitizer/sanitizer_common/sanitizer_linux.cpp: In function ‘__sanitizer::uptr __sanitizer::internal_rename(const char*, const char*)’:
+																																												  ../../../.././libsanitizer/sanitizer_common/sanitizer_syscall_generic.inc:19:24: error: ‘__NR_rename’ was not declared in this scope
+																																												     19 | # define SYSCALL(name) __NR_ ## name
+																																													       |                        ^~~~~
+																																														   ../../../.././libsanitizer/sanitizer_common/sanitizer_linux.cpp:417:27: note: in expansion of macro ‘SYSCALL’
+																																														     417 |   return internal_syscall(SYSCALL(rename), (uptr)oldpath, (uptr)newpath);
+																																															       |                           ^~~~~~~
+																																																   ../../../.././libsanitizer/sanitizer_common/sanitizer_linux.cpp: In function ‘__sanitizer::uptr __sanitizer::internal_getdents(__sanitizer::fd_t, __sanitizer::linux_dirent*, unsigned int)’:
+																																																   ../../../.././libsanitizer/sanitizer_common/sanitizer_syscall_generic.inc:19:24: error: ‘__NR_getdents’ was not declared in this scope; did you mean ‘SYS_getdents’?
+																																																      19 | # define SYSCALL(name) __NR_ ## name
+																																																	        |                        ^~~~~
+																																																			../../../.././libsanitizer/sanitizer_common/sanitizer_linux.cpp:744:27: note: in expansion of macro ‘SYSCALL’
+																																																			  744 |   return internal_syscall(SYSCALL(getdents), fd, (uptr)dirp, count);
+																																																			        |                           ^~~~~~~
+																																																					../../../.././libsanitizer/sanitizer_common/sanitizer_linux.cpp: In function ‘__sanitizer::uptr __sanitizer::internal_lseek(__sanitizer::fd_t, __sanitizer::OFF_T, int)’:
+																																																					../../../.././libsanitizer/sanitizer_common/sanitizer_syscall_generic.inc:19:24: error: ‘__NR_lseek’ was not declared in this scope
+																																																					   19 | # define SYSCALL(name) __NR_ ## name
+																																																					         |                        ^~~~~
+																																																							 ../../../.././libsanitizer/sanitizer_common/sanitizer_linux.cpp:749:27: note: in expansion of macro ‘SYSCALL’
+																																																							   749 |   return internal_syscall(SYSCALL(lseek), fd, offset, whence);
+																																																							         |                           ^~~~~~~
+																																																									 ../../../.././libsanitizer/sanitizer_common/sanitizer_linux.cpp: In function ‘int __sanitizer::internal_fork()’:
+																																																									 ../../../.././libsanitizer/sanitizer_common/sanitizer_syscall_generic.inc:19:24: error: ‘__NR_fork’ was not declared in this scope
+																																																									    19 | # define SYSCALL(name) __NR_ ## name
+																																																										      |                        ^~~~~
+																																																											  ../../../.././libsanitizer/sanitizer_common/sanitizer_linux.cpp:766:27: note: in expansion of macro ‘SYSCALL’
+																																																											    766 |   return internal_syscall(SYSCALL(fork));
+																																																												      |                           ^~~~~~~
+																																																													  ../../../.././libsanitizer/sanitizer_common/sanitizer_linux.cpp: In function ‘void* __sanitizer::internal_start_thread(void (*)(void*), void*)’:
+																																																													  ../../../.././libsanitizer/sanitizer_common/sanitizer_linux.cpp:1715:37: warning: cast between incompatible function types from ‘void (*)(void*)’ to ‘void* (*)(void*)’ [-Wcast-function-type]
+																																																													   1715 |   real_pthread_create(&th, nullptr, (void*(*)(void *arg))func, arg);
+																																																													         |                                     ^~~~~~~~~~~~~~~~~~~~~~~~~
+																																																															 make[8]: *** [sanitizer_linux.lo] 错误 1
+																																																															 make[8]:正在离开目录 `/home/pdk/Paddle-Lite/gcc-10.2.0/x86_64-pc-linux-gnu/32/libsanitizer/sanitizer_common'
+																																																															 make[7]: *** [all-recursive] 错误 1
+																																																															 make[7]:正在离开目录 `/home/pdk/Paddle-Lite/gcc-10.2.0/x86_64-pc-linux-gnu/32/libsanitizer'
+																																																															 make[6]: *** [all] 错误 2
+																																																															 make[6]:正在离开目录 `/home/pdk/Paddle-Lite/gcc-10.2.0/x86_64-pc-linux-gnu/32/libsanitizer'
+																																																															 make[5]: *** [multi-do] 错误 1
+																																																															 make[5]:正在离开目录 `/home/pdk/Paddle-Lite/gcc-10.2.0/x86_64-pc-linux-gnu/libsanitizer'
+																																																															 make[4]: *** [all-multi] 错误 2
+																																																															 make[4]:正在离开目录 `/home/pdk/Paddle-Lite/gcc-10.2.0/x86_64-pc-linux-gnu/libsanitizer'
+																																																															 make[3]: *** [all-recursive] 错误 1
+																																																															 make[3]:正在离开目录 `/home/pdk/Paddle-Lite/gcc-10.2.0/x86_64-pc-linux-gnu/libsanitizer'
+																																																															 make[2]: *** [all] 错误 2
+																																																															 make[2]:正在离开目录 `/home/pdk/Paddle-Lite/gcc-10.2.0/x86_64-pc-linux-gnu/libsanitizer'
+																																																															 make[1]: *** [all-target-libsanitizer] 错误 2
+																																																															 make[1]:正在离开目录 `/home/pdk/Paddle-Lite/gcc-10.2.0'
+																																																															 make: *** [all] 错误 2
+

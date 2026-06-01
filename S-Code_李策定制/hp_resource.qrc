@@ -1,0 +1,7 @@
+<RCC>
+    <qresource prefix="/new/prefix1">
+        <file>res/设置.png</file>
+        <file>res/设置不可选.png</file>
+        <file>res/设置选中.png</file>
+    </qresource>
+</RCC>

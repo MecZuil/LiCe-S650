@@ -1,0 +1,457 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>Hp_Text_Input</class>
+ <widget class="QWidget" name="Hp_Text_Input">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>800</width>
+    <height>480</height>
+   </rect>
+  </property>
+  <property name="font">
+   <font>
+    <pointsize>17</pointsize>
+   </font>
+  </property>
+  <property name="windowTitle">
+   <string>Form</string>
+  </property>
+  <property name="styleSheet">
+   <string notr="true"/>
+  </property>
+  <widget class="QFrame" name="frame">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>160</width>
+     <height>480</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>17</pointsize>
+    </font>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">background-image:url(:/res/res/main_background.png);</string>
+   </property>
+   <property name="frameShape">
+    <enum>QFrame::NoFrame</enum>
+   </property>
+   <property name="frameShadow">
+    <enum>QFrame::Raised</enum>
+   </property>
+   <widget class="QToolButton" name="toolButton_back">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>16</y>
+      <width>141</width>
+      <height>54</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>17</pointsize>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QToolButton {
+border-image:url(:/res/res/mode_button_n.png);
+color:#7CA6C9;
+}  
+
+QToolButton:pressed{
+border-image:url(:/res/res/mode_button_s.png);
+}</string>
+    </property>
+    <property name="text">
+     <string>OK</string>
+    </property>
+    <property name="autoRaise">
+     <bool>true</bool>
+    </property>
+   </widget>
+  </widget>
+  <widget class="QFrame" name="frame_2">
+   <property name="geometry">
+    <rect>
+     <x>160</x>
+     <y>0</y>
+     <width>640</width>
+     <height>480</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>15</pointsize>
+    </font>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">background-image:url(:/res/res/setting_background.png);</string>
+   </property>
+   <property name="frameShape">
+    <enum>QFrame::NoFrame</enum>
+   </property>
+   <property name="frameShadow">
+    <enum>QFrame::Raised</enum>
+   </property>
+   <widget class="QLineEdit" name="lineEdit">
+    <property name="geometry">
+     <rect>
+      <x>3</x>
+      <y>51</y>
+      <width>633</width>
+      <height>56</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>微软雅黑</family>
+      <pointsize>21</pointsize>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QLineEdit {
+    border: 1px solid #7CA6C9;
+    border-radius: 1px;
+    padding: 0 8px;
+
+background-color: rgba(51, 82, 126,200);
+color:#7CA6C9;
+    selection-background-color: darkgray;
+}</string>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+    <property name="maxLength">
+     <number>32</number>
+    </property>
+    <property name="frame">
+     <bool>false</bool>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+    </property>
+    <property name="cursorMoveStyle">
+     <enum>Qt::LogicalMoveStyle</enum>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label">
+    <property name="geometry">
+     <rect>
+      <x>0</x>
+      <y>0</y>
+      <width>640</width>
+      <height>51</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>微软雅黑</family>
+      <pointsize>20</pointsize>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">color:#7CA6C9;</string>
+    </property>
+    <property name="text">
+     <string>INPUT:</string>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+    </property>
+   </widget>
+   <widget class="frmInput" name="widget" native="true">
+    <property name="geometry">
+     <rect>
+      <x>0</x>
+      <y>110</y>
+      <width>640</width>
+      <height>361</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>17</pointsize>
+     </font>
+    </property>
+   </widget>
+   <widget class="hp_style_listwidget" name="listWidget">
+    <property name="geometry">
+     <rect>
+      <x>0</x>
+      <y>110</y>
+      <width>640</width>
+      <height>361</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QListWidget{
+	border:0px solid #ffffff;
+	background-image:url(:/res/res/setting_background.png);
+}
+QListWidget::Item{
+	height:50px;
+	color:#7CA6C9;
+}
+QListWidget::Item:selected{
+	height:50px;
+	color:#ffffff;
+}QScrollBar:vertical {
+	border:0px solid #7CA6C9;
+	background-color:#32CC99;
+	width:40px;
+	margin:40 0 40 0px;
+}
+
+/* 滑块设置 */
+QScrollBar::handle:vertical {
+/*	background-color:#7CA6C9;*/	
+	background-color: rgb(83, 166, 249);
+	border:1px solid #7CA6C9;
+	height:30px;
+	max-height:20px;
+}
+
+/* 底部控制块 */
+QScrollBar::add-line:vertical {
+	border:0px solid #7CA6C9;
+	background-color:transparent;
+	width:40px;
+	height:40px;
+	subcontrol-position:bottom;
+	subcontrol-origin:margin;
+	border-image: url(:/res/res/m_down_arrow_s.png);
+	
+}
+
+/* 顶部控制块 */
+QScrollBar::sub-line:vertical {
+	border:0px solid #7CA6C9;
+	background-color:transparent;
+	width:40px;
+	height:40px;
+	subcontrol-position:top;
+	subcontrol-origin:margin;
+	border-image: url(:/res/res/m_up_arrow_s.png);
+	
+}
+
+/* 控制块上的小箭头 */
+QScrollBar::up-arrow:vertical,QScrollBar::down-arrow:vertical {
+	border:0px;
+	width:40px;
+	height:40px;
+}
+
+/* 滑块上边区域 */
+QScrollBar::add-page:vertical {
+	background-color:transparent;
+}
+
+/* 滑块下边区域 */
+QScrollBar::sub-page:vertical {
+	background-color:transparent;
+}
+</string>
+    </property>
+    <item>
+     <property name="text">
+      <string>1: 主变压器</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>2: 套管</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>3: 电流互感器</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>4: 电压互感器</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>5: 油浸式变压器</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>6: 高压组合互感器</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>7: 隔离开关</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>8: 高压隔离开关</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>9: 低压刀闸开关</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>10: 母线侧隔离开关</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>11: 线路侧隔离开关</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>12: 变压器隔离开关</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>13: 电压互感器隔离开关</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>14: 母线与旁路母线联络闸刀</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>15: 变压器中性点接地用隔离开关</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>16: 避雷器</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>17: 断路器</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>18: 空气断路器</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>19: 高压跌落式熔断器</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>20: 电缆</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>21: 母线</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>22: 旁路母线</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>23: 并联电容器</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>24: 串联电容器</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>25: 电抗器</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>26: 消弧线圈</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>27: 接地电阻</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>28: 空气制动电阻</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>29: 耦合电容器</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>30: 结合电容器</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>31: 阻波器</string>
+     </property>
+    </item>
+   </widget>
+   <zorder>lineEdit</zorder>
+   <zorder>label</zorder>
+   <zorder>listWidget</zorder>
+   <zorder>widget</zorder>
+  </widget>
+ </widget>
+ <customwidgets>
+  <customwidget>
+   <class>frmInput</class>
+   <extends>QWidget</extends>
+   <header>frminput.h</header>
+   <container>1</container>
+  </customwidget>
+  <customwidget>
+   <class>hp_style_listwidget</class>
+   <extends>QListWidget</extends>
+   <header location="global">hp_style_listwidget.h</header>
+  </customwidget>
+ </customwidgets>
+ <resources/>
+ <connections>
+  <connection>
+   <sender>toolButton_back</sender>
+   <signal>released()</signal>
+   <receiver>Hp_Text_Input</receiver>
+   <slot>close()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>45</x>
+     <y>25</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>239</x>
+     <y>135</y>
+    </hint>
+   </hints>
+  </connection>
+ </connections>
+</ui>

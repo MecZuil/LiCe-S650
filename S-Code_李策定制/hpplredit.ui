@@ -1,0 +1,1224 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>HpPLREdit</class>
+ <widget class="QWidget" name="HpPLREdit">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>640</width>
+    <height>480</height>
+   </rect>
+  </property>
+  <property name="font">
+   <font>
+    <pointsize>15</pointsize>
+   </font>
+  </property>
+  <property name="windowTitle">
+   <string>Form</string>
+  </property>
+  <property name="autoFillBackground">
+   <bool>false</bool>
+  </property>
+  <property name="styleSheet">
+   <string notr="true"/>
+  </property>
+  <widget class="QFrame" name="frame">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>640</width>
+     <height>480</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>15</pointsize>
+    </font>
+   </property>
+   <property name="layoutDirection">
+    <enum>Qt::LeftToRight</enum>
+   </property>
+   <property name="autoFillBackground">
+    <bool>false</bool>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">background-image: url(:/res/res/setting_background.png);
+/*background-image: url(:/res/res/PreviewBackground.png);*/</string>
+   </property>
+   <property name="frameShape">
+    <enum>QFrame::NoFrame</enum>
+   </property>
+   <property name="frameShadow">
+    <enum>QFrame::Plain</enum>
+   </property>
+   <widget class="hp_QSpinBoxSet" name="hs_radiance">
+    <property name="geometry">
+     <rect>
+      <x>133</x>
+      <y>50</y>
+      <width>385</width>
+      <height>45</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>微软雅黑</family>
+      <pointsize>17</pointsize>
+     </font>
+    </property>
+    <property name="focusPolicy">
+     <enum>Qt::NoFocus</enum>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QSpinBox
+{
+background-color:transparent;
+
+background-image:url(:/res/res/spinbox_text_bg.png);
+color:#7CA6C9;
+border:0px;
+}
+QSpinBox::up-button {
+	subcontrol-origin:border;
+    subcontrol-position:right;
+    image: url(:/res/res/right_arrow_n.png);
+    width: 40;
+    height: 40;       
+}
+QSpinBox::down-button {
+subcontrol-origin:border;
+    subcontrol-position:left;
+    border-image: url(:/res/res/left_arrow_n.png);
+    width: 40;
+    height: 40;
+}
+/*按钮按下样式*/
+QSpinBox::up-button:pressed{
+	subcontrol-origin:border;
+    subcontrol-position:right;
+    image: url(:/res/res/right_arrow_s.png);
+    width: 40;
+    height: 40;       
+}
+  
+QSpinBox::down-button:pressed{
+    subcontrol-position:left;
+    image: url(:/res/res/left_arrow_s.png);
+    width: 40;
+    height: 40;
+}
+
+QSpinBox::down-arrow:disabled,QSpinBox::down-arrow:off 
+{ 
+   border-image: url(:/res/res/left_arrow_d.png);
+    width: 40;
+    height: 40;
+}
+
+QSpinBox::up-arrow:disabled,QSpinBox::up-arrow:off 
+{ 
+   border-image: url(:/res/res/right_arrow_d.png);
+    width: 40;
+    height: 40;
+}
+</string>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignCenter</set>
+    </property>
+    <property name="accelerated">
+     <bool>true</bool>
+    </property>
+    <property name="suffix">
+     <string>%</string>
+    </property>
+    <property name="prefix">
+     <string>幅射率:</string>
+    </property>
+    <property name="minimum">
+     <number>1</number>
+    </property>
+    <property name="maximum">
+     <number>100</number>
+    </property>
+   </widget>
+   <widget class="hp_QDoubleSpinBoxSet" name="hs_distance">
+    <property name="geometry">
+     <rect>
+      <x>133</x>
+      <y>103</y>
+      <width>385</width>
+      <height>45</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>微软雅黑</family>
+      <pointsize>17</pointsize>
+     </font>
+    </property>
+    <property name="focusPolicy">
+     <enum>Qt::NoFocus</enum>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QDoubleSpinBox
+{
+background-color:transparent;
+color:#7CA6C9;
+background-image:url(:/res/res/spinbox_text_bg.png);
+
+border:0px;
+}
+QDoubleSpinBox::up-button {
+	subcontrol-origin:border;
+    subcontrol-position:right;
+    image: url(:/res/res/right_arrow_n.png);
+    width: 40;
+    height: 40;       
+}
+QDoubleSpinBox::down-button {
+subcontrol-origin:border;
+    subcontrol-position:left;
+    border-image: url(:/res/res/left_arrow_n.png);
+    width: 40;
+    height: 40;
+}
+/*按钮按下样式*/
+QDoubleSpinBox::up-button:pressed{
+	subcontrol-origin:border;
+    subcontrol-position:right;
+    image: url(:/res/res/right_arrow_s.png);
+    width: 40;
+    height: 40;       
+}
+  
+QDoubleSpinBox::down-button:pressed{
+    subcontrol-position:left;
+    image: url(:/res/res/left_arrow_s.png);
+    width: 40;
+    height: 40;
+}
+
+QDoubleSpinBox::down-arrow:disabled,QDoubleSpinBox::down-arrow:off 
+{ 
+   border-image: url(:/res/res/left_arrow_d.png);
+    width: 40;
+    height: 40;
+}
+
+QDoubleSpinBox::up-arrow:disabled,QDoubleSpinBox::up-arrow:off 
+{ 
+   border-image: url(:/res/res/right_arrow_d.png);
+    width: 40;
+    height: 40;
+}</string>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignCenter</set>
+    </property>
+    <property name="accelerated">
+     <bool>true</bool>
+    </property>
+    <property name="prefix">
+     <string>距离:</string>
+    </property>
+    <property name="suffix">
+     <string>m</string>
+    </property>
+    <property name="decimals">
+     <number>1</number>
+    </property>
+    <property name="minimum">
+     <double>1.000000000000000</double>
+    </property>
+    <property name="singleStep">
+     <double>0.100000000000000</double>
+    </property>
+   </widget>
+   <widget class="QCheckBox" name="cb_refer">
+    <property name="geometry">
+     <rect>
+      <x>133</x>
+      <y>156</y>
+      <width>385</width>
+      <height>45</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>微软雅黑</family>
+      <pointsize>17</pointsize>
+     </font>
+    </property>
+    <property name="focusPolicy">
+     <enum>Qt::NoFocus</enum>
+    </property>
+    <property name="layoutDirection">
+     <enum>Qt::RightToLeft</enum>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QCheckBox{
+background:transparent;
+color:#7CA6C9;
+}
+QCheckBox::indicator:unchecked {
+    image: url(:/res/res/switch_off.png);
+	color:#7CA6C9;
+}
+
+QCheckBox::indicator:checked {
+     image: url(:/res/res/switch_on.png);
+	 color:#7CA6C9;
+}
+
+
+</string>
+    </property>
+    <property name="text">
+     <string>设为参考                           </string>
+    </property>
+    <property name="tristate">
+     <bool>false</bool>
+    </property>
+   </widget>
+   <widget class="QComboBox" name="cb_temptype">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>0</y>
+      <width>181</width>
+      <height>45</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>微软雅黑</family>
+      <pointsize>17</pointsize>
+     </font>
+    </property>
+    <property name="focusPolicy">
+     <enum>Qt::NoFocus</enum>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">
+QComboBox {
+	color:#7CA6C9;
+border:0px solid;
+	background-color: rgba(255, 255, 255, 0);
+}
+
+QComboBox QAbstractItemView {
+/*    background-color: #0a1a29;*/
+background-color:transparent;
+    border: 0px solid #7CA6C9;
+	color:#7CA6C9;
+}
+
+
+
+QComboBox:!editable, QComboBox::drop-down:editable {
+
+	color:#7CA6C9;
+	background-image:url(:/res/res/combox_bg2.png);
+}
+
+/* QComboBox gets the &quot;on&quot; state when the popup is open */
+QComboBox:!editable:on, QComboBox::drop-down:editable:on {
+	color:#7CA6C9;
+	background:transparent;
+
+}
+
+QComboBox:on { /* shift the text when the popup opens */
+    padding-top: 0px;
+    padding-left: 0px;
+	width:40px;
+	height:40px;
+	color:#7CA6C9;
+}
+
+QComboBox::drop-down {
+    subcontrol-origin: padding;
+    subcontrol-position: right;
+width:40px;
+height:40px;
+
+
+    border-top-right-radius: 0px; /* same radius as the QComboBox */
+    border-bottom-right-radius: 0px;
+}
+
+QComboBox::down-arrow {
+    image: url(:/res/res/down_arrow_n.png);
+
+width:40px;
+height:40px;
+}
+
+QComboBox::down-arrow:on { /* shift the arrow when popup is open */
+    top: 0px;
+    left: 0px;
+}</string>
+    </property>
+    <property name="duplicatesEnabled">
+     <bool>false</bool>
+    </property>
+    <property name="frame">
+     <bool>false</bool>
+    </property>
+    <item>
+     <property name="text">
+      <string>测温类型:最大值</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>测温类型:最小值</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>测温类型:平均值</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>测温类型:所有值</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>测温类型:极差值</string>
+     </property>
+    </item>
+   </widget>
+   <widget class="hp_QDoubleSpinBoxSet" name="hs_reflect">
+    <property name="geometry">
+     <rect>
+      <x>133</x>
+      <y>262</y>
+      <width>385</width>
+      <height>45</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>微软雅黑</family>
+      <pointsize>17</pointsize>
+     </font>
+    </property>
+    <property name="focusPolicy">
+     <enum>Qt::NoFocus</enum>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QDoubleSpinBox
+{
+background-color:transparent;
+color:#7CA6C9;
+background-image:url(:/res/res/spinbox_text_bg.png);
+
+border:0px;
+}
+QDoubleSpinBox::up-button {
+	subcontrol-origin:border;
+    subcontrol-position:right;
+    image: url(:/res/res/right_arrow_n.png);
+    width: 40;
+    height: 40;       
+}
+QDoubleSpinBox::down-button {
+subcontrol-origin:border;
+    subcontrol-position:left;
+    border-image: url(:/res/res/left_arrow_n.png);
+    width: 40;
+    height: 40;
+}
+/*按钮按下样式*/
+QDoubleSpinBox::up-button:pressed{
+	subcontrol-origin:border;
+    subcontrol-position:right;
+    image: url(:/res/res/right_arrow_s.png);
+    width: 40;
+    height: 40;       
+}
+  
+QDoubleSpinBox::down-button:pressed{
+    subcontrol-position:left;
+    image: url(:/res/res/left_arrow_s.png);
+    width: 40;
+    height: 40;
+}
+
+QDoubleSpinBox::down-arrow:disabled,QDoubleSpinBox::down-arrow:off 
+{ 
+   border-image: url(:/res/res/left_arrow_d.png);
+    width: 40;
+    height: 40;
+}
+
+QDoubleSpinBox::up-arrow:disabled,QDoubleSpinBox::up-arrow:off 
+{ 
+   border-image: url(:/res/res/right_arrow_d.png);
+    width: 40;
+    height: 40;
+}</string>
+    </property>
+    <property name="frame">
+     <bool>false</bool>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignCenter</set>
+    </property>
+    <property name="accelerated">
+     <bool>true</bool>
+    </property>
+    <property name="prefix">
+     <string>反射温度:</string>
+    </property>
+    <property name="decimals">
+     <number>1</number>
+    </property>
+    <property name="minimum">
+     <double>-1000000000.000000000000000</double>
+    </property>
+    <property name="maximum">
+     <double>10000000000.000000000000000</double>
+    </property>
+    <property name="singleStep">
+     <double>0.100000000000000</double>
+    </property>
+   </widget>
+   <widget class="QToolButton" name="pb_finish">
+    <property name="geometry">
+     <rect>
+      <x>400</x>
+      <y>380</y>
+      <width>118</width>
+      <height>45</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>微软雅黑</family>
+      <pointsize>17</pointsize>
+     </font>
+    </property>
+    <property name="focusPolicy">
+     <enum>Qt::NoFocus</enum>
+    </property>
+    <property name="autoFillBackground">
+     <bool>false</bool>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QToolButton {
+border-image:url(:/res/res/mode_button_n.png);
+color:#7CA6C9;
+}  
+
+QToolButton:pressed{
+border-image:url(:/res/res/mode_button_s.png);
+}</string>
+    </property>
+    <property name="text">
+     <string>完成</string>
+    </property>
+    <property name="autoRaise">
+     <bool>true</bool>
+    </property>
+   </widget>
+   <widget class="QToolButton" name="pb_cancle">
+    <property name="geometry">
+     <rect>
+      <x>133</x>
+      <y>380</y>
+      <width>118</width>
+      <height>45</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>微软雅黑</family>
+      <pointsize>17</pointsize>
+     </font>
+    </property>
+    <property name="focusPolicy">
+     <enum>Qt::NoFocus</enum>
+    </property>
+    <property name="autoFillBackground">
+     <bool>false</bool>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QToolButton {
+border-image:url(:/res/res/mode_button_n.png);
+color:#7CA6C9;
+}  
+
+QToolButton:pressed{
+border-image:url(:/res/res/mode_button_s.png);
+}</string>
+    </property>
+    <property name="text">
+     <string>取消</string>
+    </property>
+    <property name="autoRaise">
+     <bool>true</bool>
+    </property>
+   </widget>
+   <widget class="QFrame" name="frame_temptype">
+    <property name="geometry">
+     <rect>
+      <x>133</x>
+      <y>209</y>
+      <width>385</width>
+      <height>45</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color:transparent;
+/*background:transparent;*/
+border: 0px solid #7CA6C9;
+color:#7CA6C9;</string>
+    </property>
+    <property name="frameShape">
+     <enum>QFrame::StyledPanel</enum>
+    </property>
+    <property name="frameShadow">
+     <enum>QFrame::Raised</enum>
+    </property>
+    <widget class="QLabel" name="label_temptype_2">
+     <property name="geometry">
+      <rect>
+       <x>0</x>
+       <y>0</y>
+       <width>340</width>
+       <height>45</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <family>微软雅黑</family>
+       <pointsize>17</pointsize>
+       <weight>50</weight>
+       <italic>false</italic>
+       <bold>false</bold>
+      </font>
+     </property>
+     <property name="layoutDirection">
+      <enum>Qt::LeftToRight</enum>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">/*background-color:transparent;*/
+background-image:url(:/res/res/spinbox_text_bg.png);
+color:#7CA6C9;
+border:0px;</string>
+     </property>
+     <property name="text">
+      <string>测温类型：最大值</string>
+     </property>
+     <property name="alignment">
+      <set>Qt::AlignCenter</set>
+     </property>
+    </widget>
+    <widget class="QLabel" name="label_temptype_3">
+     <property name="geometry">
+      <rect>
+       <x>340</x>
+       <y>1</y>
+       <width>43</width>
+       <height>43</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <family>微软雅黑</family>
+       <pointsize>17</pointsize>
+      </font>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">background:transparent;
+border: 0px solid #7CA6C9;
+color:#7CA6C9;
+border-image:url(:/res/res/down_arrow_n.png);</string>
+     </property>
+     <property name="text">
+      <string/>
+     </property>
+    </widget>
+   </widget>
+   <widget class="QListWidget" name="listWidget_temptype">
+    <property name="geometry">
+     <rect>
+      <x>320</x>
+      <y>10</y>
+      <width>261</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>微软雅黑</family>
+      <pointsize>17</pointsize>
+     </font>
+    </property>
+    <property name="layoutDirection">
+     <enum>Qt::LeftToRight</enum>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">border: 1px solid #7CA6C9;
+color:#7CA6C9;</string>
+    </property>
+    <item>
+     <property name="text">
+      <string>测温类型：最大值</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>测温类型：最小值</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>测温类型：平均值</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>测温类型：所有值</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>测温类型：极差值</string>
+     </property>
+    </item>
+   </widget>
+   <widget class="QFrame" name="frame_radiance">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>410</y>
+      <width>385</width>
+      <height>44</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color:transparent;
+/*background:transparent;*/
+border: 0px solid #7CA6C9;
+color:#7CA6C9;</string>
+    </property>
+    <property name="frameShape">
+     <enum>QFrame::StyledPanel</enum>
+    </property>
+    <property name="frameShadow">
+     <enum>QFrame::Raised</enum>
+    </property>
+    <widget class="QLabel" name="label_radiance_2">
+     <property name="geometry">
+      <rect>
+       <x>0</x>
+       <y>0</y>
+       <width>341</width>
+       <height>44</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <family>微软雅黑</family>
+       <pointsize>17</pointsize>
+       <weight>50</weight>
+       <italic>false</italic>
+       <bold>false</bold>
+      </font>
+     </property>
+     <property name="layoutDirection">
+      <enum>Qt::LeftToRight</enum>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">/*background-color:transparent;*/
+background-image:url(:/res/res/spinbox_text_bg.png);
+color:#7CA6C9;
+border:0px;</string>
+     </property>
+     <property name="text">
+      <string>辐射类型：辐射率</string>
+     </property>
+     <property name="alignment">
+      <set>Qt::AlignCenter</set>
+     </property>
+    </widget>
+    <widget class="QLabel" name="label_radiance_3">
+     <property name="geometry">
+      <rect>
+       <x>341</x>
+       <y>1</y>
+       <width>44</width>
+       <height>44</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">background:transparent;
+border: 0px solid #7CA6C9;
+color:#7CA6C9;
+border-image:url(:/res/res/down_arrow_n.png);</string>
+     </property>
+     <property name="text">
+      <string/>
+     </property>
+    </widget>
+   </widget>
+   <widget class="QCheckBox" name="checkBox_radiance">
+    <property name="geometry">
+     <rect>
+      <x>20</x>
+      <y>50</y>
+      <width>80</width>
+      <height>45</height>
+     </rect>
+    </property>
+    <property name="sizePolicy">
+     <sizepolicy hsizetype="Maximum" vsizetype="Fixed">
+      <horstretch>0</horstretch>
+      <verstretch>0</verstretch>
+     </sizepolicy>
+    </property>
+    <property name="minimumSize">
+     <size>
+      <width>40</width>
+      <height>0</height>
+     </size>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>10</pointsize>
+      <stylestrategy>PreferAntialias</stylestrategy>
+     </font>
+    </property>
+    <property name="focusPolicy">
+     <enum>Qt::NoFocus</enum>
+    </property>
+    <property name="layoutDirection">
+     <enum>Qt::RightToLeft</enum>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QCheckBox{
+background:transparent;
+}
+QCheckBox::indicator:unchecked {
+    image: url(:/res/res/switch_off.png);
+}
+
+QCheckBox::indicator:checked {
+     image: url(:/res/res/switch_on.png);
+}
+
+
+</string>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+    <property name="iconSize">
+     <size>
+      <width>30</width>
+      <height>30</height>
+     </size>
+    </property>
+    <property name="tristate">
+     <bool>false</bool>
+    </property>
+   </widget>
+   <widget class="QListWidget" name="listWidget_radiance">
+    <property name="geometry">
+     <rect>
+      <x>410</x>
+      <y>280</y>
+      <width>281</width>
+      <height>191</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>微软雅黑</family>
+      <pointsize>17</pointsize>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QListWidget
+        {
+        border: 1px solid #7CA6C9;
+        color:#7CA6C9;
+        background-image: url(:/res/res/list_background.png);
+        border-right-color: 0px;
+        }
+        QScrollBar:vertical
+        {
+        border:0px solid #7CA6C9;
+        background-color:#32CC99;
+        width:25px;
+        margin:25 0 25 0px;
+        }
+        QScrollBar::handle:vertical
+        {
+        background-color: rgb(83, 166, 249);
+        border:1px solid #7CA6C9;
+        }
+        QScrollBar::add-line:vertical
+        {
+        border:0px solid #7CA6C9;
+        background-color:transparent;
+        width:25px;
+        height:25px;
+        subcontrol-position:bottom;
+        subcontrol-origin:margin;
+        border-image: url(:/res/res/m_down_arrow_s.png);
+        }
+        QScrollBar::sub-line:vertical
+        {
+        border:0px solid #7CA6C9;
+        background-color:transparent;
+        width:25px;
+        height:25px;
+        subcontrol-position:top;
+        subcontrol-origin:margin;
+        border-image: url(:/res/res/m_up_arrow_s.png);
+        }QScrollBar::up-arrow:vertical,QScrollBar::down-arrow:vertical
+        {
+        border:0px;
+        width:25px;
+        height:25px;
+        }
+        QScrollBar::add-page:vertical
+        {
+        background-color:transparent;
+        }
+        QScrollBar::sub-page:vertical
+        {
+        background-color:transparent;
+        }</string>
+    </property>
+    <item>
+     <property name="text">
+      <string>水:            0.96</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>皮肤:         0.80</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>陶瓷(细):    0.90</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>陶瓷(粗):    0.93</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>铝:             0.20</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>铝(氧化):    0.55</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>黄铜:          0.22</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>黄铜(氧化): 0.61</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>铜(深度氧化):0.78</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>铁(氧化):    0.74</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>铁(生锈):    0.65</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>铸铁(氧化): 0.64 </string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>铸铁:          0.21</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>镍(氧化):    0.37</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>钢(氧化):    0.79</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>不锈钢(氧化):0.85</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>碳(烟尘):    0.95</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>碳(石墨):    0.98</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>漆(白色):    0.92</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>漆(黑色):    0.97</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>油漆:         0.94</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>纸:             0.93</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>沙土:          0.90</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>混凝土:       0.92</string>
+     </property>
+    </item>
+   </widget>
+   <widget class="QCheckBox" name="cb_linedepth">
+    <property name="geometry">
+     <rect>
+      <x>130</x>
+      <y>310</y>
+      <width>385</width>
+      <height>45</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>微软雅黑</family>
+      <pointsize>17</pointsize>
+     </font>
+    </property>
+    <property name="focusPolicy">
+     <enum>Qt::NoFocus</enum>
+    </property>
+    <property name="layoutDirection">
+     <enum>Qt::RightToLeft</enum>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QCheckBox{
+background:transparent;
+color:#7CA6C9;
+}
+QCheckBox::indicator:unchecked {
+    image: url(:/res/res/switch_off.png);
+	color:#7CA6C9;
+}
+
+QCheckBox::indicator:checked {
+     image: url(:/res/res/switch_on.png);
+	 color:#7CA6C9;
+}
+
+
+</string>
+    </property>
+    <property name="text">
+     <string>线长度物体深度赋值             </string>
+    </property>
+    <property name="tristate">
+     <bool>false</bool>
+    </property>
+   </widget>
+   <widget class="hp_QDoubleSpinBoxSet" name="hs_rectTemp">
+    <property name="geometry">
+     <rect>
+      <x>133</x>
+      <y>370</y>
+      <width>385</width>
+      <height>45</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>微软雅黑</family>
+      <pointsize>17</pointsize>
+     </font>
+    </property>
+    <property name="focusPolicy">
+     <enum>Qt::NoFocus</enum>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QDoubleSpinBox
+{
+background-color:transparent;
+color:#7CA6C9;
+background-image:url(:/res/res/spinbox_text_bg.png);
+
+border:0px;
+}
+QDoubleSpinBox::up-button {
+	subcontrol-origin:border;
+    subcontrol-position:right;
+    image: url(:/res/res/right_arrow_n.png);
+    width: 40;
+    height: 40;       
+}
+QDoubleSpinBox::down-button {
+subcontrol-origin:border;
+    subcontrol-position:left;
+    border-image: url(:/res/res/left_arrow_n.png);
+    width: 40;
+    height: 40;
+}
+/*按钮按下样式*/
+QDoubleSpinBox::up-button:pressed{
+	subcontrol-origin:border;
+    subcontrol-position:right;
+    image: url(:/res/res/right_arrow_s.png);
+    width: 40;
+    height: 40;       
+}
+  
+QDoubleSpinBox::down-button:pressed{
+    subcontrol-position:left;
+    image: url(:/res/res/left_arrow_s.png);
+    width: 40;
+    height: 40;
+}
+
+QDoubleSpinBox::down-arrow:disabled,QDoubleSpinBox::down-arrow:off 
+{ 
+   border-image: url(:/res/res/left_arrow_d.png);
+    width: 40;
+    height: 40;
+}
+
+QDoubleSpinBox::up-arrow:disabled,QDoubleSpinBox::up-arrow:off 
+{ 
+   border-image: url(:/res/res/right_arrow_d.png);
+    width: 40;
+    height: 40;
+}</string>
+    </property>
+    <property name="frame">
+     <bool>false</bool>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignCenter</set>
+    </property>
+    <property name="accelerated">
+     <bool>true</bool>
+    </property>
+    <property name="prefix">
+     <string>隔热报警温度:</string>
+    </property>
+    <property name="decimals">
+     <number>1</number>
+    </property>
+    <property name="minimum">
+     <double>-1000000000.000000000000000</double>
+    </property>
+    <property name="maximum">
+     <double>10000000000.000000000000000</double>
+    </property>
+    <property name="singleStep">
+     <double>0.100000000000000</double>
+    </property>
+   </widget>
+   <widget class="QCheckBox" name="cb_rectTemp">
+    <property name="geometry">
+     <rect>
+      <x>130</x>
+      <y>320</y>
+      <width>385</width>
+      <height>45</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>微软雅黑</family>
+      <pointsize>17</pointsize>
+     </font>
+    </property>
+    <property name="focusPolicy">
+     <enum>Qt::NoFocus</enum>
+    </property>
+    <property name="layoutDirection">
+     <enum>Qt::RightToLeft</enum>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QCheckBox{
+background:transparent;
+color:#7CA6C9;
+}
+QCheckBox::indicator:unchecked {
+    image: url(:/res/res/switch_off.png);
+}
+
+QCheckBox::indicator:checked {
+    image: url(:/res/res/switch_on.png);
+}</string>
+    </property>
+    <property name="text">
+     <string>隔热报警                           </string>
+    </property>
+    <property name="tristate">
+     <bool>false</bool>
+    </property>
+   </widget>
+  </widget>
+ </widget>
+ <customwidgets>
+  <customwidget>
+   <class>hp_QDoubleSpinBoxSet</class>
+   <extends>QDoubleSpinBox</extends>
+   <header location="global">hp_qdoublespinboxset.h</header>
+  </customwidget>
+  <customwidget>
+   <class>hp_QSpinBoxSet</class>
+   <extends>QSpinBox</extends>
+   <header>hp_qspinboxset.h</header>
+  </customwidget>
+ </customwidgets>
+ <resources/>
+ <connections/>
+</ui>

@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>hp_calbration</class>
+ <widget class="QWidget" name="hp_calbration">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>800</width>
+    <height>480</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Form</string>
+  </property>
+  <property name="styleSheet">
+   <string notr="true">background-image:url(:/res/res/setting_background.png);</string>
+  </property>
+  <widget class="QFrame" name="frame">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>800</width>
+     <height>480</height>
+    </rect>
+   </property>
+   <property name="frameShape">
+    <enum>QFrame::StyledPanel</enum>
+   </property>
+   <property name="frameShadow">
+    <enum>QFrame::Raised</enum>
+   </property>
+   <widget class="QPushButton" name="pushButton">
+    <property name="geometry">
+     <rect>
+      <x>250</x>
+      <y>127</y>
+      <width>300</width>
+      <height>50</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>12</pointsize>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QPushButton{
+border-image:url(:/res/res/button_n.png);
+color:#7CA6C9;
+width:146px;
+height:25px
+}
+QPushButton:pressed{
+border-image:url(:/res/res/setting_selected.png);
+color:#7CA6C9;
+width:146px;
+height:25px
+}
+</string>
+    </property>
+    <property name="text">
+     <string>开始校准</string>
+    </property>
+   </widget>
+   <widget class="QToolButton" name="toolButton">
+    <property name="geometry">
+     <rect>
+      <x>250</x>
+      <y>200</y>
+      <width>300</width>
+      <height>50</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>12</pointsize>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QToolButton{
+border-image:url(:/res/res/button_n.png);
+color:#7CA6C9;
+width:146px;
+height:25px
+}
+QToolButton:pressed{
+border-image:url(:/res/res/setting_selected.png);
+color:#7CA6C9;
+width:146px;
+height:25px
+}
+</string>
+    </property>
+    <property name="text">
+     <string>结束校准</string>
+    </property>
+   </widget>
+   <widget class="QToolButton" name="toolButton_2">
+    <property name="geometry">
+     <rect>
+      <x>250</x>
+      <y>270</y>
+      <width>300</width>
+      <height>50</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>12</pointsize>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QToolButton{
+border-image:url(:/res/res/button_n.png);
+color:#7CA6C9;
+width:146px;
+height:25px
+}
+QToolButton:pressed{
+border-image:url(:/res/res/setting_selected.png);
+color:#7CA6C9;
+width:146px;
+height:25px
+}
+</string>
+    </property>
+    <property name="text">
+     <string>退出</string>
+    </property>
+   </widget>
+  </widget>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>

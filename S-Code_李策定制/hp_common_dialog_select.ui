@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>hp_common_dialog_select</class>
+ <widget class="QWidget" name="hp_common_dialog_select">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>800</width>
+    <height>480</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Form</string>
+  </property>
+  <widget class="QFrame" name="frame">
+   <property name="geometry">
+    <rect>
+     <x>120</x>
+     <y>150</y>
+     <width>551</width>
+     <height>161</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">border: 1px solid  #7CA6C9;
+background-color: rgba(255, 255, 255, 0);
+color:#7CA6C9;
+background-image:url(:/res/res/setting_background.png);</string>
+   </property>
+   <property name="frameShape">
+    <enum>QFrame::StyledPanel</enum>
+   </property>
+   <property name="frameShadow">
+    <enum>QFrame::Raised</enum>
+   </property>
+   <widget class="QPushButton" name="pushButton_task">
+    <property name="geometry">
+     <rect>
+      <x>90</x>
+      <y>100</y>
+      <width>75</width>
+      <height>41</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>17</pointsize>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">border: 0px solid  #7CA6C9;
+background-color: rgba(255, 255, 255, 0);
+color:#7CA6C9;
+background-image:url(:/res/res/setting_background.png);</string>
+    </property>
+    <property name="text">
+     <string>台账</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="pushButton_normal">
+    <property name="geometry">
+     <rect>
+      <x>240</x>
+      <y>100</y>
+      <width>75</width>
+      <height>41</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>17</pointsize>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">border: 0px solid  #7CA6C9;
+background-color: rgba(255, 255, 255, 0);
+color:#7CA6C9;
+background-image:url(:/res/res/setting_background.png);</string>
+    </property>
+    <property name="text">
+     <string>普通</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>30</y>
+      <width>531</width>
+      <height>41</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>19</pointsize>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">color:#7CA6C9;</string>
+    </property>
+    <property name="text">
+     <string>请选择需要上传的图片</string>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignCenter</set>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="pushButton_cancel">
+    <property name="geometry">
+     <rect>
+      <x>390</x>
+      <y>100</y>
+      <width>75</width>
+      <height>41</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>17</pointsize>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">border: 0px solid  #7CA6C9;
+background-color: rgba(255, 255, 255, 0);
+color:#7CA6C9;
+background-image:url(:/res/res/setting_background.png);</string>
+    </property>
+    <property name="text">
+     <string>取消</string>
+    </property>
+   </widget>
+  </widget>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>

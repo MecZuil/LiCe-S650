@@ -1,0 +1,24 @@
+<RCC>
+    <qresource prefix="/">
+        <file>machine/ExpandMethodPage.qml</file>
+        <file>machine/FindTaskPage.qml</file>
+        <file>machine/ItemAllStyle.qml</file>
+        <file>machine/ItemBtnStyleBackground.qml</file>
+        <file>machine/LeftTreeViewBase.qml</file>
+        <file>machine/LevelTreeViewEx.qml</file>
+        <file>machine/LevelTreeViewExDelegate.qml</file>
+        <file>machine/MessageBoxEx.qml</file>
+        <file>machine/MessageDialog.qml</file>
+        <file>machine/MessageTaskBase.qml</file>
+        <file>machine/MessageTaskBox.qml</file>
+        <file>machine/TaskContentDelegate.qml</file>
+        <file>machine/TaskSelectList.qml</file>
+        <file>machine/TaskType.qml</file>
+        <file>machine/TasktypeDelegate.qml</file>
+        <file>machine/TreeViewEx.qml</file>
+        <file>machine/TreeViewExDelegate.qml</file>
+        <file>machine/AnalysisChart.qml</file>
+        <file>machine/MessageInteraction.qml</file>
+        <file>machine/FindTaskXml.qml</file>
+    </qresource>
+</RCC>
