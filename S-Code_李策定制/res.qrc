@@ -1,0 +1,6 @@
+<RCC>
+    <qresource lang="zh" prefix="/new/prefix1">
+        <file>1.bmp</file>
+        <file>2.bmp</file>
+    </qresource>
+</RCC>

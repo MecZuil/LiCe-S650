@@ -1,0 +1,179 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>hp_gstreamer_player</class>
+ <widget class="QWidget" name="hp_gstreamer_player">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>800</width>
+    <height>480</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Form</string>
+  </property>
+  <property name="styleSheet">
+   <string notr="true">background-color:#000000;</string>
+  </property>
+  <widget class="QFrame" name="frame_control_2">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>160</width>
+     <height>480</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>17</pointsize>
+    </font>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">background-image:url(:/res/res/main_background.png);</string>
+   </property>
+   <property name="frameShape">
+    <enum>QFrame::NoFrame</enum>
+   </property>
+   <property name="frameShadow">
+    <enum>QFrame::Raised</enum>
+   </property>
+   <widget class="QToolButton" name="toolButton_close">
+    <property name="geometry">
+     <rect>
+      <x>3</x>
+      <y>0</y>
+      <width>150</width>
+      <height>70</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>17</pointsize>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QToolButton {
+border-image:url(:/res/res/setting_back.png);
+background:transparent;
+}  
+</string>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+   </widget>
+   <widget class="QCheckBox" name="checkBox">
+    <property name="geometry">
+     <rect>
+      <x>3</x>
+      <y>80</y>
+      <width>150</width>
+      <height>70</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QCheckBox{
+background:transparent;
+}
+QCheckBox::indicator:unchecked {
+    border-image:url(:/res/res/media_play.png);
+	/*background-color:rgba(97,223,249,45);*/
+	width:150px;
+	height:70px;
+}
+
+QCheckBox::indicator:checked {
+    border-image:url(:/res/res/media_pause.png);
+	/*border-radius:28px;
+	background-color:#3c3c3c;*/
+	width:150px;
+	height:70px;
+}
+
+</string>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+    <property name="checked">
+     <bool>true</bool>
+    </property>
+   </widget>
+   <widget class="QToolButton" name="toolButton_speed">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>400</y>
+      <width>91</width>
+      <height>70</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>20</pointsize>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QToolButton {
+	color:#7CA6C9;
+	border:2px solid #7CA6C9;
+	background:transparent;
+	/*background-color:rgba(97,223,249,45);*/
+}</string>
+    </property>
+    <property name="text">
+     <string>1X</string>
+    </property>
+    <property name="checkable">
+     <bool>true</bool>
+    </property>
+   </widget>
+   <widget class="QSlider" name="verticalSlider">
+    <property name="geometry">
+     <rect>
+      <x>110</x>
+      <y>160</y>
+      <width>41</width>
+      <height>311</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QSlider{
+	border:2px solid #7CA6C9;
+	padding-top:5px;
+	padding-bottom:5px;
+}
+
+QSlider::groove:verizontal  
+{  
+    width: 1px;  
+    background: qlineargradient(x1:1, y1:0, x2:0, y2:0, stop:1 #5F80AA, stop:0 #5F80AA);  
+}
+QSlider::handle:verizontal   
+{   
+/*
+ background: qlineargradient(x1:0, y1:1, x2:0, y2:0, stop:1 #67A4E0, stop:0 #336CA5);  
+*/
+    width: 30px;  
+    height: 16px;  
+     margin: 0px -12px 0px -12px;
+    border: 0px solid #000810;
+border-image:url(:/res/res/huakuai.png);  
+}  </string>
+    </property>
+    <property name="orientation">
+     <enum>Qt::Vertical</enum>
+    </property>
+   </widget>
+   <zorder>toolButton_close</zorder>
+   <zorder>checkBox</zorder>
+   <zorder>checkBox</zorder>
+   <zorder>toolButton_speed</zorder>
+   <zorder>verticalSlider</zorder>
+  </widget>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>

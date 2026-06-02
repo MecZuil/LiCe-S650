@@ -1,0 +1,14 @@
+source /opt/fsl-imx-x11/4.1.15-1.2.0/environment-setup-cortexa9hf-vfp-neon-poky-linux-gnueabi
+qmake
+make
+
+cp n_H384i Q_S600_S
+cp n_H384i Q_S600
+sync
+cp hp_zh_CN.qm hp_zh_CN.qm_S
+cp hp_zh_TW.qm hp_zh_TW.qm_S
+cp hp_zh_EN.qm hp_zh_EN.qm_S
+cp hp_zh_ES.qm hp_zh_ES.qm_S
+cp hp_zh_MA.qm hp_zh_MA.qm_S
+cp hp_zh_RU.qm hp_zh_RU.qm_S
+

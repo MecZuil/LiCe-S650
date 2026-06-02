@@ -1,0 +1,1923 @@
+#include  "hp_camera_cap.h"
+#include  "ui_hp_camera_cap.h"
+
+Hp_Camera_Cap::Hp_Camera_Cap(QWidget *parent) :
+    QWidget(parent),
+    ui(new Ui::Hp_Camera_Cap)
+{
+    ui->setupUi(this);
+    setWindowFlags(Qt::FramelessWindowHint | Qt::Dialog);
+    setWindowModality(Qt::WindowModal);
+    m_isPms = false;
+    isS3X0 = false;
+    voiceflag = false;
+    m_isKjg = false;
+    m_isZoomSave = false;
+    textflag = false;
+    isContinuedFreeze = false;
+    cap_state = true;
+    isSuperImage = false;
+    saveflag = false;
+    sr_baocunflag = false;
+    sr_canceflag = false;
+    autoUpdateIsChecked = false;
+    autoUpdateWhoEmit = false;
+    IsInAotuUpdate = false;//不处于自动上传模式
+    IsClickCancelUpload = false;
+    autoUpdateonce = false;
+    isErrPmsPhoto = false;
+    fidpid = false;
+    isSisFlag = false;
+    isSisOK = false;
+    isGuoWangFlag = false;
+    dateFolderPath = "/run/media/mmcblk2p1/DCIM/";
+    SlotCheckAndCreateDateFolder();
+
+    pms_xml.clear();//pms_xml的名称
+    pms_filename.clear();
+//    guowangflag = false;
+    if(FID_PID_MODE)
+    {
+        fidpid = true;
+    }
+    //IsWifiSearch = false;
+
+     IP = "";
+     Account = "";
+     Password = "";
+
+     mainmode = 0;
+
+     Taskmode = false;
+
+     isInSrvCancelUpload = false;
+     mymode = enum_AUP_SERVER;
+
+     ui->title_warning->hide();
+     ui->flag_warning->hide();
+     ui->text_warning->hide();
+
+     AutoUpdateGetStatus = new QTimer();
+     AutoUpdateGetStatus->setInterval(500);
+
+    setGeometry((640-width())/2+160,(480-height())/2,width(),height());  //384-> 640  96->160  272->480
+    setFixedSize(this->width(), this->height());
+    connect(&timer1s,SIGNAL(timeout()),this,SLOT(slot_timer_1s()));
+    connect(&timer3s,SIGNAL(timeout()),this,SLOT(slot_timer_3s()));
+    connect(&hti,SIGNAL(sync_text()),this,SLOT(slot_sync_text()));
+    connect(&hti,SIGNAL(signal_frminput_set_lcd_offed_state()),this,SLOT(slot_cameracap_set_lcd_offed_state()));
+    connect(AutoUpdateGetStatus,SIGNAL(timeout()),this,SLOT(slot_Time_out()));
+
+    QString para;
+    para = hpxmlreader.readXml("sys.xml","LANGUAGEPARA","id");
+    if(para !=NULL)
+    {
+        if(para.toInt() == 0)
+        {
+            HasNorelease = "没有文本注释";
+            Hasrelease = "文本注释:";
+            StartVoice = "开始录音";
+            EndVoice = "录音结束";
+            SaveOK = "保存成功";
+            IsInCancelUpload = "正在取消上传";
+            CancelUploadOK = "成功取消上传";
+            UploadOK = "上传成功";
+            UploadWrong = "上传失败";
+            IsInAutoUpload = "正在上传";
+            RecordError = "录制失败";
+            WaitShow = "等待加载，请稍候";
+            analysisError = "播放失败";
+            fReconnect = "请重新连接服务器";
+        }
+        else if(para.toInt() == 1)
+        {
+            HasNorelease = "沒有文本注釋";
+            Hasrelease = "文本注釋:";
+            StartVoice = "開始錄音";
+            EndVoice = "錄音結束";
+            SaveOK = "保存成功";
+            IsInCancelUpload = "正在取消上傳";
+            CancelUploadOK = "成功取消上傳";
+            UploadOK = "上傳成功";
+            UploadWrong = "上傳失敗";
+            IsInAutoUpload = "正在上傳";
+            RecordError = "錄製失敗";
+            WaitShow = "等待加載，請稍候";
+            analysisError = "播放失敗";
+            fReconnect = "請重新連接服務器";
+        }
+        else if(para.toInt() == 2)//english
+        {
+            HasNorelease = "No text note";
+            Hasrelease = "Text note:";
+            StartVoice = "Start recording";
+            EndVoice = "End recording";
+            SaveOK = "Saved successfully";
+            IsInCancelUpload = "Canceling upload";
+            CancelUploadOK = "Upload cancelled successfully";
+            UploadOK = "Upload successful";
+            UploadWrong = "Upload failed";
+            IsInAutoUpload = "Uploading";
+            RecordError = "Recording failed";
+            WaitShow = "wait please";
+            analysisError = "failed";
+            fReconnect = "Reconnect server";
+        }
+        else if(para.toInt() == 3)//俄语
+        {
+            HasNorelease = "Нет заметки";
+            Hasrelease = "текст:";
+            StartVoice = "запись";
+            EndVoice = "оконч запись";
+            SaveOK = "сохранено";
+            IsInCancelUpload = "отменить загрузку";
+            CancelUploadOK = "успешно отменить загрузку";
+            UploadOK = "Загрузка завершена";
+            UploadWrong = "Ошибка загрузки";
+            IsInAutoUpload = "идёт загрузка";
+            RecordError = "Ошибка записи";
+            WaitShow = "wait please";
+            analysisError = "записи";
+            fReconnect = "пересоединённый сервер";
+        }
+        else if(para.toInt() == 4)//匈牙利语
+        {
+            HasNorelease = "nincs szöveg";
+            Hasrelease = "Szöveg:";
+            StartVoice = "Felvétel indítás";
+            EndVoice = "Felvétel leállítás";
+            SaveOK = "Sikeres mentés";
+            IsInCancelUpload = "Feltöltés törlése";
+            CancelUploadOK = "Feltöltés sikeresen törölve";
+            UploadOK = "Feltöltés sikeres";
+            UploadWrong = "Feltöltés sikertelen";
+            IsInAutoUpload = "Feltöltés";
+            RecordError = "Felvétel sikertelen";
+            WaitShow = "wait please";
+            analysisError = "sikertelen";
+            fReconnect = "kiszolgáló újracsatlakozása";
+        }
+        else if(para.toInt() == 5)//西班牙语
+        {
+            HasNorelease = "No hay nota de texto";
+            Hasrelease = "Nota Texto:";
+            StartVoice = "Comenzar a grabar";
+            EndVoice = "Terminar de grabar";
+            SaveOK = "Guardado exitosamente";
+            IsInCancelUpload = "Cancelando carga";
+            CancelUploadOK = "Carga cancelada con éxito";
+            UploadOK = "Subida exitosa";
+            UploadWrong = "Fallo de carga";
+            IsInAutoUpload = "Subiendo";
+            RecordError = "Falló la grabación";
+            WaitShow = "wait please";
+            analysisError = "grabación";
+            fReconnect = "Reconectar el servidor";
+        }
+    }
+}
+
+Hp_Camera_Cap::~Hp_Camera_Cap()
+{
+    delete ui;
+}
+void Hp_Camera_Cap::hp_setDefine_S3x0(bool isSelect)
+{
+    if(isSelect)
+    {
+        isS3X0 = isSelect;
+        QFont font10;
+        font10.setPointSize(10);
+
+        this->setGeometry(96,0,384,272);
+        ui->frame->setGeometry(112,113,160,121);
+        ui->frame_2->setGeometry(0,60,154,40);
+        ui->toolButton_cancel->setGeometry(117,2,36,36);
+        ui->toolButton_save->setGeometry(79,2,36,36);
+        ui->toolButton_text->setGeometry(3,2,36,36);
+        ui->toolButton_voice->setGeometry(41,2,36,36);
+        ui->label->setGeometry(2,2,156,16);
+        ui->label_jpgname->setGeometry(-2,20,170,16);
+        ui->label_jpgname_2->setGeometry(0,40,170,16);
+        ui->progressBar->setGeometry(1,102,154,14);
+        ui->label_time->setGeometry(78,212,40,20);
+        ui->text_warning->setGeometry(ui->text_warning->x() / 1.7,ui->text_warning->y() / 1.7,ui->text_warning->width() / 1.7,ui->text_warning->height() / 1.7);
+        ui->title_warning->setGeometry(ui->title_warning->x() / 1.7,ui->title_warning->y() / 1.7,ui->title_warning->width() / 1.7,ui->title_warning->height() / 1.7);
+        ui->flag_warning->setGeometry(ui->flag_warning->x() / 1.7,ui->flag_warning->y() / 1.7,ui->flag_warning->width() / 1.7,ui->flag_warning->height() / 1.7);
+
+        ui->label->setFont(font10);
+        ui->label_jpgname->setFont(font10);
+        ui->label_jpgname_2->setFont(font10);
+        ui->label_time->setFont(font10);
+        ui->text_warning->setFont(font10);
+        ui->title_warning->setFont(font10);
+        ui->flag_warning->setFont(font10);
+    }
+    hti.hp_setDefine_S3x0(isSelect);
+}
+
+void Hp_Camera_Cap::slot_setTaskTest(QString flag, QString title, QString text)
+{
+    if(m_isPms)
+    {
+        return;
+    }
+    qDebug() << "flag == > " << flag;
+    qDebug() << "title == > " << title;
+    qDebug() << "text == > " << text;
+    if(flag == "Normal")
+    {
+        flag = "正常";
+    }
+    if(flag == "Care")
+    {
+        flag = "关注";
+    }
+    if(flag == "General")
+    {
+        flag = "一般缺陷";
+    }
+    if(flag == "Serious")
+    {
+        flag = "严重缺陷";
+    }
+    if(flag == "Crisis")
+    {
+        flag = "紧急缺陷";
+    }
+    if(flag == "Unknown")
+    {
+        flag = "未知";
+    }
+    if(flag == "正常")
+    {
+        ui->flag_warning->setStyleSheet("background-color: transparent;\
+                color: \"#00ff00\";");
+    }else if(flag == "关注")
+    {
+        ui->flag_warning->setStyleSheet("background-color: transparent;\
+                color: \"#ff0096\";");
+    }else if(flag == "一般缺陷")
+    {
+        ui->flag_warning->setStyleSheet("background-color: transparent;\
+                color: \"#ffff00\";");
+    }else if(flag == "严重缺陷")
+    {
+        ui->flag_warning->setStyleSheet("background-color: transparent;\
+                color: \"#ec7a4d\";");
+    }else if(flag == "紧急缺陷")
+    {
+        ui->flag_warning->setStyleSheet("background-color: transparent;\
+                color: \"#ff0000\";");
+    }else if(flag == "未知")
+    {
+        ui->flag_warning->setStyleSheet("background-color: transparent;\
+                color: \"#ffffff\";");
+    }
+    if(!flag.isEmpty() && !title.isEmpty()) {
+        ui->flag_warning->setText(flag);
+        ui->title_warning->setText(title);
+        ui->text_warning->setText(text);
+        ui->flag_warning->show();
+        ui->title_warning->show();
+        ui->text_warning->show();
+    } else {
+        ui->flag_warning->setText("未知");
+        ui->flag_warning->show();
+    }
+}
+void Hp_Camera_Cap::slot_HideTaskText()
+{
+    ui->flag_warning->close();
+    ui->title_warning->close();
+    ui->text_warning->close();
+}
+void Hp_Camera_Cap::slot_Time_out()
+{
+    signal_core_get_upload_status();//获取自动上传状态
+}
+void Hp_Camera_Cap::changeEvent(QEvent *e)
+{
+    QWidget::changeEvent(e);
+    QString para;
+    switch (e->type())
+    {
+    case QEvent::LanguageChange:
+        ui->retranslateUi(this);
+        para = hpxmlreader.readXml("sys.xml","LANGUAGEPARA","id");
+        if(para !=NULL)
+        {
+            if(para.toInt() == 0)
+            {
+                HasNorelease = "没有文本注释";
+                Hasrelease = "文本注释:";
+                StartVoice = "开始录音";
+                EndVoice = "录音结束";
+                SaveOK = "保存成功";
+                IsInCancelUpload = "正在取消上传";
+                CancelUploadOK = "成功取消上传";
+                UploadOK = "上传成功";
+                UploadWrong = "上传失败";
+                IsInAutoUpload = "正在上传";
+                RecordError = "录制失败";
+                WaitShow = "等待加载，请稍候";
+                analysisError = "播放失败";
+                fReconnect = "请重新连接服务器";
+            }
+            else if(para.toInt() == 1)
+            {
+                HasNorelease = "沒有文本注釋";
+                Hasrelease = "文本注釋:";
+                StartVoice = "開始錄音";
+                EndVoice = "錄音結束";
+                SaveOK = "保存成功";
+                IsInCancelUpload = "正在取消上傳";
+                CancelUploadOK = "成功取消上傳";
+                UploadOK = "上傳成功";
+                UploadWrong = "上傳失敗";
+                IsInAutoUpload = "正在上傳";
+                RecordError = "錄製失敗";
+                WaitShow = "等待加載，請稍候";
+                analysisError = "播放失敗";
+                fReconnect = "請重新連接服務器";
+            }
+            else if(para.toInt() == 2)//english
+            {
+                HasNorelease = "No text note";
+                Hasrelease = "Text note:";
+                StartVoice = "Start recording";
+                EndVoice = "End recording";
+                SaveOK = "Saved successfully";
+                IsInCancelUpload = "Canceling upload";
+                CancelUploadOK = "Upload cancelled successfully";
+                UploadOK = "Upload successful";
+                UploadWrong = "Upload failed";
+                IsInAutoUpload = "Uploading";
+                RecordError = "Recording failed";
+                WaitShow = "wait please";
+                analysisError = "failed";
+                fReconnect = "Reconnect server";
+            }
+            else if(para.toInt() == 3)//俄语
+            {
+                HasNorelease = "Нет заметки";
+                Hasrelease = "текст:";
+                StartVoice = "запись";
+                EndVoice = "оконч запись";
+                SaveOK = "сохранено";
+                IsInCancelUpload = "отменить загрузку";
+                CancelUploadOK = "успешно отменить загрузку";
+                UploadOK = "Загрузка завершена";
+                UploadWrong = "Ошибка загрузки";
+                IsInAutoUpload = "идёт загрузка";
+                RecordError = "Ошибка записи";
+                WaitShow = "wait please";
+                analysisError = "записи";
+                fReconnect = "пересоединённый сервер";
+            }
+            else if(para.toInt() == 4)//匈牙利语
+            {
+                HasNorelease = "nincs szöveg";
+                Hasrelease = "Szöveg:";
+                StartVoice = "Felvétel indítás";
+                EndVoice = "Felvétel leállítás";
+                SaveOK = "Sikeres mentés";
+                IsInCancelUpload = "Feltöltés törlése";
+                CancelUploadOK = "Feltöltés sikeresen törölve";
+                UploadOK = "Feltöltés sikeres";
+                UploadWrong = "Feltöltés sikertelen";
+                IsInAutoUpload = "Feltöltés";
+                RecordError = "Felvétel sikertelen";
+                WaitShow = "wait please";
+                analysisError = "sikertelen";
+                fReconnect = "kiszolgáló újracsatlakozása";
+            }
+            else if(para.toInt() == 5)//西班牙语
+            {
+                HasNorelease = "No hay nota de texto";
+                Hasrelease = "Nota Texto:";
+                StartVoice = "Comenzar a grabar";
+                EndVoice = "Terminar de grabar";
+                SaveOK = "Guardado exitosamente";
+                IsInCancelUpload = "Cancelando carga";
+                CancelUploadOK = "Carga cancelada con éxito";
+                UploadOK = "Subida exitosa";
+                UploadWrong = "Fallo de carga";
+                IsInAutoUpload = "Subiendo";
+                RecordError = "Falló la grabación";
+                WaitShow = "wait please";
+                analysisError = "grabación";
+                fReconnect = "Reconectar el servidor";
+            }
+        }
+        break;
+    default:
+        break;
+    }
+}
+void Hp_Camera_Cap::slot_set_IP_Account_Password(QString ip,QString account,QString password,int errorMsg)
+{
+    if(errorMsg == 1)
+    {
+
+    }else{
+        IP = ip;
+        Account = account;
+        Password = password;
+    }
+}
+void Hp_Camera_Cap::keyPressEvent(QKeyEvent *ev)
+{
+
+}
+
+void Hp_Camera_Cap::keyReleaseEvent(QKeyEvent *ev)//若一直连续不断的按下拍照键，事件是被这个函数接受的，就会导致没有被计算
+{
+    signal_update_lcdoff_time(true);
+    signal_cameracap_set_lcd_offed_state();
+    qDebug() << "Hp_Camera_Cap::keyReleaseEvent --3-- > " << ev->key();
+     switch(ev->key())
+     {
+     case KEY_CAMERA_PICTURE:                    //按键用来 获取图片 0x43
+        if(VoiceStatus == true)
+        {
+            VoiceStatus = false;
+             on_toolButton_voice_toggled(false);
+              ui->toolButton_voice->setChecked(false);
+        }
+        on_toolButton_save_released();
+        break;
+    case KEY_RETURN:
+        qDebug() << "RETRUN ----< >---";
+        if(ui->progressBar->isVisible())
+            return;
+        autoUpdateWhoEmit = false;//表示取消谁触发上传
+        if(autoUpdateIsChecked && IsInAotuUpdate)//若自动上传开关打开，并且处于自动上传状态
+        {
+            qDebug() << " CanCel  UPLoad";
+            if(VoiceStatus == true)
+            {
+                cancelflag = true;
+                VoiceStatus =false;
+                on_toolButton_voice_toggled(false);
+                ui->toolButton_voice->setChecked(false);
+            }
+            IsClickCancelUpload = true;
+            if(mymode == enum_AUP_ftp)
+            {
+                signal_set_Dialog(IsInCancelUpload,-1);
+                if(ui->toolButton_cancel->isEnabled())
+                    ui->toolButton_cancel->setEnabled(false);
+                signal_pc_set_upload_break(1);//取消上传
+            }
+            else if(mymode == enum_AUP_SERVER || mymode == enum_AUP_SERVER_PLUS)
+            {
+                if(VoiceStatus == true)
+                {
+                    cancelflag = true;
+                    VoiceStatus =false;
+                    on_toolButton_voice_toggled(false);
+                    ui->toolButton_voice->setChecked(false);
+                }
+                   // on_toolButton_cancel_released();
+                if( isSuperImage)
+                {
+                    sr_baocunflag = false;
+                    sr_canceflag =true;
+                }
+                isContinuedFreeze = false;
+                signal_pc_key_set_freeze(0);
+                signal_core_key_capture_stop(0);
+                if(Taskmode)
+                {
+                    Hp_TaskPkg::getInstance()->Enable_TreeView(true);
+                }
+                ui->flag_warning->hide();
+                ui->text_warning->hide();
+                ui->title_warning->hide();
+                close();
+                hti.setText("");
+                textflag = false;
+                cap_state =false;
+                qDebug() << " SRV Cancel Upload --1-- ";
+                isInSrvCancelUpload = true;
+                signal_srvupload_cancel();//取消上传
+                qDebug() << " SRV Cancel Upload --2-- ";
+            }
+        }else{//若处正常取消状态
+            if(VoiceStatus == true)
+            {
+                cancelflag = true;
+                VoiceStatus =false;
+                on_toolButton_voice_toggled(false);
+                ui->toolButton_voice->setChecked(false);
+            }
+               // on_toolButton_cancel_released();
+            if( isSuperImage)
+            {
+                sr_baocunflag = false;
+                sr_canceflag =true;
+            }
+            isContinuedFreeze = false;
+            signal_pc_key_set_freeze(0);
+            signal_core_key_capture_stop(0);
+            if(Taskmode)
+            {
+                Hp_TaskPkg::getInstance()->Enable_TreeView(true);
+            }
+            ui->flag_warning->hide();
+            ui->text_warning->hide();
+            ui->title_warning->hide();
+            close();
+            hti.setText("");
+            textflag = false;
+            cap_state =false;
+        }
+         break;
+     }
+}
+void Hp_Camera_Cap::slot_set_cancel_autoupload_state()
+{
+//    delaymsec(2000);
+    qDebug() << "Hp_Camera_Cap::slot_set_cancel_autoupload_state";
+    isInSrvCancelUpload = false;//没啥用
+}
+void Hp_Camera_Cap::hp_setMaxAudioTime(int Time)
+{
+    ui->progressBar->setMaximum(Time);
+//    maxAudioTime = Time;
+}
+void Hp_Camera_Cap::slot_timer_1s()
+{
+    voice_timer++;
+    qDebug() << "Hp_Camera_Cap::slot_timer_1s = " << voice_timer << " ; " << ui->progressBar->value() << " ; " << ui->progressBar->maximum();
+    ui->progressBar->setValue(voice_timer);
+    ui->label_time->setText(QString::number(voice_timer) + "s");
+    if(voice_timer == ui->progressBar->maximum())
+    {
+        timer1s.stop();
+        ui->toolButton_voice->setChecked(false);
+        ui->toolButton_voice->clicked(false);
+        qDebug()<<"\r\n\tvoice end......\t\n";
+    }
+}
+
+void Hp_Camera_Cap::slot_timer_3s()
+{
+    timer3s.stop();
+    isContinuedFreeze=false;
+    qDebug("close cap....");
+     if(cancelflag != true)
+     {
+         cap_state = false;
+         signal_pc_key_set_freeze(0);
+         if(Taskmode)
+         {
+             Hp_TaskPkg::getInstance()->Enable_TreeView(true);
+         }
+         ui->flag_warning->hide();
+         ui->text_warning->hide();
+         ui->title_warning->hide();
+             this->close();
+     }
+         cancelflag=false;
+}
+
+void Hp_Camera_Cap::slot_sync_text()
+{
+
+    if(hti.getText().isEmpty())
+    {
+        textflag = false;
+        ui->label_jpgname->setText(HasNorelease);
+        ui->label_jpgname_2->setText(" ");
+    }
+    else
+    {
+        textflag = true;
+        ui->label_jpgname->setText(Hasrelease+hti.getText());
+        QString text = ui->label_jpgname->text();
+        if(text.length() > 12)
+        {
+            int line_2 = text.length() - 12;
+            QString text_1 = text.left(12);
+            QString text_2 = text.right(line_2);
+            ui->label_jpgname->setText(text_1);
+            ui->label_jpgname_2->setText(text_2);
+            if(text_2.length() > 12)
+            {
+                ui->label_jpgname_2->setText(text_2.left(11) + "...");
+            }
+        }
+        else
+        {
+            ui->label_jpgname->setText(text);
+            ui->label_jpgname_2->setText(" ");
+        }
+    }
+}
+
+void Hp_Camera_Cap::setText(QString str)
+{
+    ui->label->setText(str);
+}
+
+void Hp_Camera_Cap::voice_enable(bool checked)
+{
+    //这里一直被触发
+    //这里表示如果蓝牙未连接，只有蓝牙打开才能录音
+    if(isGuoWangFlag)
+        return;
+//    qDebug() << "checked == > " << !checked << " VoiceStatus == > " << VoiceStatus;
+    if(mainmode == 1 || (mainmode == 5))
+    {
+        //ui->toolButton_voice->setEnabled(false);
+    }else{
+        ui->toolButton_voice->setEnabled(checked);
+        if(IsInAotuUpdate)
+        {
+            ui->toolButton_voice->setEnabled(false);
+        }
+        if((!checked) && VoiceStatus == true)
+        {
+            cancelflag = true;
+            VoiceStatus =false;
+            on_toolButton_voice_toggled(false);
+            ui->toolButton_voice->setChecked(false);
+        }
+    }
+}
+
+void Hp_Camera_Cap::init_cap()
+{
+    voiceflag = false;
+    textflag = false;
+    saveflag = true;
+    ui->progressBar->setVisible(false);
+    ui->label_time->setVisible(false);
+    ui->toolButton_voice->setChecked(false);
+    ui->toolButton_text->setChecked(false);
+    if(hti.getText().isEmpty())
+    {
+        textflag = false;
+        ui->label_jpgname->setText(HasNorelease);
+        ui->label_jpgname_2->setText(" ");
+    }
+    else
+    {
+        textflag = true;
+        ui->label_jpgname->setText(Hasrelease+hti.getText());
+        QString text = ui->label_jpgname->text();
+        if(text.length() > 12)
+        {
+            int line_2 = text.length() - 12;
+            QString text_1 = text.left(12);
+            QString text_2 = text.right(line_2);
+            ui->label_jpgname->setText(text_1);
+            ui->label_jpgname_2->setText(text_2);
+            if(text_2.length() > 12)
+            {
+                ui->label_jpgname_2->setText(text_2.left(11) + "...");
+            }
+        }
+        else
+        {
+            ui->label_jpgname->setText(text);
+            ui->label_jpgname_2->setText(" ");
+        }
+    }
+
+}
+void Hp_Camera_Cap::ModeEnable(int mode)
+{
+    mainmode  = mode;
+    if(mode == 1 || (mode == 5))
+    {
+        if(ui->toolButton_text->isEnabled())
+            ui->toolButton_text->setEnabled(false);
+        if(ui->toolButton_voice->isEnabled())
+            ui->toolButton_voice->setEnabled(false);
+    }else{
+        if(!ui->toolButton_text->isEnabled())
+            ui->toolButton_text->setEnabled(true);
+    }
+
+}
+void Hp_Camera_Cap::slot_autoUpdate_setchecked(bool checked)
+{
+    autoUpdateIsChecked = checked;
+}
+void Hp_Camera_Cap::slot_pc_cmd_set_pc_pic(unsigned char return_value)
+{
+    if(autoUpdateonce)
+    {
+        return;
+    }
+    return_value = (char)return_value;
+    qDebug("Hp_Camera_Cap::slot_pc_cmd_set_pc_pic return_value:0x%02x",return_value);
+
+    if(mainmode != 1 && (mainmode != 5))
+    {
+        if(!ui->toolButton_text->isEnabled())
+            ui->toolButton_text->setEnabled(true);
+    }
+    if(!ui->toolButton_save->isEnabled())
+        ui->toolButton_save->setEnabled(true);
+    if(!ui->toolButton_cancel->isEnabled())
+        ui->toolButton_cancel->setEnabled(true);
+    if(AutoUpdateGetStatus->isActive())
+        AutoUpdateGetStatus->stop();//关闭定时器
+    IsInAotuUpdate = false;//不处于自动上传模式
+    if(IsClickCancelUpload)
+    {
+        IsClickCancelUpload = false;
+        ui->label->setText(CancelUploadOK);
+        signal_set_Dialog(CancelUploadOK,1);
+    }else{
+        if(return_value == RE_OK)
+        {
+            ui->label->setText(UploadOK);
+            signal_set_Dialog(UploadOK,1);
+        }else
+        {
+            ui->label->setText(UploadWrong);
+            signal_set_Dialog(UploadWrong,-1);
+        }
+    }
+
+#if 1
+//以下用于调试===============================
+    qDebug() << return_value << __func__ << __LINE__;
+    if(return_value == -1)
+    {
+        qDebug() << "Error: connect to server";
+    }
+    else if(return_value == -2)
+    {
+        qDebug() << "Error: can't get socket";
+    }
+    else if(return_value == -3)
+    {
+        qDebug() << "Error: login";
+    }
+    else if(return_value == -4)
+    {
+        qDebug() << "Error: password";
+    }
+    else if(return_value == -5)
+    {
+        qDebug() << "Error: fileinfo";
+    }
+    else if(return_value == -6)
+    {
+        qDebug() << "Error: can't get data socket";
+    }
+    else if(return_value == -7)
+    {
+        qDebug() << "Error: can't get listen socket";
+    }
+    else if(return_value == -8)
+    {
+        qDebug() << "Error: can't make socket address";
+    }
+    else if(return_value == -9)
+    {
+        qDebug() << "Error: file transport";
+    }
+    else if(return_value == -10)
+    {
+        qDebug() << "Error: connect with socket";
+    }
+    else if(return_value == -11)
+    {
+        qDebug() << "Error: no such filename";
+    }
+    else if(return_value == -12)
+    {
+        qDebug() << "Error: file upload wrong";
+    }else if(return_value == -13)
+    {
+        qDebug() << "Error: fail to make transport socket";
+    }
+    else if(return_value == -14)
+    {
+        qDebug() << "Error: server IP is wrrong";
+    }
+    else if(return_value == -15)
+    {
+        qDebug() << "Error: socket is break";
+    }else
+    {
+        qDebug() << "Error: unknown";
+    }
+//以上用于调试===============================
+#endif
+
+    //ui->label_jpgname->setText(name);
+    isContinuedFreeze = false;
+//        signal_pc_key_set_freeze(0);
+    if(sr_canceflag ==true &&isSuperImage)
+    {
+        sr_canceflag = false;
+        qDebug("close ccc....");
+        cap_state = false;
+        signal_pc_key_set_freeze(0);
+        if(Taskmode)
+        {
+            Hp_TaskPkg::getInstance()->Enable_TreeView(true);
+        }
+        ui->flag_warning->hide();
+        ui->text_warning->hide();
+        ui->title_warning->hide();
+        this->close();
+        return ;
+    }
+    if(cancelflag==true)
+    {
+        cancelflag=false;
+        timer3s.start();
+        signal_pc_key_set_freeze(0);
+        return ;
+    }
+    timer3s.start(1000);
+}
+void Hp_Camera_Cap::on_toolButton_text_released()         //点击文本按钮
+{
+    signal_update_lcdoff_time(false);
+    hti.setText(hti.getText());
+    hti.show();
+}
+
+void Hp_Camera_Cap::on_toolButton_save_released()   //保存按钮
+{
+    qDebug() << "Hp_Camera_Cap::on_toolButton_save_released()";
+    saveflag = false;
+    autoUpdateWhoEmit = true;//表示需要上传
+    signal_update_lcdoff_time(false);
+    signal_wait_warn_save();
+    if(voiceflag)
+    {
+        if(textflag)
+        {
+            QString str;
+            str = hti.getText();
+            std::string str_t = str.toStdString();
+            char  n_n[128];
+            int num = str_t.length();
+            str_t.copy(n_n,num,0);
+            *(n_n + num) = '\0';
+
+            signal_core_key_add_text(n_n);
+        }
+        else
+        {
+            signal_core_key_capture_stop(1);
+        }
+    }
+    else
+    {
+        int temp=0;
+        if( isSuperImage && !m_isPms && (5 != mainmode))
+        {
+            if(m_isZoomSave && m_isKjg)
+                return;
+            temp |= e_picture_super_gray;
+        }
+        if(m_isZoomSave && m_isKjg)
+            temp = e_picture_resize;
+        if(isGuoWangFlag)
+        {
+            temp |= e_picture_guowang;
+        }
+        if(isSisFlag && !Taskmode && isSisFlag)//是否扫一扫
+        {
+            temp |= e_picture_qrcode;
+        }
+        if(!pms_xml.isEmpty() && !pms_filename.isEmpty())//若开启了pms
+        {
+            temp |= e_picture_pms;
+        }
+        else if(m_imageFormat == 1 && !Taskmode)
+            temp |= e_picture_bmp;
+        qDebug("Hp_Camera_Cap::on_toolButton_save_released--0X%x--",temp);
+        signal_core_key_capture_start(temp);
+    }
+    voiceflag = false;
+}
+
+void Hp_Camera_Cap::on_toolButton_cancel_released()
+{
+    qDebug() << "on_toolButton_cancel_released";
+    autoUpdateWhoEmit = false;//表示取消上传
+    signal_update_lcdoff_time(false);
+    if(autoUpdateIsChecked && IsInAotuUpdate)//若自动上传开关打开，并且处于自动上传状态
+    {
+        qDebug() << " CanCel  UPLoad";
+        IsClickCancelUpload = true;
+        if(mymode == enum_AUP_ftp)
+        {
+            signal_set_Dialog(IsInCancelUpload,-1);
+            if(ui->toolButton_cancel->isEnabled())
+                ui->toolButton_cancel->setEnabled(false);
+            signal_pc_set_upload_break(1);//取消上传
+        }else if(mymode == enum_AUP_SERVER || mymode == enum_AUP_SERVER_PLUS)
+        {
+            signal_pc_key_set_freeze(0);
+            if( isSuperImage)
+            {
+                sr_baocunflag = false;
+                sr_canceflag =true;
+            }
+            isContinuedFreeze = false;
+            signal_core_key_capture_stop(0);
+            if(Taskmode)
+            {
+                Hp_TaskPkg::getInstance()->Enable_TreeView(true);
+            }
+            close();
+            hti.setText("");
+            textflag = false;
+            cap_state =false;
+            qDebug() << " SRV Cancel Upload --1-- ";
+            isInSrvCancelUpload = true;
+            signal_srvupload_cancel();//取消上传
+            qDebug() << " SRV Cancel Upload --2-- ";
+        }
+    }else{//若处正常取消状态
+        signal_pc_key_set_freeze(0);
+        if( isSuperImage)
+        {
+            sr_baocunflag = false;
+            sr_canceflag =true;
+        }
+        isContinuedFreeze = false;
+        signal_core_key_capture_stop(0);
+        if(Taskmode)
+        {
+            Hp_TaskPkg::getInstance()->Enable_TreeView(true);
+        }
+        close();
+        hti.setText("");
+        textflag = false;
+        cap_state =false;
+    }
+}
+void Hp_Camera_Cap::slot_pc_set_upload_break(unsigned char return_value)
+{
+    if(autoUpdateonce)
+    {
+        return;
+    }
+    qDebug("Hp_Camera_Cap::slot_pc_set_upload_break:%02x",return_value);
+}
+void Hp_Camera_Cap::slot_core_get_upload_status(unsigned char return_value,int upload_status)
+{
+    qDebug() << "slot_core_get_upload_status: " << return_value << " ; " << upload_status;
+    if(return_value == RE_OK)
+    {
+        if(upload_status == 3)
+        {
+            qDebug() << "IS In Upload";
+        }
+        else if(upload_status == 2)
+        {
+            qDebug() << "IS In Transport With Server";
+        }
+        else if(upload_status == 1)
+        {
+            qDebug() << "IS In Login";
+        }
+        else if(upload_status == 0)
+        {
+            qDebug() << "IS In Connect To Server";
+        }
+        else if(upload_status == -1)
+        {
+            qDebug() << "IS In UnActive";
+        }else
+        {
+            qDebug() << "IS In Unknown Active";
+        }
+    }
+}
+void Hp_Camera_Cap::slot_cameracap_set_lcd_offed_state()
+{
+     signal_cameracap_set_lcd_offed_state();
+}
+
+void Hp_Camera_Cap::on_toolButton_voice_toggled(bool checked)           //录音按钮
+{
+    signal_update_lcdoff_time(false);
+    if(!saveflag)
+    {
+        ui->toolButton_voice->setChecked(false);
+        return;
+    }
+    qDebug()<<"on_toolButton_voice_toggled:"<<checked << voiceflag;
+    if(checked)         //点击开始录音
+    {
+        ui->label_time->setText("0s");
+        VoiceStatus =true;
+        if(!voiceflag)                              //点击第一下立马抬起来
+        {
+            voiceflag = true;
+            int temp = 1;
+            if( isSuperImage && !m_isPms && (5 != mainmode))
+            {
+                if(m_isZoomSave && m_isKjg)
+                    return;
+                temp |= e_picture_super_gray;
+            }
+            if(m_isZoomSave && m_isKjg)
+                temp = e_picture_resize;
+            if(isGuoWangFlag)
+                temp |= e_picture_guowang;
+            if(isSisFlag && !Taskmode && isSisFlag)//是否扫一扫
+                temp |= e_picture_qrcode;
+            if(!pms_xml.isEmpty() && !pms_filename.isEmpty())//若开启了pms
+                temp |= e_picture_pms;
+            else if(m_imageFormat == 1 && !Taskmode)
+                temp |= e_picture_bmp;
+            signal_core_key_capture_start(temp);
+        }
+        else                     //录音真正开始时执行
+        {
+            signal_core_key_add_audio_start();
+        }
+    }
+    else                    //点击结束录音
+    {
+        VoiceStatus =false;
+        timer1s.stop();
+        signal_core_key_add_audio_stop();
+    }
+
+    ui->toolButton_cancel->setEnabled(!checked);
+    ui->toolButton_save->setEnabled(!checked);
+    ui->toolButton_text->setEnabled(!checked);
+
+}
+
+void Hp_Camera_Cap::slot_pc_sys_set_analog_video(unsigned char return_value)
+{
+    qDebug() << "Hp_Camera_Cap::slot_pc_sys_set_analog_video(unsigned char)";
+    if(this->isVisible())
+        signal_core_key_add_audio_start();
+}
+
+void Hp_Camera_Cap::slot_core_key_add_audio_start(unsigned char return_value)           //开始录音
+{
+    qDebug("slot_core_key_add_audio_start:%02x",return_value);
+    if(!this->isVisible())
+        return;
+    if(return_value == RE_OK)
+    {
+        ui->label->setText(StartVoice);
+        ui->progressBar->setValue(0);
+        voice_timer = 0;
+        timer1s.start(1000);
+        ui->progressBar->setVisible(true);
+        ui->label_time->setVisible(true);
+    }else{
+
+        if(return_value == RE_ERR_DEV_AUDIO)
+            qDebug() << "RE_ERR_AUDIO";
+        ui->label->setText(StartVoice);
+        ui->progressBar->setValue(0);
+        voice_timer = 0;
+        timer1s.start(1000);
+        ui->progressBar->setVisible(true);
+        ui->label_time->setVisible(true);
+        delaymsec(1000);
+//        signal_core_key_add_audio_stop();
+        ui->toolButton_voice->setChecked(false);//会自动触发停止函数
+    }
+}
+//延时函数
+void Hp_Camera_Cap::delaymsec(int msec)
+{
+    QTime dieTime = QTime::currentTime().addMSecs(msec);
+    while( QTime::currentTime() < dieTime )
+    QCoreApplication::processEvents(QEventLoop::AllEvents, 100);
+}
+void Hp_Camera_Cap::slot_core_key_add_audio_stop(unsigned char return_value)            //结束录音
+{
+    qDebug("slot_core_key_add_audio_stop:%02x",return_value);
+    if(!this->isVisible())
+        return;
+    if(return_value == RE_OK)
+    {
+        ui->label->setText(EndVoice);
+        timer1s.stop();
+        ui->progressBar->setVisible(false);
+        ui->label_time->setVisible(false);
+    }
+
+    if(return_value == RE_ERR_DEV_AUDIO)
+    {
+        ui->label->setText(RecordError);
+        ui->progressBar->setVisible(false);
+        ui->label_time->setVisible(false);
+        ui->toolButton_save->setEnabled(false);
+    }
+}
+
+void Hp_Camera_Cap::slot_core_key_add_text(unsigned char return_value)      //添加文本
+{
+    qDebug("slot_core_key_add_text:%02x",return_value);
+    if(return_value == RE_OK)
+    {
+        signal_core_key_capture_stop(1);
+    }
+    hti.setText("");     //自己添加
+}
+
+void Hp_Camera_Cap::slot_core_key_capture_start(unsigned char return_value)             //没有录音，只有注释，发送信号，又接收到的处理函数
+{
+    qDebug("slot_core_key_capture_start:%02x",return_value);
+    qDebug()<< "voiceflag : textflag" << voiceflag<<textflag;
+//    saveflag = true;
+    if(return_value == RE_OK)
+    {
+        if(sr_baocunflag == true)
+        {
+            sr_baocunflag = false;
+            return ;
+        }
+        if(voiceflag)
+        {
+            signal_set_audio(true, 0);
+        }
+        else
+        {
+            if(textflag)
+            {
+               QString str;
+               str = hti.getText();
+               std::string str_t = str.toStdString();
+               char  n_n[128];
+               int num = str_t.length();
+               str_t.copy(n_n,num,0);
+               *(n_n + num) = '\0';
+
+                signal_core_key_add_text(n_n);
+                textflag =false;   //自己添加
+                hti.setText("");     //自己添加
+            }
+            else
+            {
+                qDebug() << " Hp_Camera_Cap signal_core_key_capture_stop";
+                signal_core_key_capture_stop(1);
+            }
+        }
+    }
+    else
+    {
+//        if(return_value == RE_ERR_STITCHING_IMAGE || return_value == RE_ERR_STITCHING_MISMATCH || return_value == RE_ERR_STITCHING_REVERSE)
+//        {
+        signal_cameracap_panorama_errmsg(return_value);
+
+//        system("cp *.yuv /run/media/mmcblk2p1/");
+//        system("cp *.gray /run/media/mmcblk2p1/");
+//        system("sync");
+
+//        system("sync");
+        signal_pc_key_set_freeze(0);
+//        }
+        qDebug() << "Hp_Camera_Cap::slot_core_key_capture_start" << return_value;
+
+    }
+}
+
+void Hp_Camera_Cap::slot_core_key_panorama_pic_start(unsigned char return_value)             //没有录音，只有注释，发送信号，又接收到的处理函数
+{
+    if(return_value == RE_OK)
+    {
+        signal_core_key_panorama_pic_stop(1);
+    }
+}
+
+ftp_para Hp_Camera_Cap::StartAutoUpload_once()
+{
+    ftp_para para;
+    //strcpy(para.FileName,filename.toLocal8Bit().data());
+    strcpy(para.HostIP,IP.toLocal8Bit().data());
+    strcpy(para.UserName,Account.toLocal8Bit().data());
+    strcpy(para.Password,Password.toLocal8Bit().data());
+    return para;
+}
+//当解冻成功时触发
+void Hp_Camera_Cap::slot_core_key_capture_stop(unsigned char return_value, QString name)    //有录音没有注释
+{
+    qDebug("slot_core_key_capture_stop:%02x",return_value);
+    qDebug() << "photo Name : " << name;
+    if(return_value == RE_OK)
+    {
+        QString filename;
+        //可能是为了去掉多余的后缀做的处理
+        if(name.contains(".bmp"))
+            filename = name.left(name.indexOf(".bmp")) + ".bmp";
+        else if(name.contains(".jpg"))
+            filename = name.left(name.indexOf(".jpg")) + ".jpg";
+        //文件名 存储复制前复制后的
+        QString m_oldFileName = filename;
+        QString m_newFileName = filename;
+        //
+        QString uploadPathName = "/run/media/mmcblk2p1/DCIM/" + filename;
+        if(Taskmode)
+        {
+            QString filenameret = "/run/media/mmcblk2p1/DCIM/"+filename;
+            if(QFile::exists(filenameret))
+            {
+                if(!pms_xml.isEmpty() && !pms_filename.isEmpty())
+                {
+//                    changeTaskfilename(pms_filename);//若有pms则使用pms的命名方式
+                    //修改json并复制图像
+                    signal_should_make_pms_json(filename);
+//                    signal_should_make_pms_json(time_ret + "-" + pms_filename + ".ir.jpg");//这里的filename是没有对语音识别进行处理的
+                }else{
+                    qDebug() << "--Rename_Img--";
+                    m_taskTempInfos.clear();
+                    changeTaskfilename(filename);
+                    m_newFileName = filename;
+                    qDebug() << "+++++++++++++++++++++++++++++++++++++++filename" << filename;
+                }
+            }
+        }
+#if RENAMEFILE_TIME_NUMBER
+        if(!Taskmode && !filename.contains("GW",Qt::CaseInsensitive)){
+            //获取当前时间
+            QDateTime currentTime = QDateTime::currentDateTime(); // 获取当前本地时间
+            QString currentTimeString = currentTime.toString("yyyyMMddHHmm");
+            // 遍历SD卡内文件名为年月日时分_编号的文件，找出最大编号并重命名当前文件
+            QDir dir(dateFolderPath);
+            if (dir.exists()) {
+                //先过滤文件再轮询
+                QStringList nameFilters;
+                nameFilters << currentTimeString + "_*.jpg";
+                nameFilters << currentTimeString + "_*.bmp";
+                dir.setNameFilters(nameFilters);
+                QFileInfoList fileList = dir.entryInfoList(QDir::Files);
+
+                // 找出最大编号
+                int maxNumber = 0;
+                foreach (QFileInfo fileInfo, fileList) {
+                    QString findFileName = fileInfo.fileName();
+                    QString base = findFileName.split(".").first();
+                    int number = base.split("_").last().toInt();
+                    if(number>maxNumber){
+                        maxNumber = number;
+                    }
+                }
+                int newNumber = maxNumber + 1;
+
+                // 构建新文件名
+                QString ext = filename.right(filename.length() - filename.lastIndexOf("."));
+                m_newFileName = currentTimeString + "_" + QString::number(newNumber) + ext;
+
+                // 构建旧文件路径和新文件路径
+                QString newFileNamePath = dateFolderPath + m_newFileName;
+                QString oldFileNamePath = "/run/media/mmcblk2p1/DCIM/" + m_oldFileName;
+                uploadPathName = newFileNamePath;
+                QString newCmd = QString("mv ") + oldFileNamePath + " " + newFileNamePath;
+                qDebug() << "RENAME !!! == > " << newCmd;
+                system(newCmd.toUtf8().data());
+                system("sync");
+            }
+        }
+#else
+        if(m_isKjg && !Taskmode)
+        {
+            qDebug() << "--(m_isKjg && m_isZoomSave) && !Taskmode--";
+            QString oldfilename = "/run/media/mmcblk2p1/DCIM/" + m_newFileName;
+            QString newfilename = "/run/media/mmcblk2p1/DCIM/" + m_newFileName.split(".").at(0) + "_ccd." + m_newFileName.split(".").at(1);
+            m_newFileName = newfilename;
+            uploadPathName = m_newFileName;
+            QString newCmd = QString("mv ") + oldfilename + " " + newfilename;
+            qDebug() << "RENAME !!! == > " << newCmd;
+            system(newCmd.toUtf8().data());
+            system("sync");
+        }
+#endif
+        if(Taskmode)
+        {
+            uploadPathName = dateFolderPath + m_newFileName;
+        }
+        ui->flag_warning->clear();
+        ui->title_warning->clear();
+        ui->text_warning->clear();
+
+        ui->label->setText(SaveOK);
+        ui->label_jpgname->setText(filename);
+        QString text = ui->label_jpgname->text();
+
+        signal_sort_add_new_file(uploadPathName);
+        if(text.length() > 20)
+        {
+            int line_2 = text.length() - 20;
+            QString text_1 = text.left(20);
+            QString text_2 = text.right(line_2);
+            ui->label_jpgname->setText(text_1);
+            ui->label_jpgname_2->setText(text_2);
+            if(text_2.length() > 12)
+            {
+                ui->label_jpgname_2->setText(text_2.left(11) + "...");
+            }
+        }
+        else
+        {
+            ui->label_jpgname->setText(text);
+            ui->label_jpgname_2->setText(" ");
+        }
+        qDebug() << "autoUpdateIsChecked : " << autoUpdateIsChecked << " autoUpdateWhoEmit : " << autoUpdateWhoEmit;
+        qDebug() << "pms_xml.isEmpty() : " << pms_xml.isEmpty() << " pms_filename.isEmpty() : " << pms_filename.isEmpty();
+        if(autoUpdateIsChecked && autoUpdateWhoEmit && pms_xml.isEmpty() && pms_filename.isEmpty())//判断设置中自动上传按钮是否选中,并且需要上传,PMS是不上传
+        {
+            autoUpdateWhoEmit = false;//将谁触发的状态便跟为没人触发
+            IsInAotuUpdate = true;
+            ui->label->setText(IsInAutoUpload);
+            if(ui->toolButton_save->isEnabled())
+                ui->toolButton_save->setEnabled(false);
+            if(ui->toolButton_text->isEnabled())
+                ui->toolButton_text->setEnabled(false);
+            if(ui->toolButton_voice->isEnabled())
+                ui->toolButton_voice->setEnabled(false);
+
+            if(mymode == enum_AUP_ftp)
+            {
+                ftp_para para;
+                strcpy(para.FileName,uploadPathName.toLocal8Bit().data());
+                strcpy(para.HostIP,IP.toLocal8Bit().data());
+                strcpy(para.UserName,Account.toLocal8Bit().data());
+                strcpy(para.Password,Password.toLocal8Bit().data());
+
+                qDebug() << "autoUpdate filename : " << uploadPathName;
+                qDebug() << "autoUpdate IP : " << IP;
+                qDebug() << "autoUpdate Account : " << Account;
+                qDebug() << "autoUpdate Password : " << Password;
+
+                signal_pc_cmd_set_pc_pic(para);
+                if(!AutoUpdateGetStatus->isActive())
+                    AutoUpdateGetStatus->start();
+            }else if(mymode == enum_AUP_SERVER || mymode == enum_AUP_SERVER_PLUS)
+            {
+                qDebug() << "Start autoUpLoad Filename : " << uploadPathName;
+                signal_set_Dialog(IsInAutoUpload,0);
+                QByteArray barray = uploadPathName.toUtf8();
+                char *mm = barray.data();
+                signal_pc_cmd_set_pc_pic_srv(mm);
+            }
+        }else{
+            isContinuedFreeze = false;
+    //        signal_pc_key_set_freeze(0);
+            if(sr_canceflag ==true && isSuperImage)
+            {
+                sr_canceflag = false;
+                qDebug("close ccc....");
+                cap_state = false;
+                signal_pc_key_set_freeze(0);
+                if(Taskmode)
+                {
+                    Hp_TaskPkg::getInstance()->Enable_TreeView(true);
+                }
+                ui->flag_warning->hide();
+                ui->text_warning->hide();
+                ui->title_warning->hide();
+                this->close();
+                return ;
+            }
+
+            signal_cam_key_capture_stop(return_value, name);
+            qDebug() << "cancelflag = " << cancelflag;
+            if(cancelflag==true)
+            {
+                cancelflag=false;
+                timer3s.start();
+                signal_pc_key_set_freeze(0);
+                return ;
+            }
+            timer3s.start(1000);
+        }
+    }
+}
+void Hp_Camera_Cap::slot_pc_cmd_set_pc_pic_srv(unsigned char return_value)
+{
+    if(autoUpdateonce)
+    {
+        return;
+    }
+    qDebug("Hp_Camera_Cap::slot_pc_cmd_set_pc_pic_srv:return_value:0x%02x",return_value);
+
+    if(!ui->toolButton_save->isEnabled())
+        ui->toolButton_save->setEnabled(true);
+    if(!ui->toolButton_cancel->isEnabled())
+        ui->toolButton_cancel->setEnabled(true);
+    IsInAotuUpdate = false;//不处于自动上传模式
+    if(return_value == RE_OK)
+    {
+        ui->label->setText(UploadOK);
+        signal_set_Dialog(UploadOK,1);
+    }else
+    {
+        ui->label->setText(UploadWrong);
+        signal_set_Dialog(UploadWrong,0);
+        if(mymode == enum_AUP_SERVER)//只有这个模式才断开连接
+        {
+            delaymsec(2000);
+            signal_set_Dialog(fReconnect,0);
+            signal_srvupload_failed();
+        }
+    }
+
+    if(return_value == RE_ERR_NET_CONFLICT)
+    {
+        qDebug() << "RE_ERR_NET_CONFLICT";
+    }else if(return_value == RE_ERR_NET_STATUS)
+    {
+        qDebug() << "RE_ERR_NET_STATUS";
+    }else if(return_value == RE_ERR_NET_INIT)
+    {
+        qDebug() << "RE_ERR_NET_INIT";
+    }else if(return_value == RE_ERR_NET_TRANS)
+    {
+        qDebug() << "RE_ERR_NET_TRANS";
+    }else if(return_value == RE_ERR_NET_IP_INVALID)
+    {
+        qDebug() << "RE_ERR_NET_IP_INVALID";
+    }else if(return_value == RE_ERR_NET_RECV)
+    {
+        qDebug() << "RE_ERR_NET_RECV";
+    }else if(return_value == RE_ERR_SERVER_RESPONSE)
+    {
+        qDebug() << "RE_ERR_SERVER_RESPONSE";
+    }
+
+    //一下是上传成功后的结果
+    isContinuedFreeze = false;
+    //signal_pc_key_set_freeze(0);
+    if(sr_canceflag ==true && isSuperImage)
+    {
+        sr_canceflag = false;
+        qDebug("close ccc....");
+        cap_state = false;
+        signal_pc_key_set_freeze(0);
+        if(Taskmode)
+        {
+            Hp_TaskPkg::getInstance()->Enable_TreeView(true);
+        }
+        ui->flag_warning->hide();
+        ui->text_warning->hide();
+        ui->title_warning->hide();
+        this->close();
+        return ;
+    }
+    qDebug() << "cancelflag = " << cancelflag;
+    if(Taskmode)
+    {
+#if TaiZhang_Mode
+        Hp_TaskPkg::getInstance()->Enable_TreeView(true);
+#endif
+    }
+    if(cancelflag==true)
+    {
+        cancelflag=false;
+        timer3s.start();
+        signal_pc_key_set_freeze(0);
+        return ;
+    }
+    timer3s.start(100);
+}
+void Hp_Camera_Cap::getTaskPicInfo(QString filename_ret)
+{}
+
+void Hp_Camera_Cap::changeTaskfilename(QString& filename_ret)
+{
+    QString picFileName = filename_ret;
+#if TaiZhang_Mode
+    /* 读文件头 */
+    QFile jpg_file_in(QString("%1%2").arg(SAVE_IMAGE_PATH).arg(filename_ret));
+    char* p_jpg_data;
+    if(!jpg_file_in.exists()) {
+        qDebug() << "#### [Hp_Camera_Cap] [RenameImage] : " << filename_ret << " 文件不存在 ！！！ ";
+        return;
+    }
+    if(!jpg_file_in.open(QIODevice::ReadOnly)) {
+        qDebug() << "#### [Hp_Camera_Cap] [RenameImage] : " << filename_ret << " 打开失败 ！！！ ";
+        return;
+    }
+    p_jpg_data = (char *)malloc(jpg_file_in.size());
+    if(p_jpg_data == NULL) {
+        qDebug() << "#### [Hp_Camera_Cap] [RenameImage] : p_jpg_data == NULL ！！！ ";
+        jpg_file_in.close();
+        free(p_jpg_data);
+        return;
+    }
+    QDataStream in(&jpg_file_in);
+    if(in.readRawData(p_jpg_data,jpg_file_in.size())!= jpg_file_in.size()) {
+        qDebug() << "#### [Hp_Camera_Cap] [RenameImage] : in.readRawData ！！！ ";
+        jpg_file_in.close();
+        free(p_jpg_data);
+        return;
+    }
+    int filesize = jpg_file_in.size();
+    tagnum_t tag_num_2;
+    memcpy((char *)&tag_num_2,p_jpg_data+filesize-sizeof(tagnum_t),sizeof(tagnum_t));
+    if(tag_num_2.nTag != TAGNUM_TAG) {
+        qDebug() << "#### [Hp_Camera_Cap] [RenameImage] : tag_num_2.nTag != TAGNUM_TAG ！！！ ";
+        jpg_file_in.close();
+        free(p_jpg_data);
+        return;
+    }
+    taginfo_t tag_info[7];
+    memcpy((char *)tag_info, p_jpg_data+filesize-sizeof(tagnum_t)-sizeof(taginfo_t)*tag_num_2.num,sizeof(taginfo_t)*tag_num_2.num);
+    image_head_t head;
+    memset((char *)&head,0,sizeof(image_head_t));
+    int nDesLen = 0;
+    int nDesLen2 = 0;
+    int nDesLen3 = 0;
+    int nDesLen4 = 0;
+    int nDesLen5 = 0;
+    int nDesLen6 = 0;
+    int nLessLen;
+    int nLessLen2 = 0;
+    int nLessLen3 = 0;
+    int nLessLen4 = 0;
+    int nLessLen5 = 0;
+    int nLessLen6 = 0;
+    for(int i=0;i<tag_num_2.num;i++)
+    {
+        if(tag_info[i].nTag == FILEINFO_TAG)
+        {
+            memcpy((char *)&nDesLen, p_jpg_data + tag_info[i].offset + 4, 4);
+            nLessLen = nDesLen;//拷贝内容长度
+//            qDebug() << "’ndesLen" << nDesLen << sizeof(file_info_t);
+            if(nDesLen > sizeof(file_info_t))
+                nLessLen = sizeof(file_info_t);
+            memcpy((char *)&head, p_jpg_data + tag_info[i].offset, nLessLen);
+
+            memcpy((char *)&nDesLen2, p_jpg_data + tag_info[i].offset + nDesLen + 4, 4);
+            nLessLen2 = nDesLen2;//拷贝内容长度
+            if(nDesLen2 > sizeof(product_info_t))
+                nLessLen2 = sizeof(product_info_t);
+//            qDebug() << "’nLessLen2" << nLessLen2 << head.file.nDesLen << sizeof(product_info_t);
+            memcpy((char *)&head + sizeof(file_info_t), p_jpg_data + tag_info[i].offset + nDesLen, nLessLen2);
+
+            memcpy((char *)&nDesLen3, p_jpg_data + tag_info[i].offset + nDesLen + nDesLen2 + 4,4);
+            nLessLen3 = nDesLen3;//拷贝内容长度
+            if(nDesLen3 > sizeof(color_info_t))
+                nLessLen3 = sizeof(color_info_t);
+//            qDebug() << "’nLessLen3" << nLessLen3 << head.product.nDesLen << sizeof(color_info_t);
+            memcpy((char *)&head + sizeof(file_info_t) + sizeof(product_info_t),
+                   p_jpg_data + tag_info[i].offset + nLessLen2 + nDesLen, nLessLen3);
+
+            memcpy((char *)&nDesLen4, p_jpg_data + tag_info[i].offset + nDesLen + nDesLen2 + nDesLen3 + 4,4);
+            nLessLen4 = nDesLen4;//拷贝内容长度
+//            qDebug() << "’nLessLen3" << nLessLen4 << head.color.nDesLen << sizeof(alg_info_t);
+            if(nDesLen4 > sizeof(alg_info_t))
+                nLessLen4 = sizeof(alg_info_t);
+            memcpy((char *)&head  + sizeof(file_info_t) + sizeof(product_info_t) + sizeof(color_info_t),
+                   p_jpg_data + tag_info[i].offset + nDesLen + nDesLen2 + nDesLen3, nLessLen4);
+
+            memcpy((char *)&nDesLen5, p_jpg_data + tag_info[i].offset + nDesLen + nDesLen2 + nDesLen3 + nDesLen4 + 4,4);
+            nLessLen5 = nDesLen5;//拷贝内容长度
+//            qDebug() << "’nLessLen3" << nLessLen5 << head.alg.nDesLen << sizeof(temper_info_t);
+            if(nDesLen5 > sizeof(temper_info_t))
+                nLessLen5 = sizeof(temper_info_t);
+            memcpy((char *)&head  + sizeof(file_info_t) + sizeof(product_info_t) + sizeof(alg_info_t) + sizeof(color_info_t),
+                   p_jpg_data + tag_info[i].offset + nDesLen + nDesLen2 + nDesLen3 + nDesLen4, nLessLen5);
+
+            memcpy((char *)&nDesLen6, p_jpg_data + tag_info[i].offset + nDesLen + nDesLen2 + nDesLen3 + nDesLen4 + nDesLen5 + 4,4);
+            nLessLen6 = nDesLen6;//拷贝内容长度
+//            qDebug() << "’nLessLen3" << nLessLen5 << head.alg.nDesLen << sizeof(temper_info_t);
+            if(nDesLen6 > sizeof(item_data_t))
+                nLessLen6 = sizeof(item_data_t);
+            memcpy((char *)&head  + sizeof(file_info_t) + sizeof(product_info_t) + sizeof(alg_info_t) + sizeof(color_info_t) + sizeof(temper_info_t),
+                   p_jpg_data + tag_info[i].offset + nDesLen + nDesLen2 + nDesLen3 + nDesLen4 + nLessLen5, nLessLen6);
+            qDebug() << "head.file.PicName" << head.file.PicName;
+            picFileName = head.file.PicName;
+            m_pointList.clear();
+            m_lineList.clear();
+            m_rectList.clear();
+            m_circleList.clear();
+            m_polygonList.clear();
+            int nLessLenAll = tag_info[i].offset + nDesLen + nDesLen2 + nDesLen3 + nDesLen4 + nDesLen5 + nDesLen6;
+
+            int pointCount = head.item.temper_point.item_num;
+            for(int i = 0; i < pointCount; i++)
+            {
+                POINT_PARA_t pointPara;
+                memcpy((char *)&pointPara, p_jpg_data + nLessLenAll, sizeof(POINT_PARA_t));
+                nLessLenAll += sizeof(POINT_PARA_t);
+                m_pointList.append(pointPara);
+            }
+
+            int lineCount = head.item.temper_line.item_num;
+            for(int i = 0; i < lineCount; i++)
+            {
+                LINE_PARA_t linePara;
+                memcpy((char *)&linePara, p_jpg_data + nLessLenAll, sizeof(LINE_PARA_t));
+                nLessLenAll += sizeof(LINE_PARA_t);
+                m_lineList.append(linePara);
+            }
+
+            int rectCount = head.item.temper_rect.item_num;
+            for(int i = 0; i < rectCount; i++)
+            {
+                RECT_PARA_t rectPara;
+                memcpy((char *)&rectPara, p_jpg_data + nLessLenAll, sizeof(RECT_PARA_t));
+                nLessLenAll += sizeof(RECT_PARA_t);
+                m_rectList.append(rectPara);
+            }
+            nLessLenAll += sizeof(RECT_PARA_t) * rectCount;
+
+            int circleCount = head.item.temper_circle.item_num;
+            for(int i = 0; i < circleCount; i++)
+            {
+                CIRCLE_PARA_t circlePara;
+                memcpy((char *)&circlePara, p_jpg_data + nLessLenAll, sizeof(CIRCLE_PARA_t));
+                nLessLenAll += sizeof(CIRCLE_PARA_t);
+                m_circleList.append(circlePara);
+            }
+            int polygonCount = head.item.temper_polygon.item_num;
+            for(int i = 0; i < polygonCount; i++)
+            {
+                POLYGON_PARA_t polygonPara;
+                memcpy((char *)&polygonPara, p_jpg_data + nLessLenAll, sizeof(POLYGON_PARA_t));
+                nLessLenAll += sizeof(POLYGON_PARA_t);
+                m_polygonList.append(polygonPara);
+            }
+        }
+    }
+    jpg_file_in.close();
+    int tag_num = 0;
+    int i = 0;
+    QString str= QString("%1%2").arg(SAVE_IMAGE_PATH).arg(filename_ret);
+    qDebug() <<"Hp_Camera_Cap::changeTaskfilename" << str;
+    QByteArray barray = str.toUtf8();
+    char *mm = barray.data();
+    g_picInfo.jpeg_fp = open(mm, O_RDONLY);
+    lseek(g_picInfo.jpeg_fp, 0, SEEK_END);              //把“照片文件句柄指针” 移动到文件结尾 0字节处
+    lseek(g_picInfo.jpeg_fp, -sizeof(tagnum_t), SEEK_CUR);  //把该指针移动到 离当前位置的 “标签数量结构”大小的位置（-- 应该表示右边）
+    read(g_picInfo.jpeg_fp, &g_picInfo.tagnum, sizeof(tagnum_t));  //从“g_picInfo.jpeg_fp”文件指针中 读取  1*（sizeof(tagnum_t)）大小的内容
+
+    if (g_picInfo.tagnum.nTag == TAGNUM_TAG)
+    {
+        tag_num = g_picInfo.tagnum.num;
+//        qDebug("......tagnum = %d\n", tag_num);
+    }
+    else
+    {
+        qDebug("TAGNUM error\n");
+        ::close(g_picInfo.jpeg_fp);
+        return;
+    }
+
+    lseek(g_picInfo.jpeg_fp, -sizeof(tagnum_t)-sizeof(taginfo_t)*tag_num, SEEK_CUR);    //移动到当前位置的。。。。处
+    read(g_picInfo.jpeg_fp, &g_picInfo.taginfo, sizeof(taginfo_t)*tag_num);    //读取 m 个标签结构体数量的大小
+
+    for (i = 0; i < tag_num; i++)
+    {
+        if (FILEINFO_TAG == g_picInfo.taginfo[i].nTag)
+        {
+            lseek(g_picInfo.jpeg_fp, g_picInfo.taginfo[i].offset, SEEK_SET);     //p指针移动到离文件开头（对应标签信息在文件中的便宜）字节处
+            read(g_picInfo.jpeg_fp, &g_picInfo.head, sizeof(g_picInfo.head) );    //读取 m 个标签结构体数量的大小
+            temper_info_t *ptemper = &head.temper;
+            char bVaild = 0;
+            int nID = 0;
+            int nQt_index = 0;
+            for(int k=0;k<m_pointList.count();k++)
+            {
+                bVaild = m_pointList[k].bValid;
+                nID = m_pointList[k].nID;
+//                qDebug() << "-----------------------------------------------nid" << nID;
+                nQt_index = m_pointList[k].nRealIndex;
+                if(bVaild)
+                {
+                    ANA_OUTLINE param;
+                    strncpy(param.ana_type, "P", 1);
+                    QString strtest = QString(m_pointList[k].name);
+
+                    strncpy(param.deviceType, m_pointList[k].name, strtest.count());
+                    param.id = m_pointList[k].nRealIndex;
+                    param.origin_xcoord = m_pointList[k].nX;
+                    param.origin_ycoord = m_pointList[k].nY;
+                    if(isS3X0)
+                    {
+                        param.origin_xcoord = m_pointList[k].nX*100/167;
+                        param.origin_ycoord = m_pointList[k].nY*100/167;
+                    }
+                    param.dest_xcoord = 0;
+                    param.dest_ycoord = 0;
+                    param.avgtemp = 0;
+                    param.maxtemp = (float)m_pointList[k].nTemp / 100.00;
+                    param.mintemp = 0;
+                    qDebug() << "point deviceType:" << param.deviceType;
+                    qDebug() << "point id:" << param.id;
+                    qDebug() << "POint: m_taskTempInfos.append(param)";
+                    m_taskTempInfos.append(param);
+                }
+            }
+            for(int k=0;k<m_lineList.count();k++)
+            {
+                bVaild = m_lineList[k].bValid;
+                nID = m_lineList[k].nID;
+//                qDebug() << "-----------------------------------------------nid" << nID;
+                nQt_index = m_lineList[k].nRealIndex;
+                if(bVaild)
+                {
+                    ANA_OUTLINE param;
+                    strncpy(param.ana_type, "L", 1);
+                    QString strtest = QString(m_lineList[k].name);
+                    strncpy(param.deviceType, m_lineList[k].name, strtest.count());
+                    param.id = m_lineList[k].nRealIndex;
+                    param.origin_xcoord = m_lineList[k].nStartX;
+                    param.origin_ycoord = m_lineList[k].nStartY;
+                    param.dest_xcoord = m_lineList[k].nEndX;
+                    param.dest_ycoord = m_lineList[k].nEndY;
+                    if(isS3X0)
+                    {
+                        param.origin_xcoord = m_lineList[k].nStartX*100/167;
+                        param.origin_ycoord = m_lineList[k].nStartY*100/167;
+                        param.dest_xcoord = m_lineList[k].nEndX*100/167;
+                        param.dest_ycoord = m_lineList[k].nEndY*100/167;
+                    }
+                    param.avgtemp = (float)m_lineList[k].sPointTemp.nTempAve100 / 100.00;
+                    param.maxtemp = (float)m_lineList[k].sPointTemp.nTempMax100 / 100.00;
+                    param.mintemp = (float)m_lineList[k].sPointTemp.nTempMin100 / 100.00;
+                    qDebug() << "line deviceType:" << param.deviceType;
+                    qDebug() << "LINE id:" << param.id;
+                    qDebug() << "LINE maxTemp" << param.maxtemp;
+                    qDebug() << "LINE minTemp" << param.mintemp;
+
+                    qDebug() << "LINE: m_taskTempInfos.append(param)";
+                    m_taskTempInfos.append(param);
+                }
+            }
+            for(int k=0;k<m_rectList.count();k++)
+            {
+                bVaild = m_rectList[k].bValid;
+                nID = m_rectList[k].nID;
+//                qDebug() << "-----------------------------------------------nid" << nID;
+                nQt_index = m_rectList[k].nRealIndex;
+                if(bVaild)
+                {
+                    ANA_OUTLINE param;
+                    strncpy(param.ana_type, "R", 1);
+                    QString strtest = QString(m_rectList[k].name);
+                    strncpy(param.deviceType, m_rectList[k].name, strtest.count());
+                    //strncpy(param.deviceType[strtest.count()], '\0', 1);
+                    param.id = m_rectList[k].nRealIndex;
+                    param.origin_xcoord = m_rectList[k].nStartX;
+                    param.origin_ycoord = m_rectList[k].nStartY;
+                    param.dest_xcoord = m_rectList[k].nStartX + m_rectList[k].nWidth;
+                    param.dest_ycoord = m_rectList[k].nStartY + m_rectList[k].nHeight;
+                    if(isS3X0)
+                    {
+                        param.origin_xcoord = m_rectList[k].nStartX*100/167;
+                        param.origin_ycoord = m_rectList[k].nStartY*100/167;
+                        param.dest_xcoord = m_rectList[k].nWidth*100/167 + m_rectList[k].nWidth*100/167;
+                        param.dest_ycoord = m_rectList[k].nHeight*100/167 + m_rectList[k].nHeight*100/167;
+                    }
+                    param.avgtemp = (float)m_rectList[k].sPointTemp.nTempAve100 / 100.00;
+                    param.maxtemp = (float)m_rectList[k].sPointTemp.nTempMax100 / 100.00;
+                    param.mintemp = (float)m_rectList[k].sPointTemp.nTempMin100 / 100.00;
+                    qDebug() << "rect deviceType:" << param.deviceType;
+                    qDebug() << "rect id:" << param.id;
+                    qDebug() << "RECT maxTemp" << param.maxtemp;
+                    qDebug() << "RECT minTemp" << param.mintemp;
+                    qDebug() << "RECT: m_taskTempInfos.append(param)";
+                    m_taskTempInfos.append(param);
+                }
+            }
+        }
+    }
+
+    ::close(g_picInfo.jpeg_fp);
+
+    qDebug() << "Rename_Img return -- > " << Hp_TaskPkg::getInstance()->Rename_Img(filename_ret,mainmode, m_taskTempInfos);//将这个屏蔽之后就能展示在界面上
+
+    /* 写文件头 */
+    QByteArray fileName_b = picFileName.split("/").last().toUtf8();
+    char* fileName_p = fileName_b.data();
+    strcpy(head.file.PicName, fileName_p);
+    for(int i=0;i<tag_num_2.num;i++)
+    {
+        if(tag_info[i].nTag == FILEINFO_TAG)
+        {
+            memcpy(p_jpg_data + tag_info[i].offset, (char *)&head, sizeof(file_info_t));
+            memcpy(p_jpg_data + tag_info[i].offset + nDesLen,
+                   (char *)&head + sizeof(file_info_t), sizeof(product_info_t));
+            memcpy(p_jpg_data + tag_info[i].offset + nDesLen + nDesLen2,
+                   (char *)&head + sizeof(file_info_t) + sizeof(product_info_t), sizeof(color_info_t));
+            memcpy(p_jpg_data + tag_info[i].offset  + nDesLen + nDesLen2 + nDesLen3,
+                   (char *)&head + sizeof(file_info_t) + sizeof(product_info_t) + sizeof(color_info_t), sizeof(alg_info_t));
+            memcpy(p_jpg_data + tag_info[i].offset + nDesLen + nDesLen2 + nDesLen3 + nDesLen4,
+                   (char *)&head + sizeof(file_info_t) + sizeof(product_info_t) + sizeof(color_info_t) + sizeof(alg_info_t), sizeof(temper_info_t));
+            memcpy(p_jpg_data + tag_info[i].offset + nDesLen + nDesLen2 + nDesLen3 + nDesLen4 + nDesLen5,
+                   (char *)&head + sizeof(file_info_t) + sizeof(product_info_t) + sizeof(color_info_t) + sizeof(alg_info_t) + sizeof(temper_info_t), sizeof(item_data_t));
+        }
+
+    }
+    qDebug() << "#### [Hp_Camera_Cap] [RenameImage] : head.file.PicName = " << head.file.PicName;
+    QFile jpg_file_out(QString("%1").arg(filename_ret));
+    if(! jpg_file_out.open(QIODevice::WriteOnly | QIODevice::Truncate)) {
+        qDebug() << "#### [Hp_Camera_Cap] [RenameImage] : " << filename_ret << " 打开失败 ！！！ ";
+        return;
+    }
+    QDataStream out(&jpg_file_out);
+    if(out.writeRawData(p_jpg_data, filesize)!= filesize) {
+        qDebug() << "#### [Hp_Camera_Cap] [RenameImage] : out.writeRawData ！！！ ";
+        jpg_file_out.close();
+        free(p_jpg_data);
+        return;
+    }
+    jpg_file_out.close();
+
+    free(p_jpg_data);
+
+    system("sync");
+
+
+
+#endif
+}
+void Hp_Camera_Cap::slot_camera_cap_cannal()
+{
+    if(VoiceStatus == true)
+    {
+        cancelflag = true;
+        VoiceStatus =false;
+        on_toolButton_voice_toggled(false);
+        ui->toolButton_voice->setChecked(false);
+    }
+    on_toolButton_cancel_released() ;
+}
+
+void Hp_Camera_Cap::SlotSetImageSR(bool isSelect)
+{
+    isSuperImage = isSelect;
+}
+
+void Hp_Camera_Cap::SlotSetImageSis(bool isSelect)
+{
+    isSisFlag = isSelect;
+}
+void Hp_Camera_Cap::slot_stop_TextVoice(bool checked) //ture 打开    false 关闭
+{
+        ui->toolButton_text->setCheckable(!checked);
+       ui->toolButton_text->setEnabled(!checked);
+       ui->toolButton_voice->setCheckable(!checked);
+       ui->toolButton_voice->setEnabled(!checked);
+ //      ui->toolButton_voice->setChecked(checked);
+  //     toolButton_voiceSetSheet(checked);
+//       guowangflag = checked;
+}
+
+void Hp_Camera_Cap::slot_set_picture_zoom_save(bool isZoomSave)
+{
+    m_isZoomSave = isZoomSave;
+}
+void Hp_Camera_Cap::setIsPmsMode(bool isPmsMode)
+{
+    if(isPmsMode)
+    {
+        ui->toolButton_error->show();
+        ui->toolButton_voice->setVisible(false);
+    }
+    else
+    {
+        ui->toolButton_error->close();
+        ui->toolButton_error->setChecked(false);
+        ui->toolButton_voice->setVisible(true);
+        isErrPmsPhoto = false;
+    }
+}
+
+void Hp_Camera_Cap::on_toolButton_error_clicked(bool checked)
+{
+    qDebug() << __func__ << checked;
+    isErrPmsPhoto = checked;
+}
+
+void Hp_Camera_Cap::setImageFormat(int imageFormat)
+{
+    m_imageFormat = imageFormat;
+}
+
+//检查并创建日期文件
+void Hp_Camera_Cap::SlotCheckAndCreateDateFolder()
+{
+    QDate currentDate = QDate::currentDate();
+    QString folderName = currentDate.toString("MMdd");
+    QString dcimPath = "/run/media/mmcblk2p1/DCIM";
+    dateFolderPath = dcimPath + "/" + folderName + "/";
+    QDir dcimDir(dcimPath);
+    if (!dcimDir.exists()) {
+        return;
+    }
+    QDir dateDir(dateFolderPath);
+    if (!dateDir.exists()) {
+        dateDir.mkpath(dateFolderPath);
+    }
+    SingalSendDateFolderPath(dateFolderPath);
+}

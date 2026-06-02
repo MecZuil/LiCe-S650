@@ -1,0 +1,3265 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>HpHide_Biaoding</class>
+ <widget class="QWidget" name="HpHide_Biaoding">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>800</width>
+    <height>480</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Form</string>
+  </property>
+  <widget class="QScrollArea" name="scrollArea">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>800</width>
+     <height>480</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">QScrollBar:vertical{
+width:38px;
+border-style:flat;
+}/*
+QScrollBar::handle:vertical{
+background:#2d3033;
+width:38px;
+border: 0px solid #E5E5E5;
+min-height:38px;
+border-radius:4px;
+border-style:flat;
+}
+QScrollBar::add-line:vertical {
+height: 38px;
+subcontrol-origin:margin;
+border-style:flat;
+}
+QScrollBar::sub-line:vertical {
+height: 38px;
+subcontrol-origin:margin;
+border-style:flat;
+}
+QScrollBar::up-arrow:vertical{
+subcontrol-origin: margin;
+height:38px;
+width:38px;
+border:0 0 0 0;
+border-style:flat;
+border-image: url(:/res_history/up.png);
+}
+QScrollBar::down-arrow:vertical{
+subcontrol-origin: margin;
+height:38px;
+width:38px;
+border-style:flat;
+border-image: url(:/res_history/down.png);
+}
+
+QScrollBar::sub-page:vertical,QScrollBar::add-page:vertical
+{
+    background-color:#16181a;
+}*/</string>
+   </property>
+   <property name="widgetResizable">
+    <bool>false</bool>
+   </property>
+   <widget class="QWidget" name="scrollAreaWidgetContents">
+    <property name="geometry">
+     <rect>
+      <x>0</x>
+      <y>0</y>
+      <width>750</width>
+      <height>1200</height>
+     </rect>
+    </property>
+    <widget class="QFrame" name="frame">
+     <property name="geometry">
+      <rect>
+       <x>0</x>
+       <y>0</y>
+       <width>800</width>
+       <height>1200</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <pointsize>9</pointsize>
+      </font>
+     </property>
+     <property name="frameShape">
+      <enum>QFrame::StyledPanel</enum>
+     </property>
+     <property name="frameShadow">
+      <enum>QFrame::Raised</enum>
+     </property>
+     <widget class="QPushButton" name="Button_HI">
+      <property name="geometry">
+       <rect>
+        <x>650</x>
+        <y>20</y>
+        <width>90</width>
+        <height>45</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>17</pointsize>
+       </font>
+      </property>
+      <property name="text">
+       <string>HI</string>
+      </property>
+      <property name="autoDefault">
+       <bool>false</bool>
+      </property>
+      <property name="default">
+       <bool>false</bool>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="Button_LO">
+      <property name="geometry">
+       <rect>
+        <x>650</x>
+        <y>100</y>
+        <width>90</width>
+        <height>45</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>17</pointsize>
+       </font>
+      </property>
+      <property name="text">
+       <string>LO</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="Button_set">
+      <property name="geometry">
+       <rect>
+        <x>650</x>
+        <y>260</y>
+        <width>90</width>
+        <height>45</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>17</pointsize>
+       </font>
+      </property>
+      <property name="text">
+       <string>设置</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="Button_save">
+      <property name="geometry">
+       <rect>
+        <x>650</x>
+        <y>180</y>
+        <width>90</width>
+        <height>45</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>17</pointsize>
+       </font>
+      </property>
+      <property name="text">
+       <string>保存</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="Button_cancel">
+      <property name="geometry">
+       <rect>
+        <x>650</x>
+        <y>340</y>
+        <width>90</width>
+        <height>45</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>17</pointsize>
+       </font>
+      </property>
+      <property name="text">
+       <string>退出</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_ZN">
+      <property name="geometry">
+       <rect>
+        <x>10</x>
+        <y>20</y>
+        <width>70</width>
+        <height>40</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>17</pointsize>
+       </font>
+      </property>
+      <property name="text">
+       <string>ZN:</string>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_VS">
+      <property name="geometry">
+       <rect>
+        <x>10</x>
+        <y>70</y>
+        <width>70</width>
+        <height>40</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>17</pointsize>
+       </font>
+      </property>
+      <property name="text">
+       <string>VS:</string>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_VF">
+      <property name="geometry">
+       <rect>
+        <x>10</x>
+        <y>120</y>
+        <width>70</width>
+        <height>40</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>17</pointsize>
+       </font>
+      </property>
+      <property name="text">
+       <string>VF:</string>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_Gain">
+      <property name="geometry">
+       <rect>
+        <x>10</x>
+        <y>170</y>
+        <width>70</width>
+        <height>40</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>17</pointsize>
+       </font>
+      </property>
+      <property name="text">
+       <string>Gain:</string>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_INT">
+      <property name="geometry">
+       <rect>
+        <x>10</x>
+        <y>220</y>
+        <width>70</width>
+        <height>40</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>17</pointsize>
+       </font>
+      </property>
+      <property name="text">
+       <string>INT:</string>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_Max">
+      <property name="geometry">
+       <rect>
+        <x>10</x>
+        <y>270</y>
+        <width>70</width>
+        <height>40</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>17</pointsize>
+       </font>
+      </property>
+      <property name="text">
+       <string>Max:</string>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_Min">
+      <property name="geometry">
+       <rect>
+        <x>10</x>
+        <y>320</y>
+        <width>70</width>
+        <height>40</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>17</pointsize>
+       </font>
+      </property>
+      <property name="text">
+       <string>Min:</string>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_B">
+      <property name="geometry">
+       <rect>
+        <x>10</x>
+        <y>370</y>
+        <width>70</width>
+        <height>40</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>17</pointsize>
+       </font>
+      </property>
+      <property name="text">
+       <string>B:</string>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+      </property>
+     </widget>
+     <widget class="QSpinBox" name="spinBox_vs">
+      <property name="geometry">
+       <rect>
+        <x>90</x>
+        <y>75</y>
+        <width>200</width>
+        <height>30</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>16</pointsize>
+       </font>
+      </property>
+      <property name="layoutDirection">
+       <enum>Qt::LeftToRight</enum>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">QSpinBox
+{
+		background-color: rgb(173, 173, 173);
+}
+QSpinBox::up-button {
+	subcontrol-origin:border;
+    subcontrol-position:right;
+    image: url(:/res/res/right_arrow_n.png);
+    width: 28;
+    height: 28;       
+
+}
+QSpinBox::down-button {
+subcontrol-origin:border;
+    subcontrol-position:left;
+    border-image: url(:/res/res/left_arrow_n.png);
+    width: 28;
+    height: 28;
+}
+/*按钮按下样式*/
+QSpinBox::up-button:pressed{
+	subcontrol-origin:border;
+    subcontrol-position:right;
+    image: url(:/res/res/right_arrow_s.png);
+    width: 28;
+    height: 28;       
+}
+  
+QSpinBox::down-button:pressed{
+    subcontrol-position:left;
+    image: url(:/res/res/left_arrow_s.png);
+    width: 28;
+    height: 28;
+}
+
+QSpinBox::down-arrow:disabled,QSpinBox::down-arrow:off 
+{ 
+   border-image: url(:/res/res/left_arrow_d.png);
+    width: 28;
+    height: 28;
+}
+
+QSpinBox::up-arrow:disabled,QSpinBox::up-arrow:off 
+{ 
+   border-image: url(:/res/res/right_arrow_d.png);
+    width: 28;
+    height: 28;
+}</string>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignCenter</set>
+      </property>
+      <property name="minimum">
+       <number>0</number>
+      </property>
+      <property name="maximum">
+       <number>65535</number>
+      </property>
+     </widget>
+     <widget class="QSpinBox" name="spinBox_vf">
+      <property name="geometry">
+       <rect>
+        <x>90</x>
+        <y>125</y>
+        <width>200</width>
+        <height>30</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>16</pointsize>
+       </font>
+      </property>
+      <property name="layoutDirection">
+       <enum>Qt::LeftToRight</enum>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">QSpinBox
+{
+		background-color: rgb(173, 173, 173);
+}
+QSpinBox::up-button {
+	subcontrol-origin:border;
+    subcontrol-position:right;
+    image: url(:/res/res/right_arrow_n.png);
+    width: 28;
+    height: 28;       
+
+}
+QSpinBox::down-button {
+subcontrol-origin:border;
+    subcontrol-position:left;
+    border-image: url(:/res/res/left_arrow_n.png);
+    width: 28;
+    height: 28;
+}
+/*按钮按下样式*/
+QSpinBox::up-button:pressed{
+	subcontrol-origin:border;
+    subcontrol-position:right;
+    image: url(:/res/res/right_arrow_s.png);
+    width: 28;
+    height: 28;       
+}
+  
+QSpinBox::down-button:pressed{
+    subcontrol-position:left;
+    image: url(:/res/res/left_arrow_s.png);
+    width: 28;
+    height: 28;
+}
+
+QSpinBox::down-arrow:disabled,QSpinBox::down-arrow:off 
+{ 
+   border-image: url(:/res/res/left_arrow_d.png);
+    width: 28;
+    height: 28;
+}
+
+QSpinBox::up-arrow:disabled,QSpinBox::up-arrow:off 
+{ 
+   border-image: url(:/res/res/right_arrow_d.png);
+    width: 28;
+    height: 28;
+}</string>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignCenter</set>
+      </property>
+      <property name="minimum">
+       <number>0</number>
+      </property>
+      <property name="maximum">
+       <number>65535</number>
+      </property>
+     </widget>
+     <widget class="QSpinBox" name="spinBox_gain">
+      <property name="geometry">
+       <rect>
+        <x>90</x>
+        <y>175</y>
+        <width>200</width>
+        <height>30</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>16</pointsize>
+       </font>
+      </property>
+      <property name="layoutDirection">
+       <enum>Qt::LeftToRight</enum>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">QSpinBox
+{
+		background-color: rgb(173, 173, 173);
+}
+QSpinBox::up-button {
+	subcontrol-origin:border;
+    subcontrol-position:right;
+    image: url(:/res/res/right_arrow_n.png);
+    width: 28;
+    height: 28;       
+
+}
+QSpinBox::down-button {
+subcontrol-origin:border;
+    subcontrol-position:left;
+    border-image: url(:/res/res/left_arrow_n.png);
+    width: 28;
+    height: 28;
+}
+/*按钮按下样式*/
+QSpinBox::up-button:pressed{
+	subcontrol-origin:border;
+    subcontrol-position:right;
+    image: url(:/res/res/right_arrow_s.png);
+    width: 28;
+    height: 28;       
+}
+  
+QSpinBox::down-button:pressed{
+    subcontrol-position:left;
+    image: url(:/res/res/left_arrow_s.png);
+    width: 28;
+    height: 28;
+}
+
+QSpinBox::down-arrow:disabled,QSpinBox::down-arrow:off 
+{ 
+   border-image: url(:/res/res/left_arrow_d.png);
+    width: 28;
+    height: 28;
+}
+
+QSpinBox::up-arrow:disabled,QSpinBox::up-arrow:off 
+{ 
+   border-image: url(:/res/res/right_arrow_d.png);
+    width: 28;
+    height: 28;
+}
+
+</string>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignCenter</set>
+      </property>
+      <property name="minimum">
+       <number>0</number>
+      </property>
+      <property name="maximum">
+       <number>9</number>
+      </property>
+     </widget>
+     <widget class="QSpinBox" name="spinBox_tnt">
+      <property name="geometry">
+       <rect>
+        <x>90</x>
+        <y>225</y>
+        <width>200</width>
+        <height>30</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>16</pointsize>
+       </font>
+      </property>
+      <property name="layoutDirection">
+       <enum>Qt::LeftToRight</enum>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">QSpinBox
+{
+		background-color: rgb(173, 173, 173);
+}
+QSpinBox::up-button {
+	subcontrol-origin:border;
+    subcontrol-position:right;
+    image: url(:/res/res/right_arrow_n.png);
+    width: 28;
+    height: 28;       
+
+}
+QSpinBox::down-button {
+subcontrol-origin:border;
+    subcontrol-position:left;
+    border-image: url(:/res/res/left_arrow_n.png);
+    width: 28;
+    height: 28;
+}
+/*按钮按下样式*/
+QSpinBox::up-button:pressed{
+	subcontrol-origin:border;
+    subcontrol-position:right;
+    image: url(:/res/res/right_arrow_s.png);
+    width: 28;
+    height: 28;       
+}
+  
+QSpinBox::down-button:pressed{
+    subcontrol-position:left;
+    image: url(:/res/res/left_arrow_s.png);
+    width: 28;
+    height: 28;
+}
+
+QSpinBox::down-arrow:disabled,QSpinBox::down-arrow:off 
+{ 
+   border-image: url(:/res/res/left_arrow_d.png);
+    width: 28;
+    height: 28;
+}
+
+QSpinBox::up-arrow:disabled,QSpinBox::up-arrow:off 
+{ 
+   border-image: url(:/res/res/right_arrow_d.png);
+    width: 28;
+    height: 28;
+}</string>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignCenter</set>
+      </property>
+      <property name="minimum">
+       <number>0</number>
+      </property>
+      <property name="maximum">
+       <number>1000</number>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_inmax">
+      <property name="geometry">
+       <rect>
+        <x>190</x>
+        <y>285</y>
+        <width>200</width>
+        <height>30</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>16</pointsize>
+       </font>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignCenter</set>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_inmin">
+      <property name="geometry">
+       <rect>
+        <x>190</x>
+        <y>335</y>
+        <width>200</width>
+        <height>30</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>16</pointsize>
+       </font>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignCenter</set>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_inB">
+      <property name="geometry">
+       <rect>
+        <x>190</x>
+        <y>385</y>
+        <width>200</width>
+        <height>30</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>16</pointsize>
+       </font>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignCenter</set>
+      </property>
+     </widget>
+     <widget class="QSpinBox" name="spinBox_zn">
+      <property name="geometry">
+       <rect>
+        <x>90</x>
+        <y>25</y>
+        <width>200</width>
+        <height>30</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>16</pointsize>
+       </font>
+      </property>
+      <property name="layoutDirection">
+       <enum>Qt::LeftToRight</enum>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">QSpinBox
+{
+		background-color: rgb(173, 173, 173);
+}
+QSpinBox::up-button {
+	subcontrol-origin:border;
+    subcontrol-position:right;
+    image: url(:/res/res/mwiyou.png);
+    width: 28;
+    height: 28;       
+
+}
+QSpinBox::down-button {
+subcontrol-origin:border;
+    subcontrol-position:left;
+    border-image: url(:/res/res/mwiyou.png);
+    width: 28;
+    height: 28;
+}
+/*按钮按下样式*/
+QSpinBox::up-button:pressed{
+	subcontrol-origin:border;
+    subcontrol-position:right;
+    image: url(:/res/res/mwiyou.png);
+    width: 28;
+    height: 28;       
+}
+  
+QSpinBox::down-button:pressed{
+    subcontrol-position:left;
+    image: url(:/res/res/mwiyou.png);
+    width: 28;
+    height: 28;
+}
+
+QSpinBox::down-arrow:disabled,QSpinBox::down-arrow:off 
+{ 
+   border-image: url(:/res/res/mwiyou.png);
+    width: 28;
+    height: 28;
+}
+
+QSpinBox::up-arrow:disabled,QSpinBox::up-arrow:off 
+{ 
+   border-image: url(:/res/res/mwiyou.png);
+    width: 28;
+    height: 28;
+}</string>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignCenter</set>
+      </property>
+      <property name="minimum">
+       <number>-1000000</number>
+      </property>
+      <property name="maximum">
+       <number>10000000</number>
+      </property>
+     </widget>
+     <widget class="QSpinBox" name="spinBox_max">
+      <property name="geometry">
+       <rect>
+        <x>90</x>
+        <y>275</y>
+        <width>200</width>
+        <height>30</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>16</pointsize>
+       </font>
+      </property>
+      <property name="layoutDirection">
+       <enum>Qt::LeftToRight</enum>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">QSpinBox
+{
+		background-color: rgb(173, 173, 173);
+}
+QSpinBox::up-button {
+	subcontrol-origin:border;
+    subcontrol-position:right;
+    image: url(:/res/res/mwiyou.png);
+    width: 28;
+    height: 28;       
+
+}
+QSpinBox::down-button {
+subcontrol-origin:border;
+    subcontrol-position:left;
+    border-image: url(:/res/res/mwiyou.png);
+    width: 28;
+    height: 28;
+}
+/*按钮按下样式*/
+QSpinBox::up-button:pressed{
+	subcontrol-origin:border;
+    subcontrol-position:right;
+    image: url(:/res/res/mwiyou.png);
+    width: 28;
+    height: 28;       
+}
+  
+QSpinBox::down-button:pressed{
+    subcontrol-position:left;
+    image: url(:/res/res/mwiyou.png);
+    width: 28;
+    height: 28;
+}
+
+QSpinBox::down-arrow:disabled,QSpinBox::down-arrow:off 
+{ 
+   border-image: url(:/res/res/mwiyou.png);
+    width: 28;
+    height: 28;
+}
+
+QSpinBox::up-arrow:disabled,QSpinBox::up-arrow:off 
+{ 
+   border-image: url(:/res/res/mwiyou.png);
+    width: 28;
+    height: 28;
+}</string>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignCenter</set>
+      </property>
+      <property name="minimum">
+       <number>-10000000</number>
+      </property>
+      <property name="maximum">
+       <number>100000000</number>
+      </property>
+      <property name="singleStep">
+       <number>0</number>
+      </property>
+     </widget>
+     <widget class="QSpinBox" name="spinBox_min">
+      <property name="geometry">
+       <rect>
+        <x>90</x>
+        <y>325</y>
+        <width>200</width>
+        <height>30</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>16</pointsize>
+       </font>
+      </property>
+      <property name="layoutDirection">
+       <enum>Qt::LeftToRight</enum>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">QSpinBox
+{
+		background-color: rgb(173, 173, 173);
+}
+QSpinBox::up-button {
+	subcontrol-origin:border;
+    subcontrol-position:right;
+    image: url(:/res/res/mwiyou.png);
+    width: 28;
+    height: 28;       
+
+}
+QSpinBox::down-button {
+subcontrol-origin:border;
+    subcontrol-position:left;
+    border-image: url(:/res/res/mwiyou.png);
+    width: 28;
+    height: 28;
+}
+/*按钮按下样式*/
+QSpinBox::up-button:pressed{
+	subcontrol-origin:border;
+    subcontrol-position:right;
+    image: url(:/res/res/mwiyou.png);
+    width: 28;
+    height: 28;       
+}
+  
+QSpinBox::down-button:pressed{
+    subcontrol-position:left;
+    image: url(:/res/res/mwiyou.png);
+    width: 28;
+    height: 28;
+}
+
+QSpinBox::down-arrow:disabled,QSpinBox::down-arrow:off 
+{ 
+   border-image: url(:/res/res/mwiyou.png);
+    width: 28;
+    height: 28;
+}
+
+QSpinBox::up-arrow:disabled,QSpinBox::up-arrow:off 
+{ 
+   border-image: url(:/res/res/mwiyou.png);
+    width: 28;
+    height: 28;
+}</string>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignCenter</set>
+      </property>
+      <property name="minimum">
+       <number>-100000000</number>
+      </property>
+      <property name="maximum">
+       <number>100000000</number>
+      </property>
+     </widget>
+     <widget class="QSpinBox" name="spinBox_b">
+      <property name="geometry">
+       <rect>
+        <x>90</x>
+        <y>380</y>
+        <width>200</width>
+        <height>30</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>16</pointsize>
+       </font>
+      </property>
+      <property name="layoutDirection">
+       <enum>Qt::LeftToRight</enum>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">QSpinBox
+{
+		background-color: rgb(173, 173, 173);
+}
+QSpinBox::up-button {
+	subcontrol-origin:border;
+    subcontrol-position:right;
+    image: url(:/res/res/mwiyou.png);
+    width: 28;
+    height: 28;       
+
+}
+QSpinBox::down-button {
+subcontrol-origin:border;
+    subcontrol-position:left;
+    border-image: url(:/res/res/mwiyou.png);
+    width: 28;
+    height: 28;
+}
+/*按钮按下样式*/
+QSpinBox::up-button:pressed{
+	subcontrol-origin:border;
+    subcontrol-position:right;
+    image: url(:/res/res/mwiyou.png);
+    width: 28;
+    height: 28;       
+}
+  
+QSpinBox::down-button:pressed{
+    subcontrol-position:left;
+    image: url(:/res/res/mwiyou.png);
+    width: 28;
+    height: 28;
+}
+
+QSpinBox::down-arrow:disabled,QSpinBox::down-arrow:off 
+{ 
+   border-image: url(:/res/res/mwiyou.png);
+    width: 28;
+    height: 28;
+}
+
+QSpinBox::up-arrow:disabled,QSpinBox::up-arrow:off 
+{ 
+   border-image: url(:/res/res/mwiyou.png);
+    width: 28;
+    height: 28;
+}
+</string>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignCenter</set>
+      </property>
+      <property name="minimum">
+       <number>-10000000</number>
+      </property>
+      <property name="maximum">
+       <number>10000000</number>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_B_2">
+      <property name="geometry">
+       <rect>
+        <x>29</x>
+        <y>435</y>
+        <width>171</width>
+        <height>40</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>17</pointsize>
+       </font>
+      </property>
+      <property name="text">
+       <string>laser_FOCUS:</string>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+      </property>
+     </widget>
+     <widget class="QSpinBox" name="spinBox_facus">
+      <property name="geometry">
+       <rect>
+        <x>221</x>
+        <y>440</y>
+        <width>200</width>
+        <height>30</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>16</pointsize>
+       </font>
+      </property>
+      <property name="layoutDirection">
+       <enum>Qt::LeftToRight</enum>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">QSpinBox
+{
+		background-color: rgb(173, 173, 173);
+}
+QSpinBox::up-button {
+	subcontrol-origin:border;
+    subcontrol-position:right;
+    image: url(:/res/res/right_arrow_n.png);
+    width: 28;
+    height: 28;       
+
+}
+QSpinBox::down-button {
+subcontrol-origin:border;
+    subcontrol-position:left;
+    border-image: url(:/res/res/left_arrow_n.png);
+    width: 28;
+    height: 28;
+}
+/*按钮按下样式*/
+QSpinBox::up-button:pressed{
+	subcontrol-origin:border;
+    subcontrol-position:right;
+    image: url(:/res/res/right_arrow_s.png);
+    width: 28;
+    height: 28;       
+}
+  
+QSpinBox::down-button:pressed{
+    subcontrol-position:left;
+    image: url(:/res/res/left_arrow_s.png);
+    width: 28;
+    height: 28;
+}
+
+QSpinBox::down-arrow:disabled,QSpinBox::down-arrow:off 
+{ 
+   border-image: url(:/res/res/left_arrow_d.png);
+    width: 28;
+    height: 28;
+}
+
+QSpinBox::up-arrow:disabled,QSpinBox::up-arrow:off 
+{ 
+   border-image: url(:/res/res/right_arrow_d.png);
+    width: 28;
+    height: 28;
+}
+</string>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignCenter</set>
+      </property>
+      <property name="minimum">
+       <number>0</number>
+      </property>
+      <property name="maximum">
+       <number>1000</number>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_B_3">
+      <property name="geometry">
+       <rect>
+        <x>80</x>
+        <y>595</y>
+        <width>51</width>
+        <height>40</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>17</pointsize>
+       </font>
+      </property>
+      <property name="text">
+       <string>X:</string>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_B_4">
+      <property name="geometry">
+       <rect>
+        <x>80</x>
+        <y>660</y>
+        <width>51</width>
+        <height>40</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>17</pointsize>
+       </font>
+      </property>
+      <property name="text">
+       <string>Y:</string>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+      </property>
+     </widget>
+     <widget class="QSpinBox" name="spinBox_x">
+      <property name="geometry">
+       <rect>
+        <x>160</x>
+        <y>595</y>
+        <width>200</width>
+        <height>30</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>16</pointsize>
+       </font>
+      </property>
+      <property name="layoutDirection">
+       <enum>Qt::LeftToRight</enum>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">QSpinBox
+{
+		background-color: rgb(173, 173, 173);
+}
+QSpinBox::up-button {
+	subcontrol-origin:border;
+    subcontrol-position:right;
+    image: url(:/res/res/right_arrow_n.png);
+    width: 28;
+    height: 28;       
+
+}
+QSpinBox::down-button {
+subcontrol-origin:border;
+    subcontrol-position:left;
+    border-image: url(:/res/res/left_arrow_n.png);
+    width: 28;
+    height: 28;
+}
+/*按钮按下样式*/
+QSpinBox::up-button:pressed{
+	subcontrol-origin:border;
+    subcontrol-position:right;
+    image: url(:/res/res/right_arrow_s.png);
+    width: 28;
+    height: 28;       
+}
+  
+QSpinBox::down-button:pressed{
+    subcontrol-position:left;
+    image: url(:/res/res/left_arrow_s.png);
+    width: 28;
+    height: 28;
+}
+
+QSpinBox::down-arrow:disabled,QSpinBox::down-arrow:off 
+{ 
+   border-image: url(:/res/res/left_arrow_d.png);
+    width: 28;
+    height: 28;
+}
+
+QSpinBox::up-arrow:disabled,QSpinBox::up-arrow:off 
+{ 
+   border-image: url(:/res/res/right_arrow_d.png);
+    width: 28;
+    height: 28;
+}
+</string>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignCenter</set>
+      </property>
+      <property name="minimum">
+       <number>0</number>
+      </property>
+      <property name="maximum">
+       <number>1000</number>
+      </property>
+     </widget>
+     <widget class="QSpinBox" name="spinBox_y">
+      <property name="geometry">
+       <rect>
+        <x>160</x>
+        <y>660</y>
+        <width>200</width>
+        <height>30</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>16</pointsize>
+       </font>
+      </property>
+      <property name="layoutDirection">
+       <enum>Qt::LeftToRight</enum>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">QSpinBox
+{
+		background-color: rgb(173, 173, 173);
+}
+QSpinBox::up-button {
+	subcontrol-origin:border;
+    subcontrol-position:right;
+    image: url(:/res/res/right_arrow_n.png);
+    width: 28;
+    height: 28;       
+
+}
+QSpinBox::down-button {
+subcontrol-origin:border;
+    subcontrol-position:left;
+    border-image: url(:/res/res/left_arrow_n.png);
+    width: 28;
+    height: 28;
+}
+/*按钮按下样式*/
+QSpinBox::up-button:pressed{
+	subcontrol-origin:border;
+    subcontrol-position:right;
+    image: url(:/res/res/right_arrow_s.png);
+    width: 28;
+    height: 28;       
+}
+  
+QSpinBox::down-button:pressed{
+    subcontrol-position:left;
+    image: url(:/res/res/left_arrow_s.png);
+    width: 28;
+    height: 28;
+}
+
+QSpinBox::down-arrow:disabled,QSpinBox::down-arrow:off 
+{ 
+   border-image: url(:/res/res/left_arrow_d.png);
+    width: 28;
+    height: 28;
+}
+
+QSpinBox::up-arrow:disabled,QSpinBox::up-arrow:off 
+{ 
+   border-image: url(:/res/res/right_arrow_d.png);
+    width: 28;
+    height: 28;
+}
+</string>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignCenter</set>
+      </property>
+      <property name="minimum">
+       <number>0</number>
+      </property>
+      <property name="maximum">
+       <number>1000</number>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_DDE">
+      <property name="geometry">
+       <rect>
+        <x>410</x>
+        <y>895</y>
+        <width>111</width>
+        <height>40</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>17</pointsize>
+       </font>
+      </property>
+      <property name="text">
+       <string>DDE:</string>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+      </property>
+     </widget>
+     <widget class="QCheckBox" name="checkBox_DDE">
+      <property name="enabled">
+       <bool>true</bool>
+      </property>
+      <property name="geometry">
+       <rect>
+        <x>540</x>
+        <y>890</y>
+        <width>70</width>
+        <height>50</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>17</pointsize>
+       </font>
+      </property>
+      <property name="focusPolicy">
+       <enum>Qt::NoFocus</enum>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">QCheckBox{
+background:transparent;
+}
+QCheckBox::indicator:unchecked {
+    image: url(:/res/res/switch_off.png);
+}
+
+QCheckBox::indicator:checked {
+    image: url(:/res/res/switch_on.png);
+}
+
+</string>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+      <property name="tristate">
+       <bool>false</bool>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_rotate">
+      <property name="geometry">
+       <rect>
+        <x>70</x>
+        <y>900</y>
+        <width>111</width>
+        <height>40</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>17</pointsize>
+       </font>
+      </property>
+      <property name="text">
+       <string>图像旋转:</string>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+      </property>
+     </widget>
+     <widget class="QCheckBox" name="checkBox_rotate">
+      <property name="enabled">
+       <bool>true</bool>
+      </property>
+      <property name="geometry">
+       <rect>
+        <x>200</x>
+        <y>895</y>
+        <width>70</width>
+        <height>50</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>17</pointsize>
+       </font>
+      </property>
+      <property name="focusPolicy">
+       <enum>Qt::NoFocus</enum>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">QCheckBox{
+background:transparent;
+}
+QCheckBox::indicator:unchecked {
+    image: url(:/res/res/switch_off.png);
+}
+
+QCheckBox::indicator:checked {
+    image: url(:/res/res/switch_on.png);
+}
+
+</string>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+      <property name="tristate">
+       <bool>false</bool>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_oritoggle">
+      <property name="geometry">
+       <rect>
+        <x>10</x>
+        <y>950</y>
+        <width>171</width>
+        <height>40</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>17</pointsize>
+       </font>
+      </property>
+      <property name="text">
+       <string>原始两点切换:</string>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_auto_badpixel">
+      <property name="geometry">
+       <rect>
+        <x>10</x>
+        <y>1010</y>
+        <width>171</width>
+        <height>40</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>17</pointsize>
+       </font>
+      </property>
+      <property name="text">
+       <string>自动打死点:</string>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+      </property>
+     </widget>
+     <widget class="QCheckBox" name="checkBox_auto_badpixel">
+      <property name="enabled">
+       <bool>true</bool>
+      </property>
+      <property name="geometry">
+       <rect>
+        <x>430</x>
+        <y>1005</y>
+        <width>70</width>
+        <height>50</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>17</pointsize>
+       </font>
+      </property>
+      <property name="focusPolicy">
+       <enum>Qt::NoFocus</enum>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">QCheckBox{
+background:transparent;
+}
+QCheckBox::indicator:unchecked {
+    image: url(:/res/res/switch_off.png);
+}
+
+QCheckBox::indicator:checked {
+    image: url(:/res/res/switch_on.png);
+}
+
+</string>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+      <property name="tristate">
+       <bool>false</bool>
+      </property>
+     </widget>
+     <widget class="QSpinBox" name="spinBox_auto_badpixel">
+      <property name="geometry">
+       <rect>
+        <x>200</x>
+        <y>1015</y>
+        <width>200</width>
+        <height>30</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>16</pointsize>
+       </font>
+      </property>
+      <property name="layoutDirection">
+       <enum>Qt::LeftToRight</enum>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">QSpinBox
+{
+		background-color: rgb(173, 173, 173);
+}
+QSpinBox::up-button {
+	subcontrol-origin:border;
+    subcontrol-position:right;
+    image: url(:/res/res/right_arrow_n.png);
+    width: 28;
+    height: 28;       
+
+}
+QSpinBox::down-button {
+subcontrol-origin:border;
+    subcontrol-position:left;
+    border-image: url(:/res/res/left_arrow_n.png);
+    width: 28;
+    height: 28;
+}
+/*按钮按下样式*/
+QSpinBox::up-button:pressed{
+	subcontrol-origin:border;
+    subcontrol-position:right;
+    image: url(:/res/res/right_arrow_s.png);
+    width: 28;
+    height: 28;       
+}
+  
+QSpinBox::down-button:pressed{
+    subcontrol-position:left;
+    image: url(:/res/res/left_arrow_s.png);
+    width: 28;
+    height: 28;
+}
+
+QSpinBox::down-arrow:disabled,QSpinBox::down-arrow:off 
+{ 
+   border-image: url(:/res/res/left_arrow_d.png);
+    width: 28;
+    height: 28;
+}
+
+QSpinBox::up-arrow:disabled,QSpinBox::up-arrow:off 
+{ 
+   border-image: url(:/res/res/right_arrow_d.png);
+    width: 28;
+    height: 28;
+}
+</string>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignCenter</set>
+      </property>
+      <property name="minimum">
+       <number>0</number>
+      </property>
+      <property name="maximum">
+       <number>255</number>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="Button_recover">
+      <property name="geometry">
+       <rect>
+        <x>60</x>
+        <y>1075</y>
+        <width>191</width>
+        <height>45</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>17</pointsize>
+       </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-color: rgb(170, 85, 255);</string>
+      </property>
+      <property name="text">
+       <string>恢复死点</string>
+      </property>
+      <property name="autoDefault">
+       <bool>false</bool>
+      </property>
+      <property name="default">
+       <bool>false</bool>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="Button_oritoggle_0">
+      <property name="geometry">
+       <rect>
+        <x>200</x>
+        <y>955</y>
+        <width>191</width>
+        <height>45</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>17</pointsize>
+       </font>
+      </property>
+      <property name="text">
+       <string>显示两点图像</string>
+      </property>
+      <property name="autoDefault">
+       <bool>false</bool>
+      </property>
+      <property name="default">
+       <bool>false</bool>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="Button_oritoggle_1">
+      <property name="geometry">
+       <rect>
+        <x>410</x>
+        <y>955</y>
+        <width>191</width>
+        <height>45</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>17</pointsize>
+       </font>
+      </property>
+      <property name="text">
+       <string>显示原始图像</string>
+      </property>
+      <property name="autoDefault">
+       <bool>false</bool>
+      </property>
+      <property name="default">
+       <bool>false</bool>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="Button_save_focus">
+      <property name="geometry">
+       <rect>
+        <x>440</x>
+        <y>460</y>
+        <width>161</width>
+        <height>71</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>17</pointsize>
+       </font>
+      </property>
+      <property name="text">
+       <string>保存FOCUS值</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_B_5">
+      <property name="geometry">
+       <rect>
+        <x>20</x>
+        <y>475</y>
+        <width>181</width>
+        <height>40</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>17</pointsize>
+       </font>
+      </property>
+      <property name="text">
+       <string>general_FOCUS:</string>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+      </property>
+     </widget>
+     <widget class="QSpinBox" name="spinBox_facus_2">
+      <property name="geometry">
+       <rect>
+        <x>221</x>
+        <y>480</y>
+        <width>200</width>
+        <height>30</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>16</pointsize>
+       </font>
+      </property>
+      <property name="layoutDirection">
+       <enum>Qt::LeftToRight</enum>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">QSpinBox
+{
+		background-color: rgb(173, 173, 173);
+}
+QSpinBox::up-button {
+	subcontrol-origin:border;
+    subcontrol-position:right;
+    image: url(:/res/res/right_arrow_n.png);
+    width: 28;
+    height: 28;       
+
+}
+QSpinBox::down-button {
+subcontrol-origin:border;
+    subcontrol-position:left;
+    border-image: url(:/res/res/left_arrow_n.png);
+    width: 28;
+    height: 28;
+}
+/*按钮按下样式*/
+QSpinBox::up-button:pressed{
+	subcontrol-origin:border;
+    subcontrol-position:right;
+    image: url(:/res/res/right_arrow_n.png);
+    width: 28;
+    height: 28;       
+}
+  
+QSpinBox::down-button:pressed{
+    subcontrol-position:left;
+    image: url(:/res/res/left_arrow_n.png);
+    width: 28;
+    height: 28;
+}
+
+QSpinBox::down-arrow:disabled,QSpinBox::down-arrow:off 
+{ 
+   border-image: url(:/res/res/left_arrow_n.png);
+    width: 28;
+    height: 28;
+}
+
+QSpinBox::up-arrow:disabled,QSpinBox::up-arrow:off 
+{ 
+   border-image: url(:/res/res/right_arrow_n.png);
+    width: 28;
+    height: 28;
+}
+</string>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignCenter</set>
+      </property>
+      <property name="minimum">
+       <number>0</number>
+      </property>
+      <property name="maximum">
+       <number>1000</number>
+      </property>
+     </widget>
+     <widget class="QSpinBox" name="spinBox_Para">
+      <property name="geometry">
+       <rect>
+        <x>220</x>
+        <y>726</y>
+        <width>200</width>
+        <height>30</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>16</pointsize>
+       </font>
+      </property>
+      <property name="layoutDirection">
+       <enum>Qt::LeftToRight</enum>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">QSpinBox
+{
+		background-color: rgb(173, 173, 173);
+}
+QSpinBox::up-button {
+	subcontrol-origin:border;
+    subcontrol-position:right;
+    image: url(:/res/res/right_arrow_n.png);
+    width: 28;
+    height: 28;       
+
+}
+QSpinBox::down-button {
+subcontrol-origin:border;
+    subcontrol-position:left;
+    border-image: url(:/res/res/left_arrow_n.png);
+    width: 28;
+    height: 28;
+}
+/*按钮按下样式*/
+QSpinBox::up-button:pressed{
+	subcontrol-origin:border;
+    subcontrol-position:right;
+    image: url(:/res/res/right_arrow_s.png);
+    width: 28;
+    height: 28;       
+}
+  
+QSpinBox::down-button:pressed{
+    subcontrol-position:left;
+    image: url(:/res/res/left_arrow_s.png);
+    width: 28;
+    height: 28;
+}
+
+QSpinBox::down-arrow:disabled,QSpinBox::down-arrow:off 
+{ 
+   border-image: url(:/res/res/left_arrow_d.png);
+    width: 28;
+    height: 28;
+}
+
+QSpinBox::up-arrow:disabled,QSpinBox::up-arrow:off 
+{ 
+   border-image: url(:/res/res/right_arrow_d.png);
+    width: 28;
+    height: 28;
+}
+</string>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignCenter</set>
+      </property>
+      <property name="minimum">
+       <number>0</number>
+      </property>
+      <property name="maximum">
+       <number>255</number>
+      </property>
+     </widget>
+     <widget class="QSpinBox" name="spinBox_Zoom">
+      <property name="geometry">
+       <rect>
+        <x>220</x>
+        <y>765</y>
+        <width>200</width>
+        <height>30</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>16</pointsize>
+       </font>
+      </property>
+      <property name="layoutDirection">
+       <enum>Qt::LeftToRight</enum>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">QSpinBox
+{
+		background-color: rgb(173, 173, 173);
+}
+QSpinBox::up-button {
+	subcontrol-origin:border;
+    subcontrol-position:right;
+    image: url(:/res/res/right_arrow_n.png);
+    width: 28;
+    height: 28;       
+
+}
+QSpinBox::down-button {
+subcontrol-origin:border;
+    subcontrol-position:left;
+    border-image: url(:/res/res/left_arrow_n.png);
+    width: 28;
+    height: 28;
+}
+/*按钮按下样式*/
+QSpinBox::up-button:pressed{
+	subcontrol-origin:border;
+    subcontrol-position:right;
+    image: url(:/res/res/right_arrow_s.png);
+    width: 28;
+    height: 28;       
+}
+  
+QSpinBox::down-button:pressed{
+    subcontrol-position:left;
+    image: url(:/res/res/left_arrow_s.png);
+    width: 28;
+    height: 28;
+}
+
+QSpinBox::down-arrow:disabled,QSpinBox::down-arrow:off 
+{ 
+   border-image: url(:/res/res/left_arrow_d.png);
+    width: 28;
+    height: 28;
+}
+
+QSpinBox::up-arrow:disabled,QSpinBox::up-arrow:off 
+{ 
+   border-image: url(:/res/res/right_arrow_d.png);
+    width: 28;
+    height: 28;
+}
+</string>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignCenter</set>
+      </property>
+      <property name="minimum">
+       <number>0</number>
+      </property>
+      <property name="maximum">
+       <number>255</number>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_Zoom">
+      <property name="geometry">
+       <rect>
+        <x>0</x>
+        <y>760</y>
+        <width>201</width>
+        <height>40</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>17</pointsize>
+       </font>
+      </property>
+      <property name="text">
+       <string>细节增强倍数:</string>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_Para">
+      <property name="geometry">
+       <rect>
+        <x>-1</x>
+        <y>721</y>
+        <width>201</width>
+        <height>40</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>17</pointsize>
+       </font>
+      </property>
+      <property name="text">
+       <string>引导滤波参数:</string>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="Button_X">
+      <property name="geometry">
+       <rect>
+        <x>400</x>
+        <y>590</y>
+        <width>211</width>
+        <height>41</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>17</pointsize>
+       </font>
+      </property>
+      <property name="text">
+       <string>设置X值</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="Button_Y">
+      <property name="geometry">
+       <rect>
+        <x>400</x>
+        <y>650</y>
+        <width>211</width>
+        <height>41</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>17</pointsize>
+       </font>
+      </property>
+      <property name="text">
+       <string>设置Y值</string>
+      </property>
+     </widget>
+     <widget class="QSpinBox" name="spinBox_SensibilityRange">
+      <property name="geometry">
+       <rect>
+        <x>421</x>
+        <y>1080</y>
+        <width>200</width>
+        <height>30</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>16</pointsize>
+       </font>
+      </property>
+      <property name="layoutDirection">
+       <enum>Qt::LeftToRight</enum>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">QSpinBox
+{
+		background-color: rgb(173, 173, 173);
+}
+QSpinBox::up-button {
+	subcontrol-origin:border;
+    subcontrol-position:right;
+    image: url(:/res/res/right_arrow_n.png);
+    width: 28;
+    height: 28;       
+
+}
+QSpinBox::down-button {
+subcontrol-origin:border;
+    subcontrol-position:left;
+    border-image: url(:/res/res/left_arrow_n.png);
+    width: 28;
+    height: 28;
+}
+/*按钮按下样式*/
+QSpinBox::up-button:pressed{
+	subcontrol-origin:border;
+    subcontrol-position:right;
+    image: url(:/res/res/right_arrow_s.png);
+    width: 28;
+    height: 28;       
+}
+  
+QSpinBox::down-button:pressed{
+    subcontrol-position:left;
+    image: url(:/res/res/left_arrow_s.png);
+    width: 28;
+    height: 28;
+}
+
+QSpinBox::down-arrow:disabled,QSpinBox::down-arrow:off 
+{ 
+   border-image: url(:/res/res/left_arrow_d.png);
+    width: 28;
+    height: 28;
+}
+
+QSpinBox::up-arrow:disabled,QSpinBox::up-arrow:off 
+{ 
+   border-image: url(:/res/res/right_arrow_d.png);
+    width: 28;
+    height: 28;
+}
+</string>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignCenter</set>
+      </property>
+      <property name="minimum">
+       <number>1</number>
+      </property>
+      <property name="maximum">
+       <number>16</number>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_SensibilityRange">
+      <property name="geometry">
+       <rect>
+        <x>260</x>
+        <y>1075</y>
+        <width>141</width>
+        <height>40</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>17</pointsize>
+       </font>
+      </property>
+      <property name="text">
+       <string>灵敏度档位:</string>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+      </property>
+     </widget>
+     <widget class="QSpinBox" name="spinBox_SensibilityGain">
+      <property name="geometry">
+       <rect>
+        <x>420</x>
+        <y>1145</y>
+        <width>200</width>
+        <height>30</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>16</pointsize>
+       </font>
+      </property>
+      <property name="layoutDirection">
+       <enum>Qt::LeftToRight</enum>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">QSpinBox
+{
+		background-color: rgb(173, 173, 173);
+}
+QSpinBox::up-button {
+	subcontrol-origin:border;
+    subcontrol-position:right;
+    image: url(:/res/res/right_arrow_n.png);
+    width: 28;
+    height: 28;       
+
+}
+QSpinBox::down-button {
+subcontrol-origin:border;
+    subcontrol-position:left;
+    border-image: url(:/res/res/left_arrow_n.png);
+    width: 28;
+    height: 28;
+}
+/*按钮按下样式*/
+QSpinBox::up-button:pressed{
+	subcontrol-origin:border;
+    subcontrol-position:right;
+    image: url(:/res/res/right_arrow_s.png);
+    width: 28;
+    height: 28;       
+}
+  
+QSpinBox::down-button:pressed{
+    subcontrol-position:left;
+    image: url(:/res/res/left_arrow_s.png);
+    width: 28;
+    height: 28;
+}
+
+QSpinBox::down-arrow:disabled,QSpinBox::down-arrow:off 
+{ 
+   border-image: url(:/res/res/left_arrow_d.png);
+    width: 28;
+    height: 28;
+}
+
+QSpinBox::up-arrow:disabled,QSpinBox::up-arrow:off 
+{ 
+   border-image: url(:/res/res/right_arrow_d.png);
+    width: 28;
+    height: 28;
+}
+</string>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignCenter</set>
+      </property>
+      <property name="minimum">
+       <number>1</number>
+      </property>
+      <property name="maximum">
+       <number>9</number>
+      </property>
+     </widget>
+     <widget class="QCheckBox" name="checkBox_Sensibility">
+      <property name="enabled">
+       <bool>true</bool>
+      </property>
+      <property name="geometry">
+       <rect>
+        <x>650</x>
+        <y>1075</y>
+        <width>70</width>
+        <height>50</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>17</pointsize>
+       </font>
+      </property>
+      <property name="focusPolicy">
+       <enum>Qt::NoFocus</enum>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">QCheckBox{
+background:transparent;
+}
+QCheckBox::indicator:unchecked {
+    image: url(:/res/res/switch_off.png);
+}
+
+QCheckBox::indicator:checked {
+    image: url(:/res/res/switch_on.png);
+}
+
+</string>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+      <property name="tristate">
+       <bool>false</bool>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_SensibilityGain">
+      <property name="geometry">
+       <rect>
+        <x>270</x>
+        <y>1140</y>
+        <width>131</width>
+        <height>40</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>17</pointsize>
+       </font>
+      </property>
+      <property name="text">
+       <string>灵敏度增益:</string>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_B_6">
+      <property name="geometry">
+       <rect>
+        <x>20</x>
+        <y>513</y>
+        <width>181</width>
+        <height>40</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>17</pointsize>
+       </font>
+      </property>
+      <property name="text">
+       <string>fast_FOCUS:</string>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+      </property>
+     </widget>
+     <widget class="QSpinBox" name="spinBox_facus_3">
+      <property name="geometry">
+       <rect>
+        <x>221</x>
+        <y>518</y>
+        <width>200</width>
+        <height>30</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>16</pointsize>
+       </font>
+      </property>
+      <property name="layoutDirection">
+       <enum>Qt::LeftToRight</enum>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">QSpinBox
+{
+		background-color: rgb(173, 173, 173);
+}
+QSpinBox::up-button {
+	subcontrol-origin:border;
+    subcontrol-position:right;
+    image: url(:/res/res/right_arrow_n.png);
+    width: 28;
+    height: 28;       
+
+}
+QSpinBox::down-button {
+subcontrol-origin:border;
+    subcontrol-position:left;
+    border-image: url(:/res/res/left_arrow_n.png);
+    width: 28;
+    height: 28;
+}
+/*按钮按下样式*/
+QSpinBox::up-button:pressed{
+	subcontrol-origin:border;
+    subcontrol-position:right;
+    image: url(:/res/res/right_arrow_n.png);
+    width: 28;
+    height: 28;       
+}
+  
+QSpinBox::down-button:pressed{
+    subcontrol-position:left;
+    image: url(:/res/res/left_arrow_n.png);
+    width: 28;
+    height: 28;
+}
+
+QSpinBox::down-arrow:disabled,QSpinBox::down-arrow:off 
+{ 
+   border-image: url(:/res/res/left_arrow_n.png);
+    width: 28;
+    height: 28;
+}
+
+QSpinBox::up-arrow:disabled,QSpinBox::up-arrow:off 
+{ 
+   border-image: url(:/res/res/right_arrow_n.png);
+    width: 28;
+    height: 28;
+}
+</string>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignCenter</set>
+      </property>
+      <property name="minimum">
+       <number>0</number>
+      </property>
+      <property name="maximum">
+       <number>1000</number>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_INTCP">
+      <property name="geometry">
+       <rect>
+        <x>305</x>
+        <y>20</y>
+        <width>100</width>
+        <height>40</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>17</pointsize>
+       </font>
+      </property>
+      <property name="text">
+       <string>INTCP:</string>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+      </property>
+     </widget>
+     <widget class="QSpinBox" name="spinBox_intcp">
+      <property name="geometry">
+       <rect>
+        <x>410</x>
+        <y>25</y>
+        <width>200</width>
+        <height>30</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>16</pointsize>
+       </font>
+      </property>
+      <property name="layoutDirection">
+       <enum>Qt::LeftToRight</enum>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">QSpinBox
+{
+		background-color: rgb(173, 173, 173);
+}
+QSpinBox::up-button {
+	subcontrol-origin:border;
+    subcontrol-position:right;
+    image: url(:/res/res/right_arrow_n.png);
+    width: 28;
+    height: 28;       
+
+}
+QSpinBox::down-button {
+subcontrol-origin:border;
+    subcontrol-position:left;
+    border-image: url(:/res/res/left_arrow_n.png);
+    width: 28;
+    height: 28;
+}
+/*按钮按下样式*/
+QSpinBox::up-button:pressed{
+	subcontrol-origin:border;
+    subcontrol-position:right;
+    image: url(:/res/res/right_arrow_s.png);
+    width: 28;
+    height: 28;       
+}
+  
+QSpinBox::down-button:pressed{
+    subcontrol-position:left;
+    image: url(:/res/res/left_arrow_s.png);
+    width: 28;
+    height: 28;
+}
+
+QSpinBox::down-arrow:disabled,QSpinBox::down-arrow:off 
+{ 
+   border-image: url(:/res/res/left_arrow_d.png);
+    width: 28;
+    height: 28;
+}
+
+QSpinBox::up-arrow:disabled,QSpinBox::up-arrow:off 
+{ 
+   border-image: url(:/res/res/right_arrow_d.png);
+    width: 28;
+    height: 28;
+}</string>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignCenter</set>
+      </property>
+      <property name="minimum">
+       <number>0</number>
+      </property>
+      <property name="maximum">
+       <number>1000</number>
+      </property>
+     </widget>
+     <widget class="QSpinBox" name="spinBox_adgain">
+      <property name="geometry">
+       <rect>
+        <x>410</x>
+        <y>75</y>
+        <width>200</width>
+        <height>30</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>16</pointsize>
+       </font>
+      </property>
+      <property name="layoutDirection">
+       <enum>Qt::LeftToRight</enum>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">QSpinBox
+{
+		background-color: rgb(173, 173, 173);
+}
+QSpinBox::up-button {
+	subcontrol-origin:border;
+    subcontrol-position:right;
+    image: url(:/res/res/right_arrow_n.png);
+    width: 28;
+    height: 28;       
+
+}
+QSpinBox::down-button {
+subcontrol-origin:border;
+    subcontrol-position:left;
+    border-image: url(:/res/res/left_arrow_n.png);
+    width: 28;
+    height: 28;
+}
+/*按钮按下样式*/
+QSpinBox::up-button:pressed{
+	subcontrol-origin:border;
+    subcontrol-position:right;
+    image: url(:/res/res/right_arrow_s.png);
+    width: 28;
+    height: 28;       
+}
+  
+QSpinBox::down-button:pressed{
+    subcontrol-position:left;
+    image: url(:/res/res/left_arrow_s.png);
+    width: 28;
+    height: 28;
+}
+
+QSpinBox::down-arrow:disabled,QSpinBox::down-arrow:off 
+{ 
+   border-image: url(:/res/res/left_arrow_d.png);
+    width: 28;
+    height: 28;
+}
+
+QSpinBox::up-arrow:disabled,QSpinBox::up-arrow:off 
+{ 
+   border-image: url(:/res/res/right_arrow_d.png);
+    width: 28;
+    height: 28;
+}
+
+</string>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignCenter</set>
+      </property>
+      <property name="minimum">
+       <number>0</number>
+      </property>
+      <property name="maximum">
+       <number>10001</number>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_ADGAIN">
+      <property name="geometry">
+       <rect>
+        <x>305</x>
+        <y>70</y>
+        <width>100</width>
+        <height>40</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>17</pointsize>
+       </font>
+      </property>
+      <property name="text">
+       <string>ADGain:</string>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_SVRD">
+      <property name="geometry">
+       <rect>
+        <x>305</x>
+        <y>120</y>
+        <width>100</width>
+        <height>40</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>17</pointsize>
+       </font>
+      </property>
+      <property name="text">
+       <string>SVRD:</string>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+      </property>
+     </widget>
+     <widget class="QSpinBox" name="spinBox_svrd">
+      <property name="geometry">
+       <rect>
+        <x>410</x>
+        <y>125</y>
+        <width>200</width>
+        <height>30</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>16</pointsize>
+       </font>
+      </property>
+      <property name="layoutDirection">
+       <enum>Qt::LeftToRight</enum>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">QSpinBox
+{
+		background-color: rgb(173, 173, 173);
+}
+QSpinBox::up-button {
+	subcontrol-origin:border;
+    subcontrol-position:right;
+    image: url(:/res/res/right_arrow_n.png);
+    width: 28;
+    height: 28;       
+
+}
+QSpinBox::down-button {
+subcontrol-origin:border;
+    subcontrol-position:left;
+    border-image: url(:/res/res/left_arrow_n.png);
+    width: 28;
+    height: 28;
+}
+/*按钮按下样式*/
+QSpinBox::up-button:pressed{
+	subcontrol-origin:border;
+    subcontrol-position:right;
+    image: url(:/res/res/right_arrow_s.png);
+    width: 28;
+    height: 28;       
+}
+  
+QSpinBox::down-button:pressed{
+    subcontrol-position:left;
+    image: url(:/res/res/left_arrow_s.png);
+    width: 28;
+    height: 28;
+}
+
+QSpinBox::down-arrow:disabled,QSpinBox::down-arrow:off 
+{ 
+   border-image: url(:/res/res/left_arrow_d.png);
+    width: 28;
+    height: 28;
+}
+
+QSpinBox::up-arrow:disabled,QSpinBox::up-arrow:off 
+{ 
+   border-image: url(:/res/res/right_arrow_d.png);
+    width: 28;
+    height: 28;
+}
+
+</string>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignCenter</set>
+      </property>
+      <property name="minimum">
+       <number>0</number>
+      </property>
+      <property name="maximum">
+       <number>10000</number>
+      </property>
+     </widget>
+     <widget class="QSpinBox" name="spinBox_fos">
+      <property name="geometry">
+       <rect>
+        <x>411</x>
+        <y>175</y>
+        <width>200</width>
+        <height>30</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>16</pointsize>
+       </font>
+      </property>
+      <property name="layoutDirection">
+       <enum>Qt::LeftToRight</enum>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">QSpinBox
+{
+		background-color: rgb(173, 173, 173);
+}
+QSpinBox::up-button {
+	subcontrol-origin:border;
+    subcontrol-position:right;
+    image: url(:/res/res/right_arrow_n.png);
+    width: 28;
+    height: 28;       
+
+}
+QSpinBox::down-button {
+subcontrol-origin:border;
+    subcontrol-position:left;
+    border-image: url(:/res/res/left_arrow_n.png);
+    width: 28;
+    height: 28;
+}
+/*按钮按下样式*/
+QSpinBox::up-button:pressed{
+	subcontrol-origin:border;
+    subcontrol-position:right;
+    image: url(:/res/res/right_arrow_s.png);
+    width: 28;
+    height: 28;       
+}
+  
+QSpinBox::down-button:pressed{
+    subcontrol-position:left;
+    image: url(:/res/res/left_arrow_s.png);
+    width: 28;
+    height: 28;
+}
+
+QSpinBox::down-arrow:disabled,QSpinBox::down-arrow:off 
+{ 
+   border-image: url(:/res/res/left_arrow_d.png);
+    width: 28;
+    height: 28;
+}
+
+QSpinBox::up-arrow:disabled,QSpinBox::up-arrow:off 
+{ 
+   border-image: url(:/res/res/right_arrow_d.png);
+    width: 28;
+    height: 28;
+}
+
+</string>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignCenter</set>
+      </property>
+      <property name="minimum">
+       <number>0</number>
+      </property>
+      <property name="maximum">
+       <number>10000</number>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_FOS">
+      <property name="geometry">
+       <rect>
+        <x>305</x>
+        <y>170</y>
+        <width>100</width>
+        <height>40</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>17</pointsize>
+       </font>
+      </property>
+      <property name="text">
+       <string>FOS:</string>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+      </property>
+     </widget>
+     <widget class="QCheckBox" name="checkBox_OCC">
+      <property name="enabled">
+       <bool>true</bool>
+      </property>
+      <property name="geometry">
+       <rect>
+        <x>560</x>
+        <y>220</y>
+        <width>70</width>
+        <height>50</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>17</pointsize>
+       </font>
+      </property>
+      <property name="focusPolicy">
+       <enum>Qt::NoFocus</enum>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">QCheckBox{
+background:transparent;
+}
+QCheckBox::indicator:unchecked {
+    image: url(:/res/res/switch_off.png);
+}
+
+QCheckBox::indicator:checked {
+    image: url(:/res/res/switch_on.png);
+}
+
+</string>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+      <property name="tristate">
+       <bool>false</bool>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_OCC">
+      <property name="geometry">
+       <rect>
+        <x>445</x>
+        <y>225</y>
+        <width>100</width>
+        <height>40</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>17</pointsize>
+       </font>
+      </property>
+      <property name="text">
+       <string>OCC:</string>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+      </property>
+     </widget>
+     <widget class="QSpinBox" name="spinBox_3DHDFF">
+      <property name="geometry">
+       <rect>
+        <x>220</x>
+        <y>810</y>
+        <width>200</width>
+        <height>30</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>16</pointsize>
+       </font>
+      </property>
+      <property name="layoutDirection">
+       <enum>Qt::LeftToRight</enum>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">QSpinBox
+{
+		background-color: rgb(173, 173, 173);
+}
+QSpinBox::up-button {
+	subcontrol-origin:border;
+    subcontrol-position:right;
+    image: url(:/res/res/right_arrow_n.png);
+    width: 28;
+    height: 28;       
+
+}
+QSpinBox::down-button {
+subcontrol-origin:border;
+    subcontrol-position:left;
+    border-image: url(:/res/res/left_arrow_n.png);
+    width: 28;
+    height: 28;
+}
+/*按钮按下样式*/
+QSpinBox::up-button:pressed{
+	subcontrol-origin:border;
+    subcontrol-position:right;
+    image: url(:/res/res/right_arrow_s.png);
+    width: 28;
+    height: 28;       
+}
+  
+QSpinBox::down-button:pressed{
+    subcontrol-position:left;
+    image: url(:/res/res/left_arrow_s.png);
+    width: 28;
+    height: 28;
+}
+
+QSpinBox::down-arrow:disabled,QSpinBox::down-arrow:off 
+{ 
+   border-image: url(:/res/res/left_arrow_d.png);
+    width: 28;
+    height: 28;
+}
+
+QSpinBox::up-arrow:disabled,QSpinBox::up-arrow:off 
+{ 
+   border-image: url(:/res/res/right_arrow_d.png);
+    width: 28;
+    height: 28;
+}
+</string>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignCenter</set>
+      </property>
+      <property name="minimum">
+       <number>0</number>
+      </property>
+      <property name="maximum">
+       <number>255</number>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_3DSD">
+      <property name="geometry">
+       <rect>
+        <x>0</x>
+        <y>845</y>
+        <width>201</width>
+        <height>40</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>17</pointsize>
+       </font>
+      </property>
+      <property name="text">
+       <string>3D空域参数:</string>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_3DHDFF">
+      <property name="geometry">
+       <rect>
+        <x>-1</x>
+        <y>805</y>
+        <width>201</width>
+        <height>40</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>17</pointsize>
+       </font>
+      </property>
+      <property name="text">
+       <string>3D时域参数:</string>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+      </property>
+     </widget>
+     <widget class="QSpinBox" name="spinBox_3DSD">
+      <property name="geometry">
+       <rect>
+        <x>220</x>
+        <y>850</y>
+        <width>200</width>
+        <height>30</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>16</pointsize>
+       </font>
+      </property>
+      <property name="layoutDirection">
+       <enum>Qt::LeftToRight</enum>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">QSpinBox
+{
+		background-color: rgb(173, 173, 173);
+}
+QSpinBox::up-button {
+	subcontrol-origin:border;
+    subcontrol-position:right;
+    image: url(:/res/res/right_arrow_n.png);
+    width: 28;
+    height: 28;       
+
+}
+QSpinBox::down-button {
+subcontrol-origin:border;
+    subcontrol-position:left;
+    border-image: url(:/res/res/left_arrow_n.png);
+    width: 28;
+    height: 28;
+}
+/*按钮按下样式*/
+QSpinBox::up-button:pressed{
+	subcontrol-origin:border;
+    subcontrol-position:right;
+    image: url(:/res/res/right_arrow_s.png);
+    width: 28;
+    height: 28;       
+}
+  
+QSpinBox::down-button:pressed{
+    subcontrol-position:left;
+    image: url(:/res/res/left_arrow_s.png);
+    width: 28;
+    height: 28;
+}
+
+QSpinBox::down-arrow:disabled,QSpinBox::down-arrow:off 
+{ 
+   border-image: url(:/res/res/left_arrow_d.png);
+    width: 28;
+    height: 28;
+}
+
+QSpinBox::up-arrow:disabled,QSpinBox::up-arrow:off 
+{ 
+   border-image: url(:/res/res/right_arrow_d.png);
+    width: 28;
+    height: 28;
+}
+</string>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignCenter</set>
+      </property>
+      <property name="minimum">
+       <number>0</number>
+      </property>
+      <property name="maximum">
+       <number>255</number>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_OCC_4">
+      <property name="geometry">
+       <rect>
+        <x>330</x>
+        <y>341</y>
+        <width>221</width>
+        <height>51</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>17</pointsize>
+       </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">color: rgb(0, 0, 0);</string>
+      </property>
+      <property name="text">
+       <string>均匀面抑制处理：</string>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+      </property>
+     </widget>
+     <widget class="QCheckBox" name="checkBox_VERTICAL">
+      <property name="enabled">
+       <bool>true</bool>
+      </property>
+      <property name="geometry">
+       <rect>
+        <x>560</x>
+        <y>292</y>
+        <width>70</width>
+        <height>50</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>17</pointsize>
+       </font>
+      </property>
+      <property name="focusPolicy">
+       <enum>Qt::NoFocus</enum>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">QCheckBox{
+background:transparent;
+}
+QCheckBox::indicator:unchecked {
+    image: url(:/res/res/switch_off.png);
+}
+
+QCheckBox::indicator:checked {
+    image: url(:/res/res/switch_on.png);
+}
+
+</string>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+      <property name="tristate">
+       <bool>false</bool>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_OCC_3">
+      <property name="geometry">
+       <rect>
+        <x>380</x>
+        <y>290</y>
+        <width>171</width>
+        <height>51</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>17</pointsize>
+       </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">color: rgb(0, 0, 0);</string>
+      </property>
+      <property name="text">
+       <string>竖纹处理：</string>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+      </property>
+     </widget>
+     <widget class="QCheckBox" name="checkBox_SUPPRESSION">
+      <property name="enabled">
+       <bool>true</bool>
+      </property>
+      <property name="geometry">
+       <rect>
+        <x>560</x>
+        <y>340</y>
+        <width>70</width>
+        <height>50</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>17</pointsize>
+       </font>
+      </property>
+      <property name="focusPolicy">
+       <enum>Qt::NoFocus</enum>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">QCheckBox{
+background:transparent;
+}
+QCheckBox::indicator:unchecked {
+    image: url(:/res/res/switch_off.png);
+}
+
+QCheckBox::indicator:checked {
+    image: url(:/res/res/switch_on.png);
+}
+
+</string>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+      <property name="tristate">
+       <bool>false</bool>
+      </property>
+     </widget>
+     <zorder>label_DDE</zorder>
+     <zorder>label_rotate</zorder>
+     <zorder>checkBox_DDE</zorder>
+     <zorder>checkBox_rotate</zorder>
+     <zorder>label_B_3</zorder>
+     <zorder>spinBox_x</zorder>
+     <zorder>label_B_4</zorder>
+     <zorder>spinBox_y</zorder>
+     <zorder>Button_HI</zorder>
+     <zorder>Button_LO</zorder>
+     <zorder>Button_set</zorder>
+     <zorder>Button_save</zorder>
+     <zorder>Button_cancel</zorder>
+     <zorder>label_ZN</zorder>
+     <zorder>label_VS</zorder>
+     <zorder>label_VF</zorder>
+     <zorder>label_Gain</zorder>
+     <zorder>label_INT</zorder>
+     <zorder>label_Max</zorder>
+     <zorder>label_Min</zorder>
+     <zorder>label_B</zorder>
+     <zorder>spinBox_vs</zorder>
+     <zorder>spinBox_vf</zorder>
+     <zorder>spinBox_gain</zorder>
+     <zorder>spinBox_tnt</zorder>
+     <zorder>label_inmax</zorder>
+     <zorder>label_inmin</zorder>
+     <zorder>label_inB</zorder>
+     <zorder>spinBox_zn</zorder>
+     <zorder>spinBox_max</zorder>
+     <zorder>spinBox_min</zorder>
+     <zorder>spinBox_b</zorder>
+     <zorder>label_B_2</zorder>
+     <zorder>spinBox_facus</zorder>
+     <zorder>label_oritoggle</zorder>
+     <zorder>label_auto_badpixel</zorder>
+     <zorder>checkBox_auto_badpixel</zorder>
+     <zorder>spinBox_auto_badpixel</zorder>
+     <zorder>Button_recover</zorder>
+     <zorder>Button_oritoggle_0</zorder>
+     <zorder>Button_oritoggle_1</zorder>
+     <zorder>Button_save_focus</zorder>
+     <zorder>label_B_5</zorder>
+     <zorder>spinBox_facus_2</zorder>
+     <zorder>spinBox_Para</zorder>
+     <zorder>spinBox_Zoom</zorder>
+     <zorder>label_Zoom</zorder>
+     <zorder>label_Para</zorder>
+     <zorder>Button_X</zorder>
+     <zorder>Button_Y</zorder>
+     <zorder>spinBox_SensibilityRange</zorder>
+     <zorder>label_SensibilityRange</zorder>
+     <zorder>spinBox_SensibilityGain</zorder>
+     <zorder>checkBox_Sensibility</zorder>
+     <zorder>label_SensibilityGain</zorder>
+     <zorder>label_B_6</zorder>
+     <zorder>spinBox_facus_3</zorder>
+     <zorder>label_INTCP</zorder>
+     <zorder>spinBox_intcp</zorder>
+     <zorder>spinBox_adgain</zorder>
+     <zorder>label_ADGAIN</zorder>
+     <zorder>label_SVRD</zorder>
+     <zorder>spinBox_svrd</zorder>
+     <zorder>spinBox_fos</zorder>
+     <zorder>label_FOS</zorder>
+     <zorder>checkBox_OCC</zorder>
+     <zorder>label_OCC</zorder>
+     <zorder>spinBox_3DHDFF</zorder>
+     <zorder>label_3DSD</zorder>
+     <zorder>label_3DHDFF</zorder>
+     <zorder>spinBox_3DSD</zorder>
+     <zorder>label_OCC_4</zorder>
+     <zorder>checkBox_VERTICAL</zorder>
+     <zorder>label_OCC_3</zorder>
+     <zorder>checkBox_SUPPRESSION</zorder>
+    </widget>
+   </widget>
+  </widget>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>

@@ -1,0 +1,5 @@
+ftp 192.168.1.243 << EOF
+ftp
+put a.txt
+by
+EOF
